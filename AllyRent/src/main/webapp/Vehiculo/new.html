@@ -198,28 +198,28 @@
                                                         <div class="form-group ">
                                                             <label for="sltTipoVehiculo" class="control-label col-lg-2">Tipo Vehiculo</label>
                                                             <div class="col-lg-10">
-                                                                <select name="sltTipoVehiculo" id="sltTipoVehiculo" class="form-control" data-bind="options: tipoVehiculoList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'"required>
+                                                                <select name="sltTipoVehiculo" id="sltTipoVehiculo" class="form-control" data-bind="value: idTipoVehiculo, options: tipoVehiculoList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'"required>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group ">
                                                             <label for="sltTransmision" class="control-label col-lg-2">Transmision</label>
                                                             <div class="col-lg-10">
-                                                                <select name="sltTransmision" id="sltTransmision" class="form-control" data-bind="options: tipoTransmisionList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'" required>
+                                                                <select name="sltTransmision" id="sltTransmision" class="form-control" data-bind="value: idTransmision,options: tipoTransmisionList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'" required>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group ">
                                                             <label for="sltCombustible" class="control-label col-lg-2">Combustible</label>
                                                             <div class="col-lg-10">
-                                                                <select name="sltCombustible" id="sltCombustible" class="form-control" data-bind="options: tipoCombustibleList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'" required>
+                                                                <select name="sltCombustible" id="sltCombustible" class="form-control" data-bind="value: idCombustible,options: tipoCombustibleList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'" required>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group ">
                                                             <label for="sltTarifa" class="control-label col-lg-2">Tarifa</label>
                                                             <div class="col-lg-10">
-                                                                <select name="sltTarifa" id="sltTarifa" class="form-control" data-bind="options: tarifasList,optionsText: 'porHora',optionsValue: 'idTarifa',optionsCaption: '--Seleccionar--'" required>
+                                                                <select name="sltTarifa" id="sltTarifa" class="form-control" data-bind="value:idTarifa, options: tarifasList,optionsText: 'porHora',optionsValue: 'idTarifa',optionsCaption: '--Seleccionar--'" required>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -231,28 +231,28 @@
                                                             </div>
                                                             <label for="sltModelo" class="control-label col-lg-2">Modelo</label>
                                                             <div class="col-lg-4">
-                                                                <select name="sltModelo" id="sltModelo" class="form-control" data-bind="options: modeloList,optionsText:'nombre',optionsValue: 'idModelo',optionsCaption: '--Seleccionar--'" required>
+                                                                <select name="sltModelo" id="sltModelo" class="form-control" data-bind="value: idModelo,options: modeloList,optionsText:'nombre',optionsValue: 'idModelo',optionsCaption: '--Seleccionar--'" required>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group ">
                                                             <label for="txtPlaca" class="control-label col-lg-2">Placa</label>
                                                             <div class="col-lg-4">
-                                                                <input class="form-control" id="txtPlaca" name="txtPlaca" type="text" required />
+                                                                <input class="form-control" id="txtPlaca" name="txtPlaca" type="text" data-bind="value: placa" required />
                                                             </div>
                                                             <label for="txtAño" class="control-label col-lg-2">Año</label>
                                                             <div class="col-lg-4                              ">
-                                                                <input class=" form-control" id="txtAño" name="txtAño" min="1990" max="2020" type="number" required />
+                                                                <input class=" form-control" id="txtAño" name="txtAño" min="1990" max="2020" type="number" data-bind="value: ano" required />
                                                             </div>
                                                         </div>
                                                         <div class="form-group ">
                                                             <label for="txtKM" class="control-label col-lg-2">KM</label>
                                                             <div class="col-lg-4">
-                                                                <input class=" form-control" id="txtKM" name="txtKM" max="900000" type="number" required />
+                                                                <input class=" form-control" id="txtKM" name="txtKM" max="900000" type="number" data-bind="value: km" required />
                                                             </div>
                                                             <label for="chkPar" class="control-label col-lg-2">Es par</label>
                                                             <div class="col-lg-4 checkbox">
-                                                                <input id="chkPar" type="checkbox" name="field" value="option">
+                                                                <input id="chkPar" type="checkbox" name="field" value="option" data-bind="checked: isPlacaPar">
                                                                 <label for="chkPar"><span><span></span></span></label>                                                                
                                                             </div>
                                                         </div>       
@@ -266,7 +266,7 @@
 
                                                         <div class="form-group">
                                                             <div class="col-lg-offset-2 col-lg-10">
-                                                                <button class="btn btn-theme" id="btnNext" type="submit">Save</button>
+                                                                <button class="btn btn-theme" id="btnNext" type="submit" data-bind="click: createVehiculo" >Save</button>
                                                                 <button class="btn btn-theme04" type="reset">Cancel</button>
                                                             </div>
                                                         </div>
