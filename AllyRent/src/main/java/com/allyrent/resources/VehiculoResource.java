@@ -5,7 +5,6 @@
  */
 package com.allyrent.resources;
 
-
 import com.allyrent.bean.*;
 import com.allyrent.entidades.*;
 import java.util.List;
@@ -23,7 +22,6 @@ import javax.ws.rs.core.MediaType;
  * @author Jorge
  */
 @Path("vehiculos")
-
 @Produces({MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_JSON})
 public class VehiculoResource {
@@ -39,6 +37,14 @@ public class VehiculoResource {
 
     @EJB
     TarifaFacade _tarifaFacade;
+
+    @GET
+    @Path("/{idUsuario}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    public List<Vehiculo> ListVehiclesByUsuario(@PathParam("idUsuario") int idUsuario) {
+        List<Vehiculo> vehiculos = _vehicleFacade.ListVehiclesByUsuario(idUsuario);
+        return vehiculos;
+    }
 
     @GET
     @Path("/marca")
@@ -81,6 +87,5 @@ public class VehiculoResource {
         List<Tarifa> listaTarifas = _tarifaFacade.findAll();
         return listaTarifas;
     }
-
- 
+    
 }

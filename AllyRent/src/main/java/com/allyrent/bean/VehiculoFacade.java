@@ -6,9 +6,11 @@
 package com.allyrent.bean;
 
 import com.allyrent.entidades.Vehiculo;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,21 @@ public class VehiculoFacade extends AbstractFacade<Vehiculo> {
 
     public VehiculoFacade() {
         super(Vehiculo.class);
+    }
+    
+    public List<Vehiculo> ListVehiclesByUsuario(int idUsuario){
+         try {
+            Query q = em.createNamedQuery("Vehiculo.findByUsuario").
+                    setParameter("idUsuario", idUsuario);
+            List<Vehiculo> vehiculos = q.getResultList();
+
+            if (!vehiculos.isEmpty()) {
+                return vehiculos;
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+        }
+        return null;
     }
     
 }
