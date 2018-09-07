@@ -12,6 +12,7 @@ com\allyrent\bean\FotosFacade.class
 com\allyrent\bean\RolFacade.class
 com\allyrent\entidades\ContratoPK.class
 com\allyrent\entidades\Datamaster.class
+com\allyrent\resources\PublicacionResource.class
 com\allyrent\bean\SolicitudFacade.class
 com\allyrent\bean\MarcaFacade.class
 com\allyrent\entidades\Comentario.class

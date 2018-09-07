@@ -44,6 +44,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Publicacion.findByFechaPublicacion", query = "SELECT p FROM Publicacion p WHERE p.fechaPublicacion = :fechaPublicacion")})
 public class Publicacion implements Serializable {
 
+    @Column(name = "idVehiculo")
+    private Integer idVehiculo;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -182,6 +185,14 @@ public class Publicacion implements Serializable {
     @Override
     public String toString() {
         return "com.allyrent.entidades.Publicacion[ idPublicacion=" + idPublicacion + " ]";
+    }
+
+    public Integer getIdVehiculo() {
+        return idVehiculo;
+    }
+
+    public void setIdVehiculo(Integer idVehiculo) {
+        this.idVehiculo = idVehiculo;
     }
     
 }

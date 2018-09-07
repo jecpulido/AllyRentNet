@@ -87,5 +87,5 @@ public class VehiculoResource {
         List<Tarifa> listaTarifas = _tarifaFacade.findAll();
         return listaTarifas;
     }
-
+    
 }

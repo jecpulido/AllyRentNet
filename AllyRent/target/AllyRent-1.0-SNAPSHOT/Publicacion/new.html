@@ -186,9 +186,9 @@
                         <div class="col-md-9 col-sm-12 col-xs-12">
                             <div class="main-content">
                                 <article>
-                                    <h4 class="page-title">Registro Vehiculo <a href="javascript:history.back()" class="btn btn-default right">Volver</a></h4>
+                                    <h4 class="page-title">NUEVA PUBLICACION <a href="javascript:history.back()" class="btn btn-default right">Volver</a></h4>
                                     <div class="post-content no-border contact">
-                                        <p>Señor usuario por favor ingrese todos los campos para el registro de vehiculo.</p>
+                                        <p>Realiza la publicacion aqui.</p>
                                     </div>
                                     <div class="row mt">
                                         <div class="col-lg-12">
@@ -196,78 +196,41 @@
                                                 <div class=" form">
                                                     <form class="cmxform form-horizontal style-form" id="vehicleForm" method="get" action="">
                                                         <div class="form-group ">
-                                                            <label for="sltTipoVehiculo" class="control-label col-lg-2">Tipo Vehiculo</label>
+                                                            <label for="sltTipoPublicacion" class="control-label col-lg-2">Tipo Publicacion</label>
                                                             <div class="col-lg-10">
-                                                                <select name="sltTipoVehiculo" id="sltTipoVehiculo" class="form-control" data-bind="value: idTipoVehiculo, options: tipoVehiculoList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'"required>
+                                                                <select name="sltTipoPublicacion" id="sltTipoPublicacion" class="form-control" data-bind="value: tipoPublicacion, options: tipoPublicacionList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'"required>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group ">
-                                                            <label for="sltTransmision" class="control-label col-lg-2">Transmision</label>
+                                                            <label for="sltVehiculo" class="control-label col-lg-2">Vehiculo</label>
                                                             <div class="col-lg-10">
-                                                                <select name="sltTransmision" id="sltTransmision" class="form-control" data-bind="value: idTransmision,options: tipoTransmisionList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'" required>
+                                                                <select name="sltVehiculo" id="sltVehiculo" class="form-control" data-bind="value: idVehiculo,options: vehiculoList,optionsText: 'placa',optionsValue: 'idVehiculo',optionsCaption: '--Seleccionar--'" required>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group ">
-                                                            <label for="sltCombustible" class="control-label col-lg-2">Combustible</label>
+                                                            <label for="txtFInicio" class="control-label col-lg-2">Fecha Inicio</label>
+                                                            <div class="col-lg-4">
+                                                                <input class=" form-control" id="txtFInicio" name="txtFInicio" type="datetime-local" data-bind="value: fechaInicio" required />
+                                                            </div>
+                                                            <label for="txtFFin" class="control-label col-lg-2">Fecha Fin</label>
+                                                            <div class="col-lg-4">
+                                                                <input class=" form-control" id="txtFFin" name="txtFFin" type="datetime-local" data-bind="value: fechaFin" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <label for="txtMensaje" class="control-label col-lg-2">Mensaje</label>
                                                             <div class="col-lg-10">
-                                                                <select name="sltCombustible" id="sltCombustible" class="form-control" data-bind="value: idCombustible,options: tipoCombustibleList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'" required>
-                                                                </select>
+                                                                <textarea class="form-control" id="txtMensaje" name="txtMensaje" data-bind="value: publicacion" required></textarea>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group ">
-                                                            <label for="sltTarifa" class="control-label col-lg-2">Tarifa</label>
-                                                            <div class="col-lg-10">
-                                                                <select name="sltTarifa" id="sltTarifa" class="form-control" data-bind="value:idTarifa, options: tarifasList,optionsText: 'porHora',optionsValue: 'idTarifa',optionsCaption: '--Seleccionar--'" required>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group ">
-                                                            <label for="sltMarca" class="control-label col-lg-2">Marca</label>
-                                                            <div class="col-lg-4">
-                                                                <select name="sltMarca" id="sltMarca" class="form-control" data-bind="value:idMarca,options: marcaList,optionsText:'nombre',optionsValue: 'idMarca',optionsCaption: '--Seleccionar--', event: { change: getModelo }" required>
-                                                                </select>
-                                                            </div>
-                                                            <label for="sltModelo" class="control-label col-lg-2">Modelo</label>
-                                                            <div class="col-lg-4">
-                                                                <select name="sltModelo" id="sltModelo" class="form-control" data-bind="value: idModelo,options: modeloList,optionsText:'nombre',optionsValue: 'idModelo',optionsCaption: '--Seleccionar--'" required>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group ">
-                                                            <label for="txtPlaca" class="control-label col-lg-2">Placa</label>
-                                                            <div class="col-lg-4">
-                                                                <input class="form-control" id="txtPlaca" name="txtPlaca" type="text" data-bind="value: placa" required />
-                                                            </div>
-                                                            <label for="txtAño" class="control-label col-lg-2">Año</label>
-                                                            <div class="col-lg-4">
-                                                                <input class=" form-control" id="txtAño" name="txtAño" min="1990" max="2020" type="number" data-bind="value: ano" required />
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group ">
-                                                            <label for="txtKM" class="control-label col-lg-2">KM</label>
-                                                            <div class="col-lg-4">
-                                                                <input class=" form-control" id="txtKM" name="txtKM" max="900000" type="number" data-bind="value: km" required />
-                                                            </div>
-                                                            <label for="chkPar" class="control-label col-lg-2">Es par</label>
-                                                            <div class="col-lg-4 checkbox">
-                                                                <input id="chkPar" type="checkbox" name="field" value="option" data-bind="checked: isPlacaPar">
-                                                                <label for="chkPar"><span><span></span></span></label>                                                                
-                                                            </div>
-                                                        </div>       
-                                                        <div class="form-group ">
-                                                            <label for="file" class="control-label col-lg-2">Imagen</label>
-                                                            <div class="col-lg-4">
-                                                                <input id="file" name="file" type="file" class="form-control">
-                                                            </div>
-                                                        </div>       
                                                         <label id="resultData" class="control-label col-lg-2"></label>
 
                                                         <div class="form-group">
                                                             <div class="col-lg-offset-2 col-lg-10">
-                                                                <button type="submit" class="btn btn-success" data-bind="click: createVehiculo" >Crear</button>
-                                                                <button class="btn btn-danger" type="reset">Cancelar</button>
+                                                                <button type="submit" class="btn btn-success" data-bind="click: createPublicacion" >Publicar</button>
+                                                                <button class="btn btn-danger" type="reset">Cancel</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -347,6 +310,6 @@
         <script src="../js/bootstrap.min.js"></script>
         <script src ="../js/custom.js"></script>    
         <script src="../js/knockout.js" type="text/javascript"></script>
-        <script src="../js/app/Vehiculoko.js" type="text/javascript"></script>
+        <script src="../js/app/Publicacionko.js" type="text/javascript"></script>
     </body>
 </html>
