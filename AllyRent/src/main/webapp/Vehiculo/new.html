@@ -45,67 +45,13 @@
                                             <i class="fa fa-user author-icon"></i>
                                         </a>
                                         <ul class="dropdown-menu">
-                                            <!-- Nav tabs -->
-                                            <ul class="nav nav-tabs" role="tablist">
-                                                <li role="presentation" class="active">
-                                                    <a class="sign" href="#signin" aria-controls="signin" role="tab" data-toggle="tab">sign in</a>
-                                                </li>
-                                                <li role="presentation">
-                                                    <a class="sign" href="#signup" aria-controls="signup" role="tab" data-toggle="tab">sign up</a>
-                                                </li>
-                                            </ul>
-
-                                            <!-- Tab panes -->
                                             <div class="tab-content">
                                                 <div role="tabpanel" class="tab-pane active" id="signin">
                                                     <ul class="user-dropdown">
-                                                        <div class="login-area">
-                                                            <div class="form-group">
-                                                                <label for="exampleInputText1">Username</label>
-                                                                <input type="email" class="form-control" id="exampleInputEmail1">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="exampleInputPassword1">Password</label>
-                                                                <input type="password" class="form-control" id="exampleInputPassword1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <input id="option" type="checkbox" name="field" value="option">
-                                                            <label for="option"><span><span></span></span>Keep me singed in</label>
-                                                            <a href="#" class="pull-right">Forgot?</a>
-                                                        </div>
-                                                        <div class="form-submit">
-                                                            <button type="submit" class="btn btn-success btn-block">Sign in</button>
-                                                        </div>
                                                     </ul><!-- /User-Dropdown-->
                                                 </div><!-- /#Sing in -->
                                                 <div role="tabpanel" class="tab-pane" id="signup">
                                                     <ul class="user-dropdown">
-                                                        <div class="login-area">
-                                                            <div class="form-group">
-                                                                <label for="exampleInputText1">Username</label>
-                                                                <input type="email" class="form-control" id="exampleInputEmail1">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">Email Address</label>
-                                                                <input type="email" class="form-control" id="exampleInputEmail1">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="exampleInputPassword1">Password</label>
-                                                                <input type="password" class="form-control" id="exampleInputPassword1">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="exampleInputPassword1">Comfirm Password</label>
-                                                                <input type="password" class="form-control" id="exampleInputPassword1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <input id="option1" type="checkbox" name="field" value="option1">
-                                                            <label for="option1"><span><span></span></span>I accept Terms and Condition ?</label>
-                                                        </div>
-                                                        <div class="form-submit">
-                                                            <button type="submit" class="btn btn-success btn-block">Sign up</button>
-                                                        </div>
                                                     </ul><!-- /User-Dropdown-->
                                                 </div><!-- /#Sing up -->
                                             </div><!-- /Tab-Content -->
@@ -240,44 +186,97 @@
                         <div class="col-md-9 col-sm-12 col-xs-12">
                             <div class="main-content">
                                 <article>
-                                    <a href="#"><h4 class="page-title">Registro Vehiculo</h4></a>
+                                    <h4 class="page-title">Registro Vehiculo <a href="javascript:history.back()" class="btn btn-default right">Volver</a></h4>
                                     <div class="post-content no-border contact">
                                         <p>Señor usuario por favor ingrese todos los campos para el registro de vehiculo.</p>
                                     </div>
-                                    <div class="form-body">
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="exampleInputEmail1">Email address*</label>
-                                                <input type="email" class="form-control" id="exampleInputEmail1">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Password*</label>
-                                                <input type="password" class="form-control" id="exampleInputPassword1">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputText1">Subject</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputPassword1">Message</label>
-                                                <textarea class="form-control" rows="3"></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-success form-btn">Submit</button>
-                                        </form>
-                                    </div>
+                                    <div class="row mt">
+                                        <div class="col-lg-12">
+                                            <div class="form-panel">
+                                                <div class=" form">
+                                                    <form class="cmxform form-horizontal style-form" id="vehicleForm" method="get" action="">
+                                                        <div class="form-group ">
+                                                            <label for="sltTipoVehiculo" class="control-label col-lg-2">Tipo Vehiculo</label>
+                                                            <div class="col-lg-10">
+                                                                <select name="sltTipoVehiculo" id="sltTipoVehiculo" class="form-control" data-bind="value: idTipoVehiculo, options: tipoVehiculoList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'"required>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <label for="sltTransmision" class="control-label col-lg-2">Transmision</label>
+                                                            <div class="col-lg-10">
+                                                                <select name="sltTransmision" id="sltTransmision" class="form-control" data-bind="value: idTransmision,options: tipoTransmisionList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'" required>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <label for="sltCombustible" class="control-label col-lg-2">Combustible</label>
+                                                            <div class="col-lg-10">
+                                                                <select name="sltCombustible" id="sltCombustible" class="form-control" data-bind="value: idCombustible,options: tipoCombustibleList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'" required>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <label for="sltTarifa" class="control-label col-lg-2">Tarifa</label>
+                                                            <div class="col-lg-10">
+                                                                <select name="sltTarifa" id="sltTarifa" class="form-control" data-bind="value:idTarifa, options: tarifasList,optionsText: 'porHora',optionsValue: 'idTarifa',optionsCaption: '--Seleccionar--'" required>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <label for="sltMarca" class="control-label col-lg-2">Marca</label>
+                                                            <div class="col-lg-4">
+                                                                <select name="sltMarca" id="sltMarca" class="form-control" data-bind="value:idMarca,options: marcaList,optionsText:'nombre',optionsValue: 'idMarca',optionsCaption: '--Seleccionar--', event: { change: getModelo }" required>
+                                                                </select>
+                                                            </div>
+                                                            <label for="sltModelo" class="control-label col-lg-2">Modelo</label>
+                                                            <div class="col-lg-4">
+                                                                <select name="sltModelo" id="sltModelo" class="form-control" data-bind="value: idModelo,options: modeloList,optionsText:'nombre',optionsValue: 'idModelo',optionsCaption: '--Seleccionar--'" required>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <label for="txtPlaca" class="control-label col-lg-2">Placa</label>
+                                                            <div class="col-lg-4">
+                                                                <input class="form-control" id="txtPlaca" name="txtPlaca" type="text" data-bind="value: placa" required />
+                                                            </div>
+                                                            <label for="txtAño" class="control-label col-lg-2">Año</label>
+                                                            <div class="col-lg-4">
+                                                                <input class=" form-control" id="txtAño" name="txtAño" min="1990" max="2020" type="number" data-bind="value: ano" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <label for="txtKM" class="control-label col-lg-2">KM</label>
+                                                            <div class="col-lg-4">
+                                                                <input class=" form-control" id="txtKM" name="txtKM" max="900000" type="number" data-bind="value: km" required />
+                                                            </div>
+                                                            <label for="chkPar" class="control-label col-lg-2">Es par</label>
+                                                            <div class="col-lg-4 checkbox">
+                                                                <input id="chkPar" type="checkbox" name="field" value="option" data-bind="checked: isPlacaPar">
+                                                                <label for="chkPar"><span><span></span></span></label>                                                                
+                                                            </div>
+                                                        </div>       
+                                                        <div class="form-group ">
+                                                            <label for="file" class="control-label col-lg-2">Imagen</label>
+                                                            <div class="col-lg-4">
+                                                                <input id="file" name="file" type="file" class="form-control">
+                                                            </div>
+                                                        </div>       
+                                                        <label id="resultData" class="control-label col-lg-2"></label>
+
+                                                        <div class="form-group">
+                                                            <div class="col-lg-offset-2 col-lg-10">
+                                                                <button type="submit" class="btn btn-success" data-bind="click: createVehiculo" >Crear</button>
+                                                                <button class="btn btn-danger" type="reset">Cancelar</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div><!-- /form-panel -->                                            
+                                        </div>                                        
+                                    </div><!-- /col-lg-12 -->
                                 </article>
                             </div><!-- main-content -->
-                            <div class="pagination">
-                                <nav>
-                                    <ul class="pagination">
-                                        <li><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">Next</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
                         </div>
                     </div><!--row-offcanvas-->
                 </div><!-- Container -->
@@ -348,5 +347,6 @@
         <script src="../js/bootstrap.min.js"></script>
         <script src ="../js/custom.js"></script>    
         <script src="../js/knockout.js" type="text/javascript"></script>
+        <script src="../js/app/Vehiculoko.js" type="text/javascript"></script>
     </body>
 </html>

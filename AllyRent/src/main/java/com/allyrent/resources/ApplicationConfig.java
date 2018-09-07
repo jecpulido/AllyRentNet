@@ -29,9 +29,10 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(GeneralResource.class);
-        resources.add(UsuarioResource.class);
-        resources.add(VehiculoResource.class);
+        resources.add(com.allyrent.resources.GeneralResource.class);
+        resources.add(com.allyrent.resources.PublicacionResource.class);
+        resources.add(com.allyrent.resources.UsuarioResource.class);
+        resources.add(com.allyrent.resources.VehiculoResource.class);
     }
     
 }
