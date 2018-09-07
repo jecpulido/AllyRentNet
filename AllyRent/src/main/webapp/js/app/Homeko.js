@@ -1,6 +1,6 @@
 /// <reference path="../knockout-2.3.0.debug.js" />
 
-var PublicacionViewModel = function () {
+var HomeViewModel = function () {
     self = this;
     self.tipoPublicacion = ko.observable();
     self.idUsuario = ko.observable();
@@ -10,16 +10,12 @@ var PublicacionViewModel = function () {
     self.idVehiculo = ko.observable();
 
     //Listas
-    self.vehiculoList = ko.observableArray();// array y tambien obserbable
-    self.tipoPublicacionList = ko.observableArray();// array y tambien obserbable
+    self.publicacionesList = ko.observableArray();// array y tambien obserbable
 
 
-    self.getAll = function () {
-        $.getJSON('/AllyRent/api/vehiculos/' + self.idUsuario(), function (data) {
-           self.vehiculoList(data);
-        });
-        $.getJSON('/AllyRent/api/general/findType/' + 6, function (data) {
-            self.tipoPublicacionList(data);
+    self.getAllPost = function () {
+        $.getJSON('/AllyRent/api/publicaciones/list/' + self.idUsuario(), function (data) {
+            self.publicacionesList(data);
         });
         
     },
@@ -126,17 +122,14 @@ var PublicacionViewModel = function () {
 
 };
 
+var homevm = new HomeViewModel();
+    ko.applyBindings(homevm);
+    homevm.idUsuario(1);
+    homevm.getAllPost();
 $(document).ready(function () {
 //    if ((sessionStorage.idUsuario === undefined) && (sessionStorage.idLogin === undefined)) {
 //        alert("Por favor inicie sesion");    
 //        window.location.href = "http://localhost:8080/AllyRent/index.html";
 //    }
-    var publiacionvm = new PublicacionViewModel();
-    ko.applyBindings(publiacionvm);
-    publiacionvm.idUsuario(1);
-    publiacionvm.getAll();
+    
 });
-
-
-
-
