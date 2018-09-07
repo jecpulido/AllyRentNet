@@ -43,7 +43,7 @@ public class UsuarioResource {
 
                 _user.create(user);
             }
-            
+
             return user;
         } catch (Exception e) {
             System.out.println("" + e.getMessage());
@@ -58,7 +58,7 @@ public class UsuarioResource {
             String correo = login.getCorreo();
             String password = login.getContrasena();
             Usuario user = _user.Login(correo, password);
-            if (user != null) {
+                if (user != null) {
                 return user;
             }
         } catch (Exception e) {
