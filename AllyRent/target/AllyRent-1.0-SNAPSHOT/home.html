@@ -169,7 +169,7 @@
                                     <div class="post-img">
                                         <a href="details.html" target="_blank"><img class="img-responsive" src="images/post-img-1.jpg" alt="Post"/></a>
                                     </div>
-                                    <a href="details.html" target="_blank" class="btn btn-default btn-sm btn-category" type="submit">Aplicar</a>
+                                    <div class="btn btn-default btn-category" data-bind="click: $parent.insertSolicitud.bind($data, idPublicacion)" > Aplicar</div>
                                     <a href="details.html" target="_blank"><h2 class="post-title" data-bind="text: idUsuario.nombre +' ' + idUsuario.apellido"></h2></a>
                                     <div class="post-meta">
                                         <span><a href="#"><i class="fa fa-share-alt post-meta-icon"></i> 0 Likes </a></span>

@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Contrato.findByIdOcupante", query = "SELECT c FROM Contrato c WHERE c.contratoPK.idOcupante = :idOcupante")
     , @NamedQuery(name = "Contrato.findByFechaInicio", query = "SELECT c FROM Contrato c WHERE c.fechaInicio = :fechaInicio")
     , @NamedQuery(name = "Contrato.findByFechaFin", query = "SELECT c FROM Contrato c WHERE c.fechaFin = :fechaFin")
+    , @NamedQuery(name = "Contrato.findByPropietarioOcupante", query = "SELECT c FROM Contrato c WHERE c.contratoPK.idPropietario = :idPropietario AND c.contratoPK.idOcupante = :idOcupante")
     , @NamedQuery(name = "Contrato.findByValor", query = "SELECT c FROM Contrato c WHERE c.valor = :valor")})
 public class Contrato implements Serializable {
 

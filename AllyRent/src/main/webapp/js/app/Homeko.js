@@ -17,19 +17,38 @@ var HomeViewModel = function () {
         $.getJSON('/AllyRent/api/publicaciones/list/' + self.idUsuario(), function (data) {
             self.publicacionesList(data);
         });
-        
+
     },
-            self.getPersonById = function () {
-                var url = '/api/person/' + self.id();
-                $.getJSON(url)
-                        .done(function (data) {
-                            self.name(data.Name);
-                            self.lastname(data.LastName);
-                            self.twitter(data.Twitter);
-                        })
-                        .fail(function (erro) {
-                            self.clearForm();
-                        });
+            self.insertSolicitud = function (id) {
+                var url = '/AllyRent/api/solicitudes/ToggleSolicitud';
+                var solicitud = {
+                    "estado": 1,
+                    "idPublicacion": {
+                        "idPublicacion": id
+                    },
+                    "idUsuario": {
+                        "idUsuario": self.idUsuario()
+                    }
+                };
+              
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: ko.toJSON(solicitud),
+                    contentType: "application/json;chartset=utf-8",
+                    statusCode: {
+                        200: function (data) {
+                            if (data.responseText === "OK") {
+                                alert('Solicitud realizada');
+                            }else if (data.responseText === "DELETE") {
+                                alert('Solicitud Cancelada');
+                            }
+                        },
+                        204: function () {
+                            alert('Error');
+                        }
+                    }
+                });
             },
             self.deletePersonById = function () {
                 var url = '/api/person/' + self.id();
@@ -49,30 +68,6 @@ var HomeViewModel = function () {
                     }
                 });
             },
-            self.updatePerson = function () {
-                var url = '/api/person/' + self.id();
-                $.ajax({
-                    url: url,
-                    type: 'PUT',
-                    data: ko.toJSON(self),
-                    contentType: "application/json;chartset=utf-8",
-                    statusCode: {
-                        200: function () {
-                            self.getAll();
-                            self.clearForm();
-                            alert('Person with id= ' + self.id() + ' was updated');
-                        },
-                        404: function () {
-                            self.clearForm();
-                            alert('Person with id= ' + self.id() + ' was not found');
-                        },
-                        400: function () {
-                            self.clearForm();
-                            alert('Error');
-                        }
-                    }
-                });
-            },
             self.createPublicacion = function () {
                 var url = '/AllyRent/api/publicaciones/create';
                 $.ajax({
@@ -81,13 +76,13 @@ var HomeViewModel = function () {
                     data: ko.toJSON(self.getObjectPublicacion()),
                     contentType: "application/json;chartset=utf-8",
                     statusCode: {
-                        200: function (data) {                            
-                            if (data.responseText === "OK"){
+                        200: function (data) {
+                            if (data.responseText === "OK") {
                                 self.clearForm();
                                 alert('Publicacion was created');
                                 window.location.href = "http://localhost:8080/AllyRent/";
                             }
-                            alert(data.responseText);                            
+                            alert(data.responseText);
                         },
                         204: function () {
                             alert('Error');
@@ -104,32 +99,31 @@ var HomeViewModel = function () {
             },
             self.getObjectPublicacion = function () {
                 var publicacion = {
-                    "fechaFin": self.fechaFin()+':00-05:00',
-                    "fechaInicio": self.fechaInicio()+':00-05:00    ',
-                    "fechaPublicacion": "",
-                    "idPublicacion": 1,
-                    "idTipoPublicacion": {
-                        "idDataType": self.tipoPublicacion()
+                    "estado": 1,
+                    "fechaSolicitud": "2018-09-07T14:00:00-05:00",
+                    "idPublicacion": {
+                        "idPublicacion": 1
                     },
+                    "idSolicitud": 1,
                     "idUsuario": {
-                        "idUsuario": self.idUsuario()
-                    },
-                    "idVehiculo": self.idVehiculo(),
-                    "publicacion": self.publicacion()
+                        "idUsuario": 1
+                    }
                 };
+
                 return publicacion;
             };
 
 };
 
-var homevm = new HomeViewModel();
+
+$(document).ready(function () {
+    var homevm = new HomeViewModel();
     ko.applyBindings(homevm);
     homevm.idUsuario(1);
     homevm.getAllPost();
-$(document).ready(function () {
 //    if ((sessionStorage.idUsuario === undefined) && (sessionStorage.idLogin === undefined)) {
 //        alert("Por favor inicie sesion");    
 //        window.location.href = "http://localhost:8080/AllyRent/index.html";
 //    }
-    
+
 });

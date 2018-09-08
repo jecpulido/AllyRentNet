@@ -47,6 +47,7 @@ com\allyrent\entidades\Reportes_.class
 com\allyrent\entidades\Departamento_.class
 com\allyrent\entidades\Ciudad.class
 com\allyrent\entidades\Marca_.class
+com\allyrent\resources\SolicitudResoruce.class
 com\allyrent\entidades\Usuario_.class
 com\allyrent\entidades\MensajesPK.class
 com\allyrent\entidades\Publicacion_.class

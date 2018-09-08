@@ -12,71 +12,18 @@ var PublicacionViewModel = function () {
     //Listas
     self.vehiculoList = ko.observableArray();// array y tambien obserbable
     self.tipoPublicacionList = ko.observableArray();// array y tambien obserbable
+    self.solicitudesList = ko.observableArray();
 
 
     self.getAll = function () {
         $.getJSON('/AllyRent/api/vehiculos/' + self.idUsuario(), function (data) {
-           self.vehiculoList(data);
+            self.vehiculoList(data);
         });
         $.getJSON('/AllyRent/api/general/findType/' + 6, function (data) {
             self.tipoPublicacionList(data);
         });
-        
+
     },
-            self.getPersonById = function () {
-                var url = '/api/person/' + self.id();
-                $.getJSON(url)
-                        .done(function (data) {
-                            self.name(data.Name);
-                            self.lastname(data.LastName);
-                            self.twitter(data.Twitter);
-                        })
-                        .fail(function (erro) {
-                            self.clearForm();
-                        });
-            },
-            self.deletePersonById = function () {
-                var url = '/api/person/' + self.id();
-                $.ajax({
-                    url: url,
-                    type: 'DELETE',
-                    contentType: "application/json;chartset=utf-8",
-                    statusCode: {
-                        200: function () {
-                            self.getAll();
-                            self.clearForm();
-                            alert('Person with id= ' + self.id() + ' was deleted');
-                        },
-                        404: function () {
-                            alert('Person with id= ' + self.id() + ' was not found');
-                        }
-                    }
-                });
-            },
-            self.updatePerson = function () {
-                var url = '/api/person/' + self.id();
-                $.ajax({
-                    url: url,
-                    type: 'PUT',
-                    data: ko.toJSON(self),
-                    contentType: "application/json;chartset=utf-8",
-                    statusCode: {
-                        200: function () {
-                            self.getAll();
-                            self.clearForm();
-                            alert('Person with id= ' + self.id() + ' was updated');
-                        },
-                        404: function () {
-                            self.clearForm();
-                            alert('Person with id= ' + self.id() + ' was not found');
-                        },
-                        400: function () {
-                            self.clearForm();
-                            alert('Error');
-                        }
-                    }
-                });
-            },
             self.createPublicacion = function () {
                 var url = '/AllyRent/api/publicaciones/create';
                 $.ajax({
@@ -85,19 +32,25 @@ var PublicacionViewModel = function () {
                     data: ko.toJSON(self.getObjectPublicacion()),
                     contentType: "application/json;chartset=utf-8",
                     statusCode: {
-                        200: function (data) {                            
-                            if (data.responseText === "OK"){
+                        200: function (data) {
+                            if (data.responseText === "OK") {
                                 self.clearForm();
                                 alert('Publicacion was created');
                                 window.location.href = "http://localhost:8080/AllyRent/";
                             }
-                            alert(data.responseText);                            
+                            alert(data.responseText);
                         },
                         204: function () {
                             alert('Error');
                         }
                     }
                 });
+            },
+            self.getSolicitudesList = function () {
+                $.getJSON('/AllyRent/api/solicitudes/ListSolicitudes/' + self.idUsuario(), function (data) {
+                    self.solicitudesList(data);
+                });
+
             },
             self.clearForm = function () {
                 self.tipoPublicacion("");
@@ -108,8 +61,8 @@ var PublicacionViewModel = function () {
             },
             self.getObjectPublicacion = function () {
                 var publicacion = {
-                    "fechaFin": self.fechaFin()+':00-05:00',
-                    "fechaInicio": self.fechaInicio()+':00-05:00    ',
+                    "fechaFin": self.fechaFin() + ':00-05:00',
+                    "fechaInicio": self.fechaInicio() + ':00-05:00    ',
                     "fechaPublicacion": "",
                     "idPublicacion": 1,
                     "idTipoPublicacion": {
@@ -122,6 +75,37 @@ var PublicacionViewModel = function () {
                     "publicacion": self.publicacion()
                 };
                 return publicacion;
+            },
+            self.updateState = function (dataU,fechaSolicitud,idSolicitud) {
+                var url = '/AllyRent/api/solicitudes/updateState';
+                var solicitud = {
+                    "estado": 0,
+                    "fechaSolicitud": fechaSolicitud,
+                    "idPublicacion": {
+                        "idPublicacion": dataU.idPublicacion
+                    },
+                    "idSolicitud": idSolicitud,
+                    "idUsuario": {
+                        "idUsuario": self.idUsuario()
+                    }
+                };
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: ko.toJSON(solicitud),
+                    contentType: "application/json;chartset=utf-8",
+                    statusCode: {
+                        200: function (data) {
+                            if (data.responseText === "OK") {
+                                alert('Solicitud denegada');
+                            }
+                            self.getSolicitudesList();
+                        },
+                        204: function () {
+                            alert('Error');
+                        }
+                    }
+                });
             };
 
 };
@@ -135,6 +119,7 @@ $(document).ready(function () {
     ko.applyBindings(publiacionvm);
     publiacionvm.idUsuario(1);
     publiacionvm.getAll();
+    publiacionvm.getSolicitudesList();
 });
 
 

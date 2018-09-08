@@ -50,7 +50,7 @@ h1 {
     width: 49%;
     margin: 0 .1em;
     float:left;
-    background: #FFFFFF;
+    background: rgba(0, 0, 0, 0.58);
     text-align: center;
 }
 .w3layouts-main {
@@ -121,14 +121,16 @@ input[type="submit"]:hover,.content-wthree input[type="submit"]:hover {
     text-align: center;
 }
 .content-wthree p {
-    color: #444444;
+    color: #fff;
     font-size: 15px;
     letter-spacing: 1px;
     text-transform: capitalize;
     margin: 15px 0 0;
 }
+
 .content-wthree h2 {
-    margin-top: 49px;
+    margin-top: 15px;
+    color: #fff;
 }
 h2 {
     color: #000;
@@ -171,21 +173,20 @@ span {
 .content-wthree input[type="submit"] {
     width: 40%;
     background: #e64b50;
-    background: #b84592;
+    background: #3b5998;
     border: none;
     outline: none;
-    font-size: 1em;
+    font-size: 17px;
     padding: 9px 0;
     padding: 8px 0px 5px;
     color: #fff;
-    text-transform: uppercase;
     transition: .5s ease-in;
     -webkit-transition: .5s ease-in;
     -moz-transition: .5s ease-in;
     -o-transition: .5s ease-in;
     -ms-transition: .5s ease-in;
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 15px;
 }
 /*--//footer--*/
 .footer-w3l p{
@@ -267,7 +268,8 @@ ul.top-links li a i.fa.fa-facebook:hover ,ul.top-links li a i.fa.fa-twitter:hove
 .content-wthree .email {
     border: none;
     border-bottom: 1px solid #4c4c4c;
-    margin: 35px 0px 10px;
+    margin: 18px 0px 10px;
+    color: #fff;
 }
 .email i.fa {
     color: #fff;
@@ -357,7 +359,7 @@ ul.top-links li a i.fa.fa-facebook:hover ,ul.top-links li a i.fa.fa-twitter:hove
 }
 @media(max-width:1024px){
 	.content-wthree input[type="submit"],input[type="submit"] {
-		font-size: 15px;
+		font-size: 17px;
 		width: 50%;
 	}
 	.footer-w3l p {
