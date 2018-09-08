@@ -70,12 +70,12 @@ input[type="text"], input[type="email"], input[type="password"] {
     letter-spacing: 1px;
 }
 input[type="submit"] {
-    padding: 9px 0px 5px;
-    font-size: 1em;
-    width: 40%;
+    padding: 7px;
+    font-size: 17px;
+    width: 42%;
     /* text-transform: uppercase; */
-    letter-spacing: 1px;
-    background: #3b5998;
+    background: transparent;
+    border: 2px solid #fff;
     color: #fff;
     border: none;
     outline: none;
@@ -90,7 +90,7 @@ input[type="submit"] {
     border-radius: 15px;
 }
 input[type="submit"]:hover,.content-wthree input[type="submit"]:hover {
-    background: cornflowerblue;
+    background: #3b5998;
 }
 .w3layouts-main ::-webkit-input-placeholder{
     color: #fff!important;
@@ -359,7 +359,7 @@ ul.top-links li a i.fa.fa-facebook:hover ,ul.top-links li a i.fa.fa-twitter:hove
 }
 @media(max-width:1024px){
 	.content-wthree input[type="submit"],input[type="submit"] {
-		font-size: 17px;
+		font-size: 1  7px;
 		width: 50%;
 	}
 	.footer-w3l p {
@@ -660,3 +660,149 @@ ul.top-links li a i.fa.fa-facebook:hover ,ul.top-links li a i.fa.fa-twitter:hove
 	}
 }
 /*--responsive--*/
+
+
+.register{
+  border: 2px solid #fff;
+  padding: 7px;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.register:hover{
+  background: #3b5998;
+}
+
+td{
+  border-bottom: 1px solid #fff;
+  border-width: 95%;
+  padding-top: 10px;
+}
+
+.combo{
+  height: 32px;
+    border-radius: 5px;
+    float: left;
+    width: 85%;
+    background: transparent;
+    color: #888;
+}
+
+.date{
+  height: 32px;
+    border: 0px;
+    width: 85%;
+    background: transparent;
+    color: #fff;
+    font-family: "Tahoma";
+}
+
+
+.toggle-check-input {
+            width: 1px;
+            height: 1px;
+            position: absolute;
+        }
+        .toggle-check-text {
+            display: inline-block;
+            position: relative;
+            text-transform: uppercase;
+            background: #4da8cb;
+            padding: 0.25em 0.5em 0.25em 2em;
+            border-radius: 1em;
+            min-width: 2em;
+            color: #FFF;
+            cursor: pointer;
+            transition: background-color 0.15s;
+        }
+        .toggle-check-text:after {
+            content: ' ';
+            display: block;
+            background: #FFF;
+            width: 1.1em;
+            height: 1.1em;
+            border-radius: 1em;
+            position: absolute;
+            left: 0.3em;
+            top: 0.25em;
+            transition: left 0.15s, margin-left 0.15s;
+        }
+        .toggle-check-text:before {
+            content: 'Mujer';
+        }
+        .toggle-check-input:checked ~ .toggle-check-text {
+            background: #1f336f;
+            padding-left: 0.5em;
+            padding-right: 2em;
+        }
+        .toggle-check-input:checked ~ .toggle-check-text:before {
+            content: 'Hombre';
+        }
+
+        .toggle-check-input:checked ~ .toggle-check-text:after {
+            left: 100%;
+            margin-left: -1.4em;
+        }
+
+.toggle-check-input2 {
+            width: 1px;
+            height: 1px;
+            position: absolute;
+        }
+        .toggle-check-text2 {
+            display: inline-block;
+            position: relative;
+            text-transform: uppercase;
+            background: #1f336f;
+            padding: 0.25em 0.5em 0.25em 2em;
+            border-radius: 1em;
+            min-width: 2em;
+            color: #FFF;
+            cursor: pointer;
+            transition: background-color 0.15s;
+        }
+        .toggle-check-text2:after {
+            content: ' ';
+            display: block;
+            background: #FFF;
+            width: 1.1em;
+            height: 1.1em;
+            border-radius: 1em;
+            position: absolute;
+            left: 0.3em;
+            top: 0.25em;
+            transition: left 0.15s, margin-left 0.15s;
+        }
+        .toggle-check-text2:before {
+            content: 'Ocupante';
+        }
+        .toggle-check-input2:checked ~ .toggle-check-text2 {
+            background: #4da8cb;
+            padding-left: 0.5em;
+            padding-right: 2em;
+        }
+        .toggle-check-input2:checked ~ .toggle-check-text2:before {
+            content: 'Propietario';
+        }
+
+        .toggle-check-input2:checked ~ .toggle-check-text2:after {
+            left: 100%;
+            margin-left: -1.4em;
+        }
+
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 2px solid #FFF;
+    color: #fff;
+    background: transparent;
+    display: inline-block;
+    padding: 6px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+
+}

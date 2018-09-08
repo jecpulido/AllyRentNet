@@ -1,0 +1,135 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>AllyRent •</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+
+	<link href="Login/css/style.css" rel='stylesheet' type='text/css' />
+	<link href="Login/css/font-awesome.css" rel="stylesheet"> <!-- Font-Awesome-Icons-CSS -->
+	<link href="https://fonts.googleapis.com/css?family=Marcellus|Viga" rel="stylesheet">
+	<script type="text/javascript" src="Login/js/jquery.min.js"></script>
+
+
+
+</head>
+
+<body>
+	<div class="layer">
+		<h1><b>Registraté en AllyRent</b></h1>
+		<div class="main-agile1">
+			<h2 id="noti" style="text-align: center"></h2>
+			<div class="w3layouts-main" style="width: 100%">
+				<div id="noti"></div>
+				<form action="#" method="post" class="sign">
+					<table style="width: 100%">
+						<tr>
+							<td>
+								<input placeholder="Ingresa tu nombre" name="nombre" type="text"  onkeyup="javascript:this.value = this.value.toUpperCase();" id="nombres" required="">
+								<span class="icons i1"><i class="fa fa-user" aria-hidden="true"></i></span>
+							</td>
+							<td>
+								<input placeholder="Ingresa tu apellido" name="apellido" type="text" onkeyup="javascript:this.value = this.value.toUpperCase();" id="apellidos" required="">
+								<span class="icons i1"><i class="fa fa-user" aria-hidden="true"></i></span>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-bottom: 0px">
+								<select name="tipodoc" id="tipodoc" class="combo">
+									<option value="0">Tipo de Documento...</option>
+								</select>
+								<span class="icons i1"><i class="fa fa-barcode" aria-hidden="true"></i></span>
+							</td>
+							<td>
+								<input placeholder="N° de documento" name="documento" type="text" id="documento" required="">
+								<span class="icons i1"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input placeholder="Correo electronico" name="email" type="text" id="email" required="">
+								<span class="icons i1"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+							</td>
+							<td>
+								<input placeholder="Digita una contraseña" name="clave" type="password" id="clave" required="">
+								<span class="icons i1"><i class="fa fa-lock" aria-hidden="true"></i></span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<input placeholder="N° de telefono" name="telefono" type="text" id="telefono" required="">
+								<span class="icons i1"><i class="fa fa-phone" aria-hidden="true"></i></span>
+							</td>
+							<td style="padding-left: 15px">
+								<input name="fechanacimiento" type="date" class="date" id="fechanacimiento" required>
+								<span class="icons i1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-bottom: 0px">
+								<select name="departamento" id="departamento" class="combo">
+									<option value="0">Departamento...</option>
+								</select>
+								<span class="icons i1"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+							</td>
+							<td style="border-bottom: 0px;padding-left: 15px">
+								<select name="ciudad" id="ciudad" class="combo">
+									<option value="0">Ciudad...</option>
+								</select>
+								<span class="icons i1"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+							</td>
+						</tr>
+						<tr>
+							<td style="border-bottom: 0px; color: #fff; padding-top:25px">
+								<label class="toggle-check" style="margin-left: -30px">
+									<b>Sexo </b>
+						        <input type="checkbox" class="toggle-check-input" id="sexo" />
+						        <span class="toggle-check-text"></span>
+						    </label>
+							</td>
+							<td style="border-bottom: 0px; color: #fff; padding-top:25px">
+								<label class="toggle-check" style="margin-left: -30px">
+									<b>Usuario </b>
+						        <input type="checkbox" class="toggle-check-input2" id="rol"/>
+						        <span class="toggle-check-text2"></span>
+						    </label>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2" style="border-bottom: 0px;">
+								<br>
+								<label for="foto" class="custom-file-upload">
+								    <i class="fa fa-picture-o"></i> Cargar foto de perfil
+								</label>
+								<input id="foto" type="file"/>
+							</td>
+						</tr>
+					</table>
+					<hr>
+
+					<input type="submit" value="Registrarse" id="signin" name="login" style="border: 2px solid #fff">
+
+						</form>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="footer-w3l">
+			<p class="agileinfo"> &copy; AllyRent 2018 | Design by <a href="http://co.linkedin.com">Jorge Pulido</a> - <a href="http://co.linkedin.com">Sergio Ramirez</a></p>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="Login/js/login.js"></script>
+	<script type="text/javascript" src="http://pajhome.org.uk/crypt/md5/2.2/md5-min.js"></script>
+
+</body>
+
+</html>
