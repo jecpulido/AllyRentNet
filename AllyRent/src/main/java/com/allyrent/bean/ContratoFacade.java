@@ -6,9 +6,11 @@
 package com.allyrent.bean;
 
 import com.allyrent.entidades.Contrato;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,19 @@ public class ContratoFacade extends AbstractFacade<Contrato> {
 
     public ContratoFacade() {
         super(Contrato.class);
+    }
+    
+     public Contrato FindSolicitudByUsuario(int idPropietario, int idOcupante) {
+        try {
+            Query q = em.createNamedQuery("Contrato.findByPropietarioOcupante").
+                    setParameter("idPropietario", idPropietario)
+                    .setParameter("idOcupante", idOcupante);
+            List<Contrato> listado = q.getResultList();
+            return listado.get(0);
+
+        } catch (Exception e) {
+        }
+        return null;
     }
     
 }

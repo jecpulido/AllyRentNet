@@ -41,6 +41,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Publicacion.findByPublicacion", query = "SELECT p FROM Publicacion p WHERE p.publicacion = :publicacion")
     , @NamedQuery(name = "Publicacion.findByFechaInicio", query = "SELECT p FROM Publicacion p WHERE p.fechaInicio = :fechaInicio")
     , @NamedQuery(name = "Publicacion.findByFechaFin", query = "SELECT p FROM Publicacion p WHERE p.fechaFin = :fechaFin")
+    , @NamedQuery(name = "Publicacion.finByIdUsuario", query = "SELECT p FROM Publicacion p WHERE p.idUsuario.idUsuario = :idUsuario")
+    , @NamedQuery(name = "Publicacion.Count", query = "SELECT COUNT(p) FROM Publicacion p WHERE p.idUsuario.idUsuario = :idUsuario")
     , @NamedQuery(name = "Publicacion.findByFechaPublicacion", query = "SELECT p FROM Publicacion p WHERE p.fechaPublicacion = :fechaPublicacion")})
 public class Publicacion implements Serializable {
 

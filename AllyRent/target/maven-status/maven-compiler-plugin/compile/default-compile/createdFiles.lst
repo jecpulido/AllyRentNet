@@ -6,16 +6,19 @@ com\allyrent\entidades\Login.class
 com\allyrent\entidades\Usuario.class
 com\allyrent\entidades\Tarifa.class
 com\allyrent\resources\GeneralResource.class
+com\allyrent\DTO\LoginDTO.class
 com\allyrent\resources\UsuarioResource.class
 com\allyrent\bean\UsuarioFacade.class
 com\allyrent\bean\FotosFacade.class
 com\allyrent\bean\RolFacade.class
 com\allyrent\entidades\ContratoPK.class
 com\allyrent\entidades\Datamaster.class
+com\allyrent\utility\ImageToArray.class
 com\allyrent\resources\PublicacionResource.class
 com\allyrent\bean\SolicitudFacade.class
 com\allyrent\bean\MarcaFacade.class
 com\allyrent\entidades\Comentario.class
+com\allyrent\resources\ContratoResource.class
 com\allyrent\entidades\Contrato.class
 com\allyrent\entidades\Rol.class
 com\allyrent\entidades\Rol_.class
@@ -29,8 +32,10 @@ com\allyrent\entidades\Solicitud.class
 com\allyrent\entidades\Reportes.class
 com\allyrent\entidades\Vehiculo_.class
 com\allyrent\resources\ApplicationConfig.class
+com\allyrent\DTO\FotoDTO.class
 com\allyrent\entidades\Tarifa_.class
 com\allyrent\bean\VehiculoFacade.class
+com\allyrent\DTO\UsuarioDTO.class
 com\allyrent\entidades\Publicacion.class
 com\allyrent\entidades\Relaciones_.class
 com\allyrent\entidades\Ciudad_.class
@@ -47,6 +52,7 @@ com\allyrent\entidades\Reportes_.class
 com\allyrent\entidades\Departamento_.class
 com\allyrent\entidades\Ciudad.class
 com\allyrent\entidades\Marca_.class
+com\allyrent\resources\SolicitudResoruce.class
 com\allyrent\entidades\Usuario_.class
 com\allyrent\entidades\MensajesPK.class
 com\allyrent\entidades\Publicacion_.class
@@ -68,4 +74,5 @@ com\allyrent\bean\PublicacionFacade.class
 com\allyrent\entidades\RelacionesPK_.class
 com\allyrent\entidades\Login_.class
 com\allyrent\entidades\Contrato_.class
+com\allyrent\utility\Correo.class
 com\allyrent\entidades\Solicitud_.class
