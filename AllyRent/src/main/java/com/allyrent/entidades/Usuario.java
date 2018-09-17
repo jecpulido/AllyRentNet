@@ -16,6 +16,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -46,6 +47,12 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Usuario.findByIdLogin", query = "SELECT u FROM Usuario u WHERE u.idLogin.idLogin = :idLogin")
     , @NamedQuery(name = "Usuario.findByRutaFoto", query = "SELECT u FROM Usuario u WHERE u.rutaFoto = :rutaFoto")})
 public class Usuario implements Serializable {
+
+    @Basic(optional = false)
+    @NotNull
+    @Lob
+    @Column(name = "rutaFoto")
+    private byte[] rutaFoto;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -78,11 +85,6 @@ public class Usuario implements Serializable {
     @Column(name = "fechaNacimiento")
     @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 200)
-    @Column(name = "rutaFoto")
-    private String rutaFoto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
     private Collection<Relaciones> relacionesCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario1")
@@ -130,7 +132,7 @@ public class Usuario implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Usuario(Integer idUsuario, String dni, String nombre, String apellido, String telefono, Date fechaNacimiento, String rutaFoto) {
+    public Usuario(Integer idUsuario, String dni, String nombre, String apellido, String telefono, Date fechaNacimiento, byte[] rutaFoto) {
         this.idUsuario = idUsuario;
         this.dni = dni;
         this.nombre = nombre;
@@ -188,13 +190,6 @@ public class Usuario implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getRutaFoto() {
-        return rutaFoto;
-    }
-
-    public void setRutaFoto(String rutaFoto) {
-        this.rutaFoto = rutaFoto;
-    }
 
     @XmlTransient
     public Collection<Relaciones> getRelacionesCollection() {
@@ -367,6 +362,14 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "com.allyrent.entidades.Usuario[ idUsuario=" + idUsuario + " ]";
+    }
+
+    public byte[] getRutaFoto() {
+        return rutaFoto;
+    }
+
+    public void setRutaFoto(byte[] rutaFoto) {
+        this.rutaFoto = rutaFoto;
     }
     
 }

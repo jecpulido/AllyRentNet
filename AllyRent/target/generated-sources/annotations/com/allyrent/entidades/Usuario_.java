@@ -18,7 +18,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-09-08T03:43:06")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2018-09-16T23:28:23")
 @StaticMetamodel(Usuario.class)
 public class Usuario_ { 
 
@@ -41,7 +41,7 @@ public class Usuario_ {
     public static volatile SingularAttribute<Usuario, Datatype> idTipoDocumento;
     public static volatile SingularAttribute<Usuario, Login> idLogin;
     public static volatile SingularAttribute<Usuario, String> telefono;
-    public static volatile SingularAttribute<Usuario, String> rutaFoto;
+    public static volatile SingularAttribute<Usuario, byte[]> rutaFoto;
     public static volatile SingularAttribute<Usuario, String> dni;
     public static volatile CollectionAttribute<Usuario, Contrato> contratoCollection;
     public static volatile CollectionAttribute<Usuario, Comentario> comentarioCollection;

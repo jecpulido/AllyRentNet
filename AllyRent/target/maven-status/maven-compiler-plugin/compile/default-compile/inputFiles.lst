@@ -3,6 +3,7 @@ C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\entidades\Login.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\PublicacionFacade.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\CiudadFacade.java
+C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\utility\ImageToArray.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\UsuarioFacade.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\entidades\Marca.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\ComentarioFacade.java
@@ -19,8 +20,10 @@ C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\FotosFacade.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\entidades\ContratoPK.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\entidades\Modelo.java
+C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\DTO\FotoDTO.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\RolFacade.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\ReportesFacade.java
+C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\DTO\UsuarioDTO.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\entidades\Vehiculo.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\entidades\Contrato.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\entidades\Comentario.java
@@ -30,6 +33,7 @@ C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\RelacionesFacade.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\VehiculoFacade.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\resources\VehiculoResource.java
+C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\resources\ContratoResource.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\MarcaFacade.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\TarifaFacade.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\entidades\Reportes.java
@@ -38,6 +42,7 @@ C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\entidades\MensajesPK.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\DatatypeFacade.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\entidades\Relaciones.java
+C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\utility\Correo.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\entidades\Fotos.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\entidades\RelacionesPK.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\DepartamentoFacade.java
@@ -47,3 +52,4 @@ C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\SolicitudFacade.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\bean\AbstractFacade.java
 C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\entidades\Mensajes.java
+C:\Users\Jorge\Documents\GitHub\AllyRentNet\AllyRent\src\main\java\com\allyrent\DTO\LoginDTO.java

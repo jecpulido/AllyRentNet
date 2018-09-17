@@ -17,22 +17,23 @@ $(document).ready(function () {
                 data: myJSON,
                 method: "post",
                 contentType: "application/json"
-              })
-              .done(function (data) {
-                  if (data) {
-                      window.location.href = "home.html";
-                  } else {
-                      $('#msj').html('<p style="color: #c1251d;"><i class="fa fa-ban fa-lg"> </i> <b>Usuario Incorrecto </b></p>');
-                      $('#msj').animate({fontSize: '20px'}, 'slow');
-                      $('#msj').fadeOut(2000);
-                  }
-              })
-              .fail(function (data) {
-                  console.log("Fallo");
-              });
+            })
+                    .done(function (data) {
+                        if (data) {
+                            cargarSession(data);
+                            window.location.href = "home.html";
+                        } else {
+                            $('#msj').html('<p style="color: #c1251d;"><i class="fa fa-ban fa-lg"> </i> <b>Usuario Incorrecto </b></p>');
+                            $('#msj').animate({fontSize: '20px'}, 'slow');
+                            $('#msj').fadeOut(2000);
+                        }
+                    })
+                    .fail(function (data) {
+                        console.log("Fallo");
+                    });
 
-            });
         });
+    });
 
     // Consumo de Servicio Registro-----------------------------------------------------------------------------------
 
@@ -42,41 +43,27 @@ $(document).ready(function () {
 
         $('#signin').click(function () {
 
-            var rol = ($('#rol').prop( "checked") == true)?2:3;
-            var sexo = ($('#sexo').prop( "checked") == true)?6:7;
+            var rol = ($('#rol').prop("checked") == true) ? 2 : 3;
+            var sexo = ($('#sexo').prop("checked") == true) ? 6 : 7;
+            var fotoString = $("#imagen").attr("src");
 
-
-            var obj = { apellido: $('#apellidos').val(),
-                        dni: $('#documento').val(),
-                        fechaNacimiento: $('#fechanacimiento').val() + "T00:00:00-05:00",
-
-                        idCiudad: {
-                            idCiudad: $('#ciudad').val()
-                        },
-
-                        idLogin: {
-                            contrasena: hex_md5($('#clave').val()),
-                            correo: $('#email').val()
-                        },
-
-                        idRol: {
-                            idRol: rol
-                        },
-
-                        idSexo: {
-                            idDataType: sexo
-                        },
-
-                        idTipoDocumento: {
-                            idDataType: $('#tipodoc').val()
-                       },
-
-                        idUsuario: 1,
-                        nombre: $('#nombres').val(),
-                        rutaFoto: "../default/" + $('#foto').val(),
-                        telefono: $('#telefono').val()
-
-                    };
+            var obj = {
+                apellido: $('#apellidos').val(),
+                dni: $('#documento').val(),
+                fechaNacimiento: $('#fechanacimiento').val() + "T00:00:00-05:00",
+                idCiudad: $('#ciudad').val(),
+                idRol: rol,
+                idSexo: sexo,
+                idTipoDocumento: $('#tipodoc').val(),
+                idUsuario: 1,
+                nombre: $('#nombres').val(),
+                rutaFoto: fotoString,
+                telefono: $('#telefono').val(),
+                idLogin: {
+                    contrasena: hex_md5($('#clave').val()),
+                    correo: $('#email').val()
+                }
+            };
 
             var myJSON = JSON.stringify(obj);
             $.ajax({
@@ -85,14 +72,18 @@ $(document).ready(function () {
                 method: "post",
                 contentType: "application/json",
                 success: function (data) {
-                  console.log(data);
+                    console.log(data);
                     if (data) {
-                      console.log("Usuario Creado");
+                        console.log("Usuario Creado");
                         $('#noti').html('<p style="color: green;"><i class="fa fa-check-circle fa-lg"> </i> <b>Usuario Registrado. </b></p>');
-                        setTimeout(function(){ window.location.href = "index.html";}, 2000);
+                        setTimeout(function () {
+                            window.location.href = "index.html";
+                        }, 2000);
                     } else {
                         $('#noti').html('<p style="color: #c1251d;"><i class="fa fa-ban fa-lg"> </i> <b>Error al crear el Usuario.</b></p>');
-                        setTimeout(function(){ location.reload();}, 2000);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000);
                     }
                 },
                 error: function (data) {
@@ -105,9 +96,37 @@ $(document).ready(function () {
 
     });
 
+//Cargar Session
+    function cargarSession(data){
+        sessionStorage.idusuario = data.idUsuario;
+        sessionStorage.nombre = data.nombre + ' ' + data.apellido;
+        sessionStorage.correo = data.idLogin.correo;
+        sessionStorage.ultimaConexion = data.idLogin.UltimaConexion;
+        sessionStorage.fechaNacimiento = data.fechaNacimiento;
+        sessionStorage.telefono = data.telefono;
+        sessionStorage.rol = data.nombreRol;
+        sessionStorage.sexo = data.nombreSexo;
+        sessionStorage.foto = data.rutaFoto;
+        sessionStorage.ciudad = data.nombreCiudad;
+        sessionStorage.publicaciones = data.numeroPublicaciones;
+        sessionStorage.vehiculos = data.numeroVehiculos;
+        
+    }
 
-
-
+//Carga imagen
+    $("#foto").change(function () {
+        let file = this;
+        let data = '';
+        if (file.files && file.files[0]) {
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                data = e.target.result;
+                $("#imagen").attr('src', data);
+                $("#imagen").show();
+            }.bind(this);
+            reader.readAsDataURL(file.files[0]);
+        }
+    });
 
     // Carga de Listas--------------------------------------------------------------------------------------
 
@@ -115,7 +134,7 @@ $(document).ready(function () {
             function (data) {
                 $.each(data, function (i, contact) {
                     $("#tipodoc").append(
-                        "<option value='" + contact.idDataType + "'>" + contact.nombreDataType + "</option>");
+                            "<option value='" + contact.idDataType + "'>" + contact.nombreDataType + "</option>");
                 });
             });
 
@@ -123,19 +142,19 @@ $(document).ready(function () {
             function (data) {
                 $.each(data, function (i, contact) {
                     $("#departamento").append(
-                        "<option value='" + contact.idDepartamento + "'>" + contact.nombreDepartamento + "</option>");
+                            "<option value='" + contact.idDepartamento + "'>" + contact.nombreDepartamento + "</option>");
                 });
             });
 
-    $('#departamento').change(function(){
+    $('#departamento').change(function () {
         var id = $(this).val();
-        $.get("http://localhost:8080/AllyRent/api/general/city/"+ id,
-            function (data) {
-                $.each(data, function (i, contact) {
-                    $("#ciudad").append(
-                        "<option value='" + contact.idCiudad + "'>" + contact.nombreCiudad + "</option>");
+        $.get("http://localhost:8080/AllyRent/api/general/city/" + id,
+                function (data) {
+                    $.each(data, function (i, contact) {
+                        $("#ciudad").append(
+                                "<option value='" + contact.idCiudad + "'>" + contact.nombreCiudad + "</option>");
+                    });
                 });
-            });
-    });5
+    });
 
 });

@@ -5,8 +5,12 @@
  */
 package com.allyrent.resources;
 
+import com.allyrent.DTO.FotoDTO;
 import com.allyrent.bean.*;
 import com.allyrent.entidades.*;
+import com.allyrent.utility.ImageToArray;
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
@@ -16,6 +20,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import org.apache.commons.codec.binary.Base64;
 
 /**
  *
@@ -37,6 +42,9 @@ public class VehiculoResource {
 
     @EJB
     TarifaFacade _tarifaFacade;
+
+    @EJB
+    FotosFacade _fotosFacade;
 
     @GET
     @Path("/{idUsuario}")
@@ -76,7 +84,7 @@ public class VehiculoResource {
 
     @GET
     @Path("/findVehicle/{idVehiculo}")
-    public Vehiculo FinVehicle(@PathParam("idVehiculo") int idVehiculo) {
+    public Vehiculo FindVehicle(@PathParam("idVehiculo") int idVehiculo) {
         Vehiculo veh = _vehicleFacade.find(idVehiculo);
         return veh;
     }
@@ -87,5 +95,29 @@ public class VehiculoResource {
         List<Tarifa> listaTarifas = _tarifaFacade.findAll();
         return listaTarifas;
     }
-    
+
+    @GET
+    @Path("/fotos")
+    public List<Fotos> listarFoto() {
+        List<Fotos> fotos = _fotosFacade.findAll();
+        return fotos;
+    }
+
+    @POST
+    @Path("/upload")
+    public void uploadImages(List<FotoDTO> listFotos) throws IOException {
+        if (listFotos != null) {
+            for (FotoDTO f : listFotos) {
+                if (f.getFoto() != null) {
+                    byte[] imageInByteArray = ImageToArray.convertStringToImageByteArray(f.getFoto());
+                    Fotos foto = new Fotos();
+                    foto.setFoto(imageInByteArray);
+                    foto.setIdVehiculo(new Vehiculo(f.getIdVehiculo()));
+                    foto.setFechaCarga(new Date());
+                    _fotosFacade.create(foto);
+                } 
+            }
+        }
+    }
+
 }
