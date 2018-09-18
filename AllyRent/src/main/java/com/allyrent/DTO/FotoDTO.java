@@ -30,6 +30,15 @@ public class FotoDTO {
     public void setIdVehiculo(int idVehiculo) {
         this.idVehiculo = idVehiculo;
     }
+
+    public FotoDTO() {
+    }
+
+    public FotoDTO(String foto, int idVehiculo) {
+        this.foto = foto;
+        this.idVehiculo = idVehiculo;
+    }
+    
     
     
 }

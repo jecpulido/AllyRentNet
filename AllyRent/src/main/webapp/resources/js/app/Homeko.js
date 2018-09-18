@@ -16,6 +16,8 @@ var HomeViewModel = function () {
     self.getAllPost = function () {
         $.getJSON('/AllyRent/api/publicaciones/list/' + self.idUsuario(), function (data) {
             self.publicacionesList(data);
+            console.log(typeof(data[0].usuario.idUsuario.toString()) +" " + data[0].usuario.idUsuario);
+            console.log(typeof(self.idUsuario()) + " " + self.idUsuario());
         });
 
     },
@@ -111,6 +113,11 @@ var HomeViewModel = function () {
                 };
 
                 return publicacion;
+            },
+            self.compararValores = function(item1,item2){
+                console.log(item1);
+                console.log(item2);
+              return item1.toString() == item2.toString();
             };
 
 };

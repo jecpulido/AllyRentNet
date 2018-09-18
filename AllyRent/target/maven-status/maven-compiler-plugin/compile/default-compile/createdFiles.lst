@@ -1,5 +1,6 @@
 com\allyrent\bean\DepartamentoFacade.class
 com\allyrent\entidades\Datatype.class
+com\allyrent\DTO\VehiculoDTO.class
 com\allyrent\entidades\Mensajes_.class
 com\allyrent\entidades\Relaciones.class
 com\allyrent\entidades\Login.class
@@ -29,6 +30,7 @@ com\allyrent\bean\DatamasterFacade.class
 com\allyrent\entidades\Modelo.class
 com\allyrent\entidades\ReportesPK_.class
 com\allyrent\entidades\Solicitud.class
+com\allyrent\DTO\PublicacionDTO.class
 com\allyrent\entidades\Reportes.class
 com\allyrent\entidades\Vehiculo_.class
 com\allyrent\resources\ApplicationConfig.class
