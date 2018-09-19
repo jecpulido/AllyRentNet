@@ -159,14 +159,14 @@
                                     </div> 
                                     <div>
                                         <p>Tarifa: <span data-bind="text: '(Dia) '+vehiculo.dia + ' - (Hora)' + vehiculo.hora"></p>
-                                        
+
                                         Modelo:<label data-bind="text: vehiculo.nombreModelo" />
                                         Año:<label data-bind="text: vehiculo.ano" />
                                         KM:<label data-bind="text: vehiculo.km" />
                                         Tipo Vehiculo:<label data-bind="text: vehiculo.nombreTipoVehiculo" />
                                         Combustible:<label data-bind="text: vehiculo.nombreCombustible" />
                                         Transmision:<label data-bind="text: vehiculo.nombreTransmision" />
-                                        
+
                                         <p><span data-bind="text: publicacion"></p>    
                                     </div>
                                     <div class="post-content">
@@ -194,109 +194,95 @@
                             <div class="col-md-3 col-sm-12 col-xs-12">
                                 <div class="right-sidebar">
                                     <div class="righ-sidebar-body">
-                                        <div class="item">
+                                        <div class="item content-img">
                                             <a href="#"><h4 class="post-title slide-title">Quizás conozcas</h4></a>
-                                            <div class="col-md-12 col-sm-6 content-img">
-                                                <a href="#"><img class="img-recomendaciones" src="resources/images/right-post-img-1.jpg" alt="slider"></a>
+                                            <div class="col-md-12 col-sm-6 content-img" data-bind="template: { name: 'suggestion', foreach: sugerenciasList }"> </div>
+                                            <script type="text/html" id="suggestion">
+                                                <a href="#"><img class="img-recomendaciones" data-bind="attr: {src: rutaFoto}" alt="slider"></a>
                                                 <div class="carousel-caption">
-                                                    <a href="#"><h5 class="post-title">Nombre</h5></a>
-                                                    <div class="post-content no-border">                                                        
-                                                        <div class="btn btn-success btn-post"> Seguir</div>
+                                                    <a href="#"><h5 class="post-title" data-bind="text: nombre + ' ' + apellido"></h5></a>
+                                                    <div class="post-content no-border">      
+                                                        <div class="btn btn-success btn-post" data-bind="click: $parent.seguirUsuario.bind($data, idUsuario)" > Seguir</div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <a href="#"><h4 class="post-title slide-title">featured posts</h4></a>
-                                            <div class="col-md-12 col-sm-6">
-                                                <a href="#"><img src="resources/images/right-post-img-7.jpg" alt="slider"></a>
-                                                <div class="carousel-caption">
-                                                    <a href="#"><h5 class="post-title">migrant crisis</h5></a>
-                                                    <div class="post-meta">
-                                                        <span><a href="#"><i class="fa fa-calendar-check-o post-meta-icon"></i> april 13, 2015 </a></span>
-                                                        <span><a href="#"><i class="fa fa-comments post-meta-icon"></i> 50 </a></span>
-                                                    </div>
-                                                    <div class="post-content no-border">
-                                                        <p>Migrant survivor says Mediterranean shipwreck was like a war scene'.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>                                      
-                                    </div><!-- Righ-sidebar-body -->
-                                </div><!-- Right-Sidebar -->
-                            </div>
-                        </div><!--row-offcanvas-->
-                    </div><!-- Container -->
-                </div><!-- Content-area -->
-                <footer>
-                    <div class="footer-menu">
-                        <div class="container">
-                            <div class="col-md-4 col-sm-4 center-block">
-                                <h3 class="footer-head">this author blog from crea tivemine</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="social">
-                                    <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
+                                                </script>
+
+                                            </div>                                  
+                                        </div><!-- Righ-sidebar-body -->
+                                    </div><!-- Right-Sidebar -->
+                                </div>
+                            </div><!--row-offcanvas-->
+                        </div><!-- Container -->
+                    </div><!-- Content-area -->
+                    <footer>
+                        <div class="footer-menu">
+                            <div class="container">
+                                <div class="col-md-4 col-sm-4 center-block">
+                                    <h3 class="footer-head">this author blog from crea tivemine</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                    <div class="social">
+                                        <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 mobile-footer center-block">
+                                    <h4 class="footer-head">recent posts</h3>
+                                        <ul class="ul-left">
+                                            <li><a href="#">Ut enim ad minim veniam</a></li>
+                                            <li><a href="#">Quis nostrud exercitation laboris</a></li>
+                                        </ul>
+                                </div>
+                                <div class="col-md-4 col-sm-4 mobile-footer center-block">
+                                    <h4 class="footer-head">article categories</h3>
+                                        <ul class="ul-left">
+                                            <li><a href="#">E-Commerce</a></li>
+                                            <li><a href="#">Facebook</a></li>
+                                            <li><a href="#">Infographics</a></li>
+                                            <li><a href="#">Launch</a></li>
+                                        </ul>
+                                        <ul class="ul-right">
+                                            <li><a href="#">Social</a></li>
+                                            <li><a href="#">Media</a></li>
+                                            <li><a href="#">Testing</a></li>
+                                            <li><a href="#">Twitter</a></li>
+                                        </ul>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-4 mobile-footer center-block">
-                                <h4 class="footer-head">recent posts</h3>
-                                    <ul class="ul-left">
-                                        <li><a href="#">Ut enim ad minim veniam</a></li>
-                                        <li><a href="#">Quis nostrud exercitation laboris</a></li>
+                        </div><!-- Footer-menu -->
+                        <div class="footer-nav">
+                            <div class="container">
+                                <div class="col-md-6 col-sm-5">
+                                    <p>&copy; 2015 Author bloging template</p>
+                                </div>
+                                <div class="col-md-6 col-sm-7">
+                                    <ul>
+                                        <li><a href="index.html">home</a></li>
+                                        <li><a href="#">support</a></li>
+                                        <li><a href="#">careers</a></li>
+                                        <li><a href="#">terms use</a></li>
+                                        <li><a href="#">privacy policy</a></li>
                                     </ul>
+                                </div>
                             </div>
-                            <div class="col-md-4 col-sm-4 mobile-footer center-block">
-                                <h4 class="footer-head">article categories</h3>
-                                    <ul class="ul-left">
-                                        <li><a href="#">E-Commerce</a></li>
-                                        <li><a href="#">Facebook</a></li>
-                                        <li><a href="#">Infographics</a></li>
-                                        <li><a href="#">Launch</a></li>
-                                    </ul>
-                                    <ul class="ul-right">
-                                        <li><a href="#">Social</a></li>
-                                        <li><a href="#">Media</a></li>
-                                        <li><a href="#">Testing</a></li>
-                                        <li><a href="#">Twitter</a></li>
-                                    </ul>
-                            </div>
+                            <!-- Go TO TOP -->
+                            <div id="toTop" class="btn btn-info" style="display: block;">
+                                <span class="fa fa-angle-up"></span>
+                            </div><!-- /Go-to-top -->
                         </div>
-                    </div><!-- Footer-menu -->
-                    <div class="footer-nav">
-                        <div class="container">
-                            <div class="col-md-6 col-sm-5">
-                                <p>&copy; 2015 Author bloging template</p>
-                            </div>
-                            <div class="col-md-6 col-sm-7">
-                                <ul>
-                                    <li><a href="index.html">home</a></li>
-                                    <li><a href="#">support</a></li>
-                                    <li><a href="#">careers</a></li>
-                                    <li><a href="#">terms use</a></li>
-                                    <li><a href="#">privacy policy</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Go TO TOP -->
-                        <div id="toTop" class="btn btn-info" style="display: block;">
-                            <span class="fa fa-angle-up"></span>
-                        </div><!-- /Go-to-top -->
-                    </div>
-                </footer>
-            </div><!-- /Wrapper -->
+                    </footer>
+                </div><!-- /Wrapper -->
 
 
-            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-            <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
-            <!-- Include all compiled plugins (below), or include individual files as needed -->
-            <script src="resources/js/jquery.js" type="text/javascript"></script>
-            <script src="resources/js/bootstrap.min.js"></script>
-            <script src="resources/js/custom.js"></script>
-            <script src="resources/js/knockout.js" type="text/javascript"></script>
-            <script src="resources/js/app/Homeko.js" type="text/javascript"></script>
-            <script src="resources/js/moments.js" type="text/javascript"></script>
-            <script src="resources/js/AllyRenty.js" type="text/javascript"></script>
-        </body>
-    </html>
+                <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+                <!-- Include all compiled plugins (below), or include individual files as needed -->
+                <script src="resources/js/jquery.js" type="text/javascript"></script>
+                <script src="resources/js/bootstrap.min.js"></script>
+                <script src="resources/js/custom.js"></script>
+                <script src="resources/js/knockout.js" type="text/javascript"></script>
+                <script src="resources/js/app/Homeko.js" type="text/javascript"></script>
+                <script src="resources/js/moments.js" type="text/javascript"></script>
+                <script src="resources/js/AllyRenty.js" type="text/javascript"></script>
+            </body>
+        </html>

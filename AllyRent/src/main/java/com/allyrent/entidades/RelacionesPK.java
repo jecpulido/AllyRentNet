@@ -20,11 +20,11 @@ public class RelacionesPK implements Serializable {
 
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idUsuarioOcupante")
+    @Column(name = "idUsuario1")
     private int idUsuarioOcupante;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idUsuarioPropietario")
+    @Column(name = "idUsuario2")
     private int idUsuarioPropietario;
 
     public RelacionesPK() {

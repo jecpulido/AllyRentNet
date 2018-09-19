@@ -33,10 +33,16 @@ public class PublicacionResource {
 
     @EJB
     PublicacionFacade _publicacionFacade;
-    
+
     @EJB
     VehiculoFacade _vehiculoFacade;
 
+    /**
+     * crear una publicacion
+     *
+     * @param publicacion
+     * @return
+     */
     @POST
     @Path("/create")
     public String CrearPublicacion(Publicacion publicacion) {
@@ -54,16 +60,53 @@ public class PublicacionResource {
         }
     }
 
+    /**
+     * lista las publiaciones de un solo usuario
+     *
+     * @param id
+     * @return
+     */
+    @GET
+    @Path("/{idUsuario}")
+    public List<PublicacionDTO> IndexPublicaciones(@PathParam("idUsuario") int id) {
+        try {
+            List<Publicacion> publicaciones = _publicacionFacade.indexPublicacion(id);
+            List<PublicacionDTO> publicacionesDTO = null;
+
+            if (publicaciones.size() > 0) {
+                publicacionesDTO = new ArrayList<>();
+
+                for (Publicacion pub : publicaciones) {
+                    PublicacionDTO p = new PublicacionDTO(pub);
+                    if (pub.getIdVehiculo() != null) {
+                        p.setVehiculo(new VehiculoDTO(_vehiculoFacade.find(pub.getIdVehiculo())));
+                        p.getVehiculo().setIdUsuario(null);
+                    }
+                    publicacionesDTO.add(p);
+                }
+            }
+            return publicacionesDTO;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    /**
+     * lista las publiaciones de un solo usuario
+     *
+     * @param id
+     * @return
+     */
     @GET
     @Path("/list/{idUsuario}")
     public List<PublicacionDTO> ListPublicacionById(@PathParam("idUsuario") int id) {
         try {
             List<Publicacion> publicaciones = _publicacionFacade.findIdUsuario(id);
             List<PublicacionDTO> publicacionesDTO = null;
-            
+
             if (publicaciones.size() > 0) {
                 publicacionesDTO = new ArrayList<>();
-                
+
                 for (Publicacion pub : publicaciones) {
                     PublicacionDTO p = new PublicacionDTO(pub);
                     p.setVehiculo(new VehiculoDTO(_vehiculoFacade.find(pub.getIdVehiculo())));
@@ -77,6 +120,12 @@ public class PublicacionResource {
         }
     }
 
+    /**
+     * Busca una publicacion por su id
+     *
+     * @param id
+     * @return
+     */
     @GET
     @Path("/find/{idPublicacion}")
     public Publicacion FindPublicacionById(@PathParam("idPublicacion") int id) {

@@ -35,6 +35,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Relaciones.findByFechaRelacion", query = "SELECT r FROM Relaciones r WHERE r.fechaRelacion = :fechaRelacion")})
 public class Relaciones implements Serializable {
 
+    @JoinColumn(name = "idUsuario1", referencedColumnName = "idUsuario", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Usuario usuario;
+    @JoinColumn(name = "idUsuario2", referencedColumnName = "idUsuario", insertable = false, updatable = false)
+    @ManyToOne(optional = false)
+    private Usuario usuario1;
+
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected RelacionesPK relacionesPK;
@@ -43,12 +50,6 @@ public class Relaciones implements Serializable {
     @Column(name = "fechaRelacion")
     @Temporal(TemporalType.DATE)
     private Date fechaRelacion;
-    @JoinColumn(name = "idUsuarioOcupante", referencedColumnName = "idUsuario", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Usuario usuario;
-    @JoinColumn(name = "idUsuarioPropietario", referencedColumnName = "idUsuario", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Usuario usuario1;
 
     public Relaciones() {
     }
@@ -82,22 +83,6 @@ public class Relaciones implements Serializable {
         this.fechaRelacion = fechaRelacion;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public Usuario getUsuario1() {
-        return usuario1;
-    }
-
-    public void setUsuario1(Usuario usuario1) {
-        this.usuario1 = usuario1;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -121,6 +106,22 @@ public class Relaciones implements Serializable {
     @Override
     public String toString() {
         return "com.allyrent.entidades.Relaciones[ relacionesPK=" + relacionesPK + " ]";
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Usuario getUsuario1() {
+        return usuario1;
+    }
+
+    public void setUsuario1(Usuario usuario1) {
+        this.usuario1 = usuario1;
     }
     
 }

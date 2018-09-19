@@ -9,10 +9,15 @@ import com.allyrent.DTO.UsuarioDTO;
 import com.allyrent.bean.*;
 import com.allyrent.entidades.*;
 import com.allyrent.utility.ImageToArray;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -30,6 +35,9 @@ public class UsuarioResource {
 
     @EJB
     LoginFacade _login;
+    
+    @EJB
+    RelacionesFacade _relaciones;
 
     @POST
     @Path("/create")
@@ -55,8 +63,12 @@ public class UsuarioResource {
                         usuario.setIdTipoDocumento(new Datatype(user.getIdTipoDocumento()));
                         byte[] foto = ImageToArray.convertStringToImageByteArray(user.getRutaFoto());
                         usuario.setRutaFoto(foto);
-
                         _user.create(usuario);
+                        if (usuario.getIdUsuario() != null){
+                            Relaciones relacion = new Relaciones(usuario.getIdUsuario(), usuario.getIdUsuario());
+                            relacion.setFechaRelacion(new Date());
+                            _relaciones.create(relacion);
+                        }
                         return usuario;
                     }
                 }
@@ -89,4 +101,19 @@ public class UsuarioResource {
         return null;
     }
 
+    @GET
+    @Path("/sugerencias/{id}")
+    public List<UsuarioDTO> buscarSugerencias(@PathParam("id")int idUsuario){
+        try {
+            List<Usuario> usuarios = _user.buscarSugerencias(idUsuario);
+            List<UsuarioDTO> usuariosDTO= new ArrayList<>();
+            for (Usuario usuario : usuarios) {
+                usuariosDTO.add(new UsuarioDTO(usuario));
+            }
+            return usuariosDTO;
+        } catch (Exception e) {
+            System.out.println(""+e.getMessage());
+        }
+        return null;
+    }
 }

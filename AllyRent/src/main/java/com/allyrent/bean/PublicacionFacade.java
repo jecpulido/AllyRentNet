@@ -30,9 +30,9 @@ public class PublicacionFacade extends AbstractFacade<Publicacion> {
     public PublicacionFacade() {
         super(Publicacion.class);
     }
-    
-    public List<Publicacion> findIdUsuario(int idUsuario){
-    try {
+
+    public List<Publicacion> findIdUsuario(int idUsuario) {
+        try {
             Query q = em.createNamedQuery("Publicacion.finByIdUsuario").
                     setParameter("idUsuario", idUsuario);
             List<Publicacion> publicaciones = q.getResultList();
@@ -43,5 +43,17 @@ public class PublicacionFacade extends AbstractFacade<Publicacion> {
         }
         return null;
     }
-    
+
+    public List<Publicacion> indexPublicacion(int idUsuario) {
+        try {
+            Query q = em.createNamedQuery("Publicacion.findIndexPublicaciones").
+                    setParameter("idUsuario", idUsuario);
+            List<Publicacion> publicaciones = q.getResultList();
+
+            return publicaciones;
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+        }
+        return null;
+    }
 }

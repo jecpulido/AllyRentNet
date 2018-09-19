@@ -5,7 +5,10 @@
  */
 package com.allyrent.resources;
 
+import com.allyrent.bean.RelacionesFacade;
 import com.allyrent.bean.SolicitudFacade;
+import com.allyrent.entidades.Relaciones;
+import com.allyrent.entidades.RelacionesPK;
 import com.allyrent.entidades.Solicitud;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +33,9 @@ public class SolicitudResoruce {
     @EJB
     SolicitudFacade _solicitudFacade;
 
+    @EJB
+    RelacionesFacade _relacionesFacade;
+
     @POST
     @Path("/ToggleSolicitud")
     public String TogglePost(Solicitud solicitud) {
@@ -49,7 +55,6 @@ public class SolicitudResoruce {
                     _solicitudFacade.remove(_solicitud);
                     return "DELETE";
                 }
-
             }
             return "Incorrect Data!";
         } catch (Exception e) {
@@ -96,7 +101,7 @@ public class SolicitudResoruce {
             return "Se presento un error";
         }
     }
-    
+
     @GET
     @Path("/{idSolicitud}")
     public Solicitud FindSolicitud(@PathParam("idSolicitud") int idSolicitud) {
@@ -107,6 +112,22 @@ public class SolicitudResoruce {
             return null;
         }
 
+    }
+
+    @POST
+    @Path("/Seguir")
+    public String SolicitudAmistad(Relaciones relacion) {
+        try {
+            if (relacion != null) {
+                relacion.setFechaRelacion(new Date());
+                relacion.setRelacionesPK(new RelacionesPK(relacion.getUsuario().getIdUsuario(), relacion.getUsuario1().getIdUsuario()));
+                _relacionesFacade.create(relacion);
+                return "OK";
+            }
+            return "OK";
+        } catch (Exception e) {
+            return "Se presento un error";
+        }
     }
 
 }
