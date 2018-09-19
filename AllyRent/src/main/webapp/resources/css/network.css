@@ -109,3 +109,12 @@
 .btn-post{
     margin-top: 5px;
 }
+.content-img{
+    text-align: center;
+}
+.img-recomendaciones{
+    width: 150px !important;
+    height: 150px!important;
+    border-radius: 50%!important;
+    border: 2px solid #66bb6a;
+}

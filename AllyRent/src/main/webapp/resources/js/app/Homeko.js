@@ -16,8 +16,6 @@ var HomeViewModel = function () {
     self.getAllPost = function () {
         $.getJSON('/AllyRent/api/publicaciones/list/' + self.idUsuario(), function (data) {
             self.publicacionesList(data);
-            console.log(typeof(data[0].usuario.idUsuario.toString()) +" " + data[0].usuario.idUsuario);
-            console.log(typeof(self.idUsuario()) + " " + self.idUsuario());
         });
 
     },

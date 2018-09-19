@@ -58,7 +58,7 @@ public class PublicacionResource {
     @Path("/list/{idUsuario}")
     public List<PublicacionDTO> ListPublicacionById(@PathParam("idUsuario") int id) {
         try {
-            List<Publicacion> publicaciones = _publicacionFacade.findAll();
+            List<Publicacion> publicaciones = _publicacionFacade.findIdUsuario(id);
             List<PublicacionDTO> publicacionesDTO = null;
             
             if (publicaciones.size() > 0) {
