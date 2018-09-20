@@ -144,7 +144,8 @@
                             <script type="text/html" id="posts-template">
                                 <article>
                                     <div class="post-img">
-                                        <a href="details.html" target="_blank"><img class="img-responsive" data-bind="attr: {src : vehiculo.primerFoto} " alt="Post"/></a>
+                                        <span data-bind="text: typeof vehiculo == 'undefined'"></span>
+                                            <a href="details.html" target="_blank"><img class="img-responsive" data-bind="visible:(nombreTipoPublicacion == 'Solicitud')?false:true,attr: {src : (nombreTipoPublicacion == 'Solicitud')?'':vehiculo.primerFoto}  " alt="Post"/></a>
                                     </div>   
                                     <div>   
                                         <div class="btn btn-default btn-post" data-bind="click: $parent.insertSolicitud.bind($data, idPublicacion), visible: $parent.idUsuario() != usuario.idUsuario " > Aplicar</div>
@@ -167,8 +168,8 @@
                                         Combustible:<label data-bind="text: vehiculo.nombreCombustible" />
                                         Transmision:<label data-bind="text: vehiculo.nombreTransmision" />
 
-                                        <p><span data-bind="text: publicacion"></p>    
                                     </div>
+                                    <p><span data-bind="text: publicacion"></p>   
                                     <div class="post-content">
                                         <div class="post-meta">                                        
                                             <span><a href="#"><i class="fa fa-share-alt post-meta-icon"></i> 0 Likes </a></span>

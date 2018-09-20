@@ -66,6 +66,7 @@ public class UsuarioResource {
                         _user.create(usuario);
                         if (usuario.getIdUsuario() != null){
                             Relaciones relacion = new Relaciones(usuario.getIdUsuario(), usuario.getIdUsuario());
+                            relacion.setRelacionesPK(new RelacionesPK(usuario.getIdUsuario(), usuario.getIdUsuario()));
                             relacion.setFechaRelacion(new Date());
                             _relaciones.create(relacion);
                         }
