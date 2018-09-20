@@ -1,0 +1,120 @@
+.right{
+    float: right!important;
+}
+.user-info-left-slidebar{
+    margin-bottom: 10px;
+}
+
+.user-data {
+    text-align: center;
+}
+.full-width {
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+}
+.user-profile {
+    float: left;
+    width: 100%;
+}
+.username-dt {
+    float: left;
+    width: 100%;
+    background-color: #66bb6a;
+    padding-top: 40px;
+}
+.usr-pic {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto;
+    margin-bottom: -48px;
+}
+.usr-pic > img {
+    float: none;
+    border: 5px solid #fff;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+.user-specs {
+    float: left;
+    width: 100%;
+    padding: 63px 0 27px 0;
+}
+.user-specs h3 {
+    color: #000000;
+    font-size: 24px;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.user-specs span {
+    color: #686868;
+    font-size: 14px;
+}
+
+.user-fw-status {
+    float: left;
+    width: 100%;
+    list-style-type: none;
+    padding: 0px;
+}
+.user-fw-status li {
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    padding: 10px 0;
+}
+.user-fw-status li:last-child {
+    border-bottom: 0;
+}
+.user-fw-status li:nth-child(1),
+.user-fw-status li:nth-child(2) {
+    border-bottom: 0;
+}
+.user-fw-status li h4 {
+    color: #686868;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.user-fw-status span {
+    color: #000000;
+    font-size: 20px;
+}
+.user-fw-status li a {
+    color: #66bb6a;
+    font-size: 14px;
+    font-weight: 600;	
+}
+.div-img{
+    width: 100%;                
+    max-height: 155px;
+    overflow-x: auto;
+}
+.img-vehiculo{
+    width: 150px;
+    height: 150px;
+    margin: 1px;
+    border-radius: 50%;
+}
+.btn-post{
+    margin-top: 5px;
+}
+.content-img{
+    text-align: center;
+}
+.img-recomendaciones{
+    width: 150px !important;
+    height: 150px!important;
+    border-radius: 50%!important;
+    border: 2px solid #66bb6a;
+}

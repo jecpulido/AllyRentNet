@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .uploadDocumentOnboarding{
+                border-radius: 5px;
+                background: red;
+            }
+            .div-img{
+                width: 620px;                
+                max-height: 155px;
+                overflow-x: auto;
+            }
+            .img-vehiculo{
+                width: 150px;
+                height: 150px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div>
+            <input id="subirImagen" name="subirImagen" type="file"/>
+        </div>
+        <div id="imagenes" class="div-img"></div>
+        <button id="Enviar">Subir</button>
+        <script src="../js/jquery.js" type="text/javascript"></script>
+        <script src="../js/knockout.js" type="text/javascript"></script>
+        <script>
+            $("#Enviar").click(function () {
+                var fotos = [];
+                $("#imagenes img").each(function () {
+                    var obj = {
+                        "foto": $(this).attr('src'),
+                        "idVehiculo": 1
+                    };
+                    fotos.push(obj);
+                });
+                console.log(fotos);
+                $.ajax({
+                    url: "/AllyRent/api/vehiculos/upload",
+                    type: 'POST',
+                    data: ko.toJSON(fotos),
+                    contentType: "application/json;chartset=utf-8",
+                    success: function (data, textStatus, jqXHR) {
+                        alert("Se cargo");
+                    }
+                });
+            });
+
+            $("#subirImagen").change(function () {
+                let file = this;
+                let data = '';
+                if (file.files && file.files[0]) {
+                    let reader = new FileReader();
+                    reader.onload = function (e) {
+                        data = e.target.result;
+                        //sendToDB(e.target.result);
+                        mostrarImagen(data);
+                    }.bind(this);
+                    reader.readAsDataURL(file.files[0]);
+                }
+                $("#subirImagen").val("");
+            });
+            function mostrarImagen(data) {
+                imagen = $("<img>");
+                imagen.addClass("img-vehiculo");
+                imagen.attr('src', data);
+                imagen.show();
+                $("#imagenes").append(imagen);
+            }
+        </script>
+
+    </body>
+</html>

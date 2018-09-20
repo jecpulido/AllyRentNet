@@ -33,8 +33,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Solicitud.findAll", query = "SELECT s FROM Solicitud s")
     , @NamedQuery(name = "Solicitud.findByIdSolicitud", query = "SELECT s FROM Solicitud s WHERE s.idSolicitud = :idSolicitud")
+    , @NamedQuery(name = "Solicitud.findByIdUsuario", query = "SELECT s FROM Solicitud s WHERE s.idUsuario.idUsuario = :idUsuario")
+    , @NamedQuery(name = "Solicitud.findByIdUsuarioCreate", query = "SELECT s FROM Solicitud s WHERE s.idPublicacion.idUsuario.idUsuario = :idUsuario AND s.estado=1")
+    , @NamedQuery(name = "Solicitud.findByIdUsuarioIdPublicacion", query = "SELECT s FROM Solicitud s WHERE s.idUsuario.idUsuario = :idUsuario and s.idPublicacion.idPublicacion = :idPublicacion")       
     , @NamedQuery(name = "Solicitud.findByFechaSolicitud", query = "SELECT s FROM Solicitud s WHERE s.fechaSolicitud = :fechaSolicitud")})
 public class Solicitud implements Serializable {
+
+    @Column(name = "estado")
+    private Integer estado;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -121,6 +127,14 @@ public class Solicitud implements Serializable {
     @Override
     public String toString() {
         return "com.allyrent.entidades.Solicitud[ idSolicitud=" + idSolicitud + " ]";
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
     
 }
