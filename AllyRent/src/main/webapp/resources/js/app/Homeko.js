@@ -11,10 +11,11 @@ var HomeViewModel = function () {
 
     //Listas
     self.publicacionesList = ko.observableArray();// array y tambien obserbable
+    self.sugerenciasList = ko.observableArray();// array y tambien obserbable
 
 
     self.getAllPost = function () {
-        $.getJSON('/AllyRent/api/publicaciones/list/' + self.idUsuario(), function (data) {
+        $.getJSON('/AllyRent/api/publicaciones/' + self.idUsuario(), function (data) {
             self.publicacionesList(data);
         });
 
@@ -111,6 +112,45 @@ var HomeViewModel = function () {
                 };
 
                 return publicacion;
+            },
+            self.compararValores = function (item1, item2) {
+                console.log(item1);
+                console.log(item2);
+                return item1.toString() == item2.toString();
+            },
+            self.buscarSugerencias = function () {
+                $.getJSON('/AllyRent/api/usuarios/sugerencias/' + self.idUsuario(), function (data) {
+                    self.sugerenciasList(data);
+                });
+            },
+            self.seguirUsuario = function (idUsuario2) {
+                var url = '/AllyRent/api/solicitudes/Seguir';
+                var relacion = {
+                    "usuario": {
+                        "idUsuario": self.idUsuario()
+                    },
+                    "usuario1": {
+                        "idUsuario": idUsuario2
+                    }
+                };
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: ko.toJSON(relacion),
+                    contentType: "application/json;chartset=utf-8",
+                    statusCode: {
+                        200: function (data) {
+                            if (data.responseText === "OK") {
+                                alert('OK');
+                                self.buscarSugerencias();
+                            }
+                        },
+                        204: function () {
+                            alert('Error');
+                        }
+                    }
+                });
             };
 
 };
@@ -119,5 +159,6 @@ $(document).ready(function () {
     ko.applyBindings(homevm);
     homevm.idUsuario(sessionStorage.idusuario);
     homevm.getAllPost();
+    homevm.buscarSugerencias();
 
 });

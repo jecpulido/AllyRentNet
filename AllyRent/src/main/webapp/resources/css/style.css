@@ -627,6 +627,7 @@ input[type="file"]:focus,
 	color:#000;
 	text-align:left;
 	padding:5px 0px 0px;
+        text-align: center;
 }
 .post-static .post-title{
 	padding-top:20px;

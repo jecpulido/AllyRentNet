@@ -1,3 +1,4 @@
+/// <reference path="../knockout-2.3.0.debug.js" />
 if ((sessionStorage.idusuario === undefined) && (sessionStorage.nombre === undefined)) {
     window.location.href = "http://localhost:8080/AllyRent/index.html";
 } else {
@@ -11,3 +12,9 @@ if ((sessionStorage.idusuario === undefined) && (sessionStorage.nombre === undef
     $("#sVehiculos").text(sessionStorage.vehiculos);  
 
 }
+$(document).ready(function () {
+
+});
+
+
+
