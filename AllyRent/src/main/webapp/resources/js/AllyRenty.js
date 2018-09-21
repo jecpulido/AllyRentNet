@@ -2,7 +2,7 @@
 if ((sessionStorage.idusuario === undefined) && (sessionStorage.nombre === undefined)) {
     window.location.href = "http://localhost:8080/AllyRent/index.html";
 } else {
-    // $("#iImagen").attr("src",sessionStorage.foto);
+    $("#iImagen").attr("src",sessionStorage.foto);
     $("#hNombre").text(sessionStorage.nombre);
     $("#sPropietario").text(sessionStorage.rol);
     $("#sCorreo").text(sessionStorage.correo);
@@ -24,7 +24,7 @@ if ((sessionStorage.idusuario === undefined) && (sessionStorage.nombre === undef
     $("#vehProfile").html("<strong>N° de Vehículos: </strong> Este usuario posee " + sessionStorage.vehiculos + " vehiculos registrados.");
     console.log(sessionStorage.foto);
     $("#pubProfile").text(sessionStorage.publicaciones);
-    $("#imgProfile").attr("src", "../resources/" + sessionStorage.foto);
+    $("#imgProfile").attr("src", sessionStorage.foto);
 
 
 }
