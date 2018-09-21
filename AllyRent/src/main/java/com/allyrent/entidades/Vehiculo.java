@@ -66,7 +66,7 @@ public class Vehiculo implements Serializable {
     @NotNull
     @Column(name = "isPlacaPar")
     private boolean isPlacaPar;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vEHICULOidVehiculo")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVehiculo")
     private Collection<Contrato> contratoCollection;
     @JoinColumn(name = "idModelo", referencedColumnName = "idModelo")
     @ManyToOne(optional = false)
