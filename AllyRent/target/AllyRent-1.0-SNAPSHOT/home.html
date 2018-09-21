@@ -110,21 +110,21 @@
                                                 </li>
                                                 <li>
                                                     <h3>Vehiculos</h3>
-                                                    <a href="Vehiculo/index.html">                                     
+                                                    <a href="Vehiculo/index.html">
                                                         <span id="sVehiculos"></span>
-                                                    </a>               
-                                                </li>                                                
-                                                <li>
-                                                    <span id="sCiudad"></span>    
+                                                    </a>
                                                 </li>
                                                 <li>
-                                                    <span id="sCorreo"></span>    
+                                                    <span id="sCiudad"></span>
+                                                </li>
+                                                <li>
+                                                    <span id="sCorreo"></span>
                                                 </li>
                                                 <li>
                                                     <span id="sTelefono"></span>
                                                 </li>
                                                 <li>
-                                                    <a href="profile.html" title="">Ver Perfil</a>
+                                                    <a href="Usuario/profile.html" title="">Ver Perfil</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -143,12 +143,16 @@
                             <div class="main-content" data-bind="template: { name: 'posts-template', foreach: publicacionesList }"></div><!-- main-content -->
                             <script type="text/html" id="posts-template">
                                 <article>
-                                    <div class="post-img">
-                                        <a href="details.html" target="_blank"><img class="img-responsive" data-bind="attr: {src : vehiculo.primerFoto} " alt="Post"/></a>
-                                    </div>   
-                                    <div>   
+                                    <div class="title-post">
+                                        <span class="title-post-span" data-bind="text: nombreTipoPublicacion"></span>
                                         <div class="btn btn-default btn-post" data-bind="click: $parent.insertSolicitud.bind($data, idPublicacion), visible: $parent.idUsuario() != usuario.idUsuario " > Aplicar</div>
-                                        <div class="btn btn-danger btn-post" data-bind="visible: $parent.idUsuario() == usuario.idUsuario " > Eliminar</div>
+                                            <div class="btn btn-default btn-post" data-bind="visible: $parent.idUsuario() == usuario.idUsuario " > Eliminar</div>
+                                    </div>
+                                    <div class="post-img">
+                                        <a href="details.html" target="_blank"><img class="img-responsive" data-bind="visible:(nombreTipoPublicacion == 'Solicitud')?false:true,attr: {src : (nombreTipoPublicacion == 'Solicitud')?'':vehiculo.primerFoto}  " alt="Post"/></a>
+                                    </div>
+                                    <div>
+      
                                     </div>
                                     <a href="details.html" target="_blank"><h2 class="post-title" data-bind="text: usuario.nombre +' ' + usuario.apellido"></h2></a>
                                     <div  style="font-size: 1.3em">
@@ -156,26 +160,29 @@
                                         <p>Fecha disponible entre
                                             <span data-bind="text: moment(fechaInicio).format('lll') +' - ' +moment(fechaFin).format('lll')">
                                         </p>
-                                    </div> 
-                                    <div>
-                                        <p>Tarifa: <span data-bind="text: '(Dia) '+vehiculo.dia + ' - (Hora)' + vehiculo.hora"></p>
-
-                                        Modelo:<label data-bind="text: vehiculo.nombreModelo" />
-                                        Año:<label data-bind="text: vehiculo.ano" />
-                                        KM:<label data-bind="text: vehiculo.km" />
-                                        Tipo Vehiculo:<label data-bind="text: vehiculo.nombreTipoVehiculo" />
-                                        Combustible:<label data-bind="text: vehiculo.nombreCombustible" />
-                                        Transmision:<label data-bind="text: vehiculo.nombreTransmision" />
-
-                                        <p><span data-bind="text: publicacion"></p>    
                                     </div>
+                                    <div>
+                                        <span data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Tarifa: (Dia) '+vehiculo.dia + ' - (Hora)' + vehiculo.hora">
+                                            <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Modelo:'+vehiculo.nombreModelo" />
+                                            <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Año:'+vehiculo.ano" />
+                                            <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'KM:'+vehiculo.km" />
+                                            <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Tipo Vehiculo:'+vehiculo.nombreTipoVehiculo" />
+                                            <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Combustible:'+vehiculo.nombreCombustible" />
+                                            <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Transmision:'+vehiculo.nombreTransmision" />
+
+<<<<<<< HEAD
+                                        <p><span data-bind="text: publicacion"></p>
+=======
+>>>>>>> master
+                                    </div>
+                                    <p><span data-bind="text: publicacion"></p>
                                     <div class="post-content">
-                                        <div class="post-meta">                                        
+                                        <div class="post-meta">
                                             <span><a href="#"><i class="fa fa-share-alt post-meta-icon"></i> 0 Likes </a></span>
                                             <span><a href="#"><i class="fa fa-comments post-meta-icon"></i> 0 Comments </a></span>
                                             <span><i class="fa fa-calendar-check-o post-meta-icon"></i><span data-bind="text: moment(fechaPublicacion).format('lll')" /></span>
                                         </div>
-                                    </div>    
+                                    </div>
                                 </article>
                                 </script>
                                 <div class="pagination">
@@ -201,13 +208,18 @@
                                                 <a href="#"><img class="img-recomendaciones" data-bind="attr: {src: rutaFoto}" alt="slider"></a>
                                                 <div class="carousel-caption">
                                                     <a href="#"><h5 class="post-title" data-bind="text: nombre + ' ' + apellido"></h5></a>
-                                                    <div class="post-content no-border">      
+<<<<<<< HEAD
+                                                    <div class="post-content no-border">
                                                         <div class="btn btn-success btn-post" data-bind="click: $parent.seguirUsuario.bind($data, idUsuario)" > Seguir</div>
+=======
+                                                    <div class="post-content no-border">
+                                                        <div class="btn btn-success btn-suggestion" data-bind="click: $parent.seguirUsuario.bind($data, idUsuario)" > Seguir</div>
+>>>>>>> master
                                                     </div>
                                                 </div>
                                                 </script>
 
-                                            </div>                                  
+                                            </div>
                                         </div><!-- Righ-sidebar-body -->
                                     </div><!-- Right-Sidebar -->
                                 </div>

@@ -107,7 +107,9 @@
     border-radius: 50%;
 }
 .btn-post{
-    margin-top: 5px;
+    position: relative;
+    float: right;
+    padding: 4px 12px!important;
 }
 .content-img{
     text-align: center;
@@ -117,4 +119,25 @@
     height: 150px!important;
     border-radius: 50%!important;
     border: 2px solid #1b1c24;
+}
+.title-post{
+    background: #66bb6a;
+    color:#fff;
+    padding: 1%;
+}
+.title-post-span{
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+.btn-suggestion{
+    margin-top: 5px;
+}
+.info-contract{
+    padding-bottom: 0px!important;
+}
+.title-info-contract{
+    font-size: 1.5em;
+    border-bottom: 1px solid #969595;
+    line-height: 25px;
+    padding-bottom: 10px;
 }

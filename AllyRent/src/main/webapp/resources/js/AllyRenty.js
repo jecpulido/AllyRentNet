@@ -9,8 +9,12 @@ if ((sessionStorage.idusuario === undefined) && (sessionStorage.nombre === undef
     $("#sTelefono").text(sessionStorage.telefono);
     $("#sCiudad").text(sessionStorage.ciudad);
     $("#sPublicaciones").text(sessionStorage.publicaciones);
-    $("#sVehiculos").text(sessionStorage.vehiculos);
 
+    if (sessionStorage.rol =="Ocupante"){
+        $("#sVehiculos").parent().parent().hide();
+    }else{
+        $("#sVehiculos").text(sessionStorage.vehiculos);
+    }
 
     let nombre = sessionStorage.nombre.split(" ");
     $("#linkProfile").html("<i class='fa fa-user'></i> " + nombre[0]);

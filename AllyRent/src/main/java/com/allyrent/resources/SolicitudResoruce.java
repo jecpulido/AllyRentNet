@@ -5,8 +5,11 @@
  */
 package com.allyrent.resources;
 
+import com.allyrent.DTO.SolicitudDTO;
+import com.allyrent.DTO.VehiculoDTO;
 import com.allyrent.bean.RelacionesFacade;
 import com.allyrent.bean.SolicitudFacade;
+import com.allyrent.bean.VehiculoFacade;
 import com.allyrent.entidades.Relaciones;
 import com.allyrent.entidades.RelacionesPK;
 import com.allyrent.entidades.Solicitud;
@@ -36,6 +39,9 @@ public class SolicitudResoruce {
     @EJB
     RelacionesFacade _relacionesFacade;
 
+    @EJB
+    VehiculoFacade _vehiculoFacade;
+    
     @POST
     @Path("/ToggleSolicitud")
     public String TogglePost(Solicitud solicitud) {
@@ -104,10 +110,16 @@ public class SolicitudResoruce {
 
     @GET
     @Path("/{idSolicitud}")
-    public Solicitud FindSolicitud(@PathParam("idSolicitud") int idSolicitud) {
+    public SolicitudDTO FindSolicitud(@PathParam("idSolicitud") int idSolicitud) {
         try {
             Solicitud solicitud = _solicitudFacade.find(idSolicitud);
-            return solicitud;
+            SolicitudDTO sol = new SolicitudDTO(solicitud);           
+            sol.getIdPublicacion().setVehiculo(new VehiculoDTO(
+                    _vehiculoFacade.find(solicitud.getIdPublicacion().getIdVehiculo())));
+            if (sol.getIdPublicacion().getVehiculo().getIdUsuario() != null){
+                //sol.getIdPublicacion().setUsuario(null);
+            }
+            return sol;
         } catch (Exception e) {
             return null;
         }
