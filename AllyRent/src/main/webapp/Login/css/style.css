@@ -173,12 +173,12 @@ span {
 .content-wthree input[type="submit"] {
     width: 40%;
     background: #e64b50;
-    background: #3b5998;
-    border: none;
+    background: #3b599800;
+    border: 2px solid #fff;
     outline: none;
     font-size: 17px;
     padding: 9px 0;
-    padding: 8px 0px 5px;
+    padding: 7px 0px 5px;
     color: #fff;
     transition: .5s ease-in;
     -webkit-transition: .5s ease-in;
@@ -267,7 +267,7 @@ ul.top-links li a i.fa.fa-facebook:hover ,ul.top-links li a i.fa.fa-twitter:hove
 }
 .content-wthree .email {
     border: none;
-    border-bottom: 1px solid #4c4c4c;
+    border-bottom: 1px solid #fff;
     margin: 18px 0px 10px;
     color: #fff;
 }
@@ -318,7 +318,7 @@ ul.top-links li a i.fa.fa-facebook:hover ,ul.top-links li a i.fa.fa-twitter:hove
 		width: 55px;
 	}
 	.content-wthree input[type="email"] {
-		padding: 28px 15px 0px;
+		padding: 15px 15px 0px;
 	}
 }
 @media(max-width:1366px){
