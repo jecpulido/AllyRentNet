@@ -35,7 +35,7 @@ public class UsuarioResource {
 
     @EJB
     LoginFacade _login;
-    
+
     @EJB
     RelacionesFacade _relaciones;
 

@@ -24,7 +24,7 @@
 .username-dt {
     float: left;
     width: 100%;
-    background-color: #66bb6a;
+    background-color: #1b1c24;
     padding-top: 40px;
 }
 .usr-pic {
@@ -91,12 +91,12 @@
     font-size: 20px;
 }
 .user-fw-status li a {
-    color: #66bb6a;
+    color: #1b1c24;
     font-size: 14px;
-    font-weight: 600;	
+    font-weight: 600;
 }
 .div-img{
-    width: 100%;                
+    width: 100%;
     max-height: 155px;
     overflow-x: auto;
 }
@@ -118,7 +118,7 @@
     width: 150px !important;
     height: 150px!important;
     border-radius: 50%!important;
-    border: 2px solid #66bb6a;
+    border: 2px solid #1b1c24;
 }
 .title-post{
     background: #66bb6a;
