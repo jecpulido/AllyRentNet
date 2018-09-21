@@ -11,6 +11,9 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -39,8 +42,19 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Contrato implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
+
     protected ContratoPK contratoPK;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idContrato")
+    private Integer idContrato;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "fechaContrato")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaContrato;
     @Basic(optional = false)
     @NotNull
     @Column(name = "fechaInicio")
@@ -61,9 +75,9 @@ public class Contrato implements Serializable {
     @JoinColumn(name = "idPropietario", referencedColumnName = "idUsuario", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Usuario usuario1;
-    @JoinColumn(name = "VEHICULO_idVehiculo", referencedColumnName = "idVehiculo")
+    @JoinColumn(name = "idVehiculo", referencedColumnName = "idVehiculo")
     @ManyToOne(optional = false)
-    private Vehiculo vEHICULOidVehiculo;
+    private Vehiculo idVehiculo;
 
     public Contrato() {
     }
@@ -131,14 +145,6 @@ public class Contrato implements Serializable {
         this.usuario1 = usuario1;
     }
 
-    public Vehiculo getVEHICULOidVehiculo() {
-        return vEHICULOidVehiculo;
-    }
-
-    public void setVEHICULOidVehiculo(Vehiculo vEHICULOidVehiculo) {
-        this.vEHICULOidVehiculo = vEHICULOidVehiculo;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -163,5 +169,38 @@ public class Contrato implements Serializable {
     public String toString() {
         return "com.allyrent.entidades.Contrato[ contratoPK=" + contratoPK + " ]";
     }
-    
+
+    public Contrato(Integer idContrato) {
+        this.idContrato = idContrato;
+    }
+
+    public Contrato(Integer idContrato, Date fechaContrato) {
+        this.idContrato = idContrato;
+        this.fechaContrato = fechaContrato;
+    }
+
+    public Integer getIdContrato() {
+        return idContrato;
+    }
+
+    public void setIdContrato(Integer idContrato) {
+        this.idContrato = idContrato;
+    }
+
+    public Date getFechaContrato() {
+        return fechaContrato;
+    }
+
+    public void setFechaContrato(Date fechaContrato) {
+        this.fechaContrato = fechaContrato;
+    }
+
+    public Vehiculo getIdVehiculo() {
+        return idVehiculo;
+    }
+
+    public void setIdVehiculo(Vehiculo idVehiculo) {
+        this.idVehiculo = idVehiculo;
+    }
+
 }

@@ -144,6 +144,7 @@ var HomeViewModel = function () {
                             if (data.responseText === "OK") {
                                 alert('OK');
                                 self.buscarSugerencias();
+                                self.getAllPost();
                             }
                         },
                         204: function () {

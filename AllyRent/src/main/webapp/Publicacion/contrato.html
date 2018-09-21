@@ -197,38 +197,38 @@
                                                     <div class="form-group ">
                                                         <label for="sltTipoPublicacion" class="control-label col-lg-2">Tipo Publicacion</label>
                                                         <div class="col-lg-10">
-                                                            <select name="sltTipoPublicacion" id="sltTipoPublicacion" class="form-control" data-bind="value: tipoPublicacion, options: tipoPublicacionList,optionsText: 'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'"required>
+                                                            <select name="sltTipoPublicacion" id="sltTipoPublicacion" class="form-control" required>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group ">
                                                         <label for="sltVehiculo" class="control-label col-lg-2">Vehiculo</label>
                                                         <div class="col-lg-10">
-                                                            <select name="sltVehiculo" id="sltVehiculo" class="form-control" data-bind="value: idVehiculo,options: vehiculoList,optionsText: 'placa',optionsValue: 'idVehiculo',optionsCaption: '--Seleccionar--'" required>
+                                                            <select name="sltVehiculo" id="sltVehiculo" class="form-control" required>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group ">
                                                         <label for="txtFInicio" class="control-label col-lg-2">Fecha Inicio</label>
                                                         <div class="col-lg-4">
-                                                            <input class=" form-control" id="txtFInicio" name="txtFInicio" type="datetime-local" data-bind="value: fechaInicio" required />
+                                                            <input class=" form-control" id="txtFInicio" name="txtFInicio" type="datetime-local"  required />
                                                         </div>
                                                         <label for="txtFFin" class="control-label col-lg-2">Fecha Fin</label>
                                                         <div class="col-lg-4">
-                                                            <input class=" form-control" id="txtFFin" name="txtFFin" type="datetime-local" data-bind="value: fechaFin" required />
+                                                            <input class=" form-control" id="txtFFin" name="txtFFin" type="datetime-local"  required />
                                                         </div>
                                                     </div>
                                                     <div class="form-group ">
                                                         <label for="txtMensaje" class="control-label col-lg-2">Valor</label>
                                                         <div class="col-lg-10">
-                                                            <input class=" form-control" id="txtFFin" name="txtFFin" type="number" data-bind="value: publicacion" required />
+                                                            <input class=" form-control" id="txtFFin" name="txtFFin" type="number" required />
                                                         </div>
                                                     </div>
                                                     <label id="resultData" class="control-label col-lg-2"></label>
 
                                                     <div class="form-group">
                                                         <div class="col-lg-offset-2 col-lg-10">
-                                                            <button type="submit" class="btn btn-success" data-bind="click: createVehiculo" >Confirmar</button>
+                                                            <button type="submit" class="btn btn-success"  >Confirmar</button>
                                                             <button class="btn btn-danger" type="reset">Cancelar</button>
                                                         </div>
                                                     </div>

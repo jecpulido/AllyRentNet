@@ -107,7 +107,9 @@
     border-radius: 50%;
 }
 .btn-post{
-    margin-top: 5px;
+    position: relative;
+    float: right;
+    padding: 4px 12px!important;
 }
 .content-img{
     text-align: center;
@@ -117,4 +119,16 @@
     height: 150px!important;
     border-radius: 50%!important;
     border: 2px solid #66bb6a;
+}
+.title-post{
+    background: #66bb6a;
+    color:#fff;
+    padding: 1%;
+}
+.title-post-span{
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+.btn-suggestion{
+    margin-top: 5px;
 }

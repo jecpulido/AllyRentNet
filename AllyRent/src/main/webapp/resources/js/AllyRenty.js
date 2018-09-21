@@ -9,7 +9,11 @@ if ((sessionStorage.idusuario === undefined) && (sessionStorage.nombre === undef
     $("#sTelefono").text(sessionStorage.telefono);
     $("#sCiudad").text(sessionStorage.ciudad);
     $("#sPublicaciones").text(sessionStorage.publicaciones);
-    $("#sVehiculos").text(sessionStorage.vehiculos);  
+    if (sessionStorage.rol =="Ocupante"){
+        $("#sVehiculos").parent().parent().hide();
+    }else{
+        $("#sVehiculos").text(sessionStorage.vehiculos);  
+    }    
 
 }
 $(document).ready(function () {

@@ -6,6 +6,7 @@ var ContratoViewModel = function () {
     self.usuarioProLst = ko.observableArray();
     self.usuarioSolLst = ko.observableArray();
     self.infoGeneral = ko.observableArray();
+    
     self.findSolicitud = function (idSolicitud) {
         $.getJSON('/AllyRent/api/solicitudes/' + idSolicitud, function (data) {
             console.log(data);
