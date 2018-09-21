@@ -12,14 +12,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="" />
+        <meta name="google-signin-client_id" content="412459050361-9hqgll677dhrn510mel5icnfct4c4gne.apps.googleusercontent.com">
 
         <link href="Login/css/style.css" rel='stylesheet' type='text/css' />
         <link href="Login/css/font-awesome.css" rel="stylesheet"> <!-- Font-Awesome-Icons-CSS -->
         <link href="https://fonts.googleapis.com/css?family=Marcellus|Viga" rel="stylesheet">
-        <script type="text/javascript" src="Login/js/jquery.min.js"></script>
-
-
-
+        
     </head>
 
     <body>
@@ -31,13 +29,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <h2>Inicio de Sesión</h2>
 
                     <div class="social_icons agileinfo">
+                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
                         <ul class="top-links">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                         </ul>
                     </div>
-
                     <span>(o)</span>
                     <h3><small>Inicia con tu cuenta</small></h3>
                     <form action="#" method="post" class="login-form">
@@ -75,9 +73,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <p class="agileinfo"> &copy; AllyRent 2018 | Design by <a href="http://co.linkedin.com">Jorge Pulido</a> - <a href="http://co.linkedin.com">Sergio Ramirez</a></p>
             </div>
         </div>
+        <script type="text/javascript" src="Login/js/jquery.min.js"></script>
         <script type="text/javascript" src="Login/js/login.js"></script>
         <script type="text/javascript" src="http://pajhome.org.uk/crypt/md5/2.2/md5-min.js"></script>
-
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
     </body>
 
 </html>
