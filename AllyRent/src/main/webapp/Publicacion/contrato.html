@@ -170,20 +170,55 @@
                                 </article>
                             </div><!-- main-content -->
                             <div class="main-content">
-                                <article>
-                                    <h5 class="page-title">INFORMACION PROPIETARIO</h5>
+                                <article>                                    
                                     <div class="post-content no-border contact">
-                                        <ul data-bind="">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-12 col-xs-12 content-img">
+                                                <h5 class="page-title title-info-contract">INFORMACION PROPIETARIO</h5>
+                                                <div class="col-md-12 col-sm-12 col-xs-12 content-img">
+                                                    <img alt="" class="img-recomendaciones" data-bind="attr: {src: propietario().rutaFoto}" >
+                                                    <p><span data-bind="text: propietario().nombre +' '+propietario().apellido"></span></p>
+                                                    <p><span data-bind="text: propietario().nombreCiudad"></span></p>
+                                                    <p><span data-bind="text: loginProp().correo "></span></p>
+                                                    <p><span data-bind="text: propietario().telefono"></span></p>                                                
+                                                </div>
 
-                                        </ul>
+                                            </div>
+                                            <div class="col-md-6 col-sm-12 col-xs-12 content-img">
+                                                <h5 class="page-title title-info-contract">INFORMACION OCUPANTE</h5>
+                                                <div class="col-md-12 col-sm-12 col-xs-12 content-img">
+                                                    <img alt="" class="img-recomendaciones" data-bind="attr: {src: ocupante().rutaFoto}" >                                      
+                                                    <p><span data-bind="text: ocupante().nombre +' '+ocupante().apellido"></span></p>
+                                                    <p><span data-bind="text: ocupante().nombreCiudad"></span></p>
+                                                    <p><span data-bind="text: loginOcup().correo "></span></p>
+                                                    <p><span data-bind="text: ocupante().telefono"></span></p>                                                
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>                              
                                 </article>
                             </div><!-- main-content -->
                             <div class="main-content">
-                                <article>
-                                    <h5 class="page-title">INFORMACION SOLICITANTE</h5>
+                                <article>                                    
                                     <div class="post-content no-border contact">
-
+                                        <div class="row content-img">
+                                            <h5 class="page-title title-info-contract">INFORMACION VEHICULO</h5>
+                                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                                <img alt="" class="img-recomendaciones" data-bind="attr: {src: vehiculo().primerFoto}" >                                      
+                                            </div>
+                                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                                <p>Modelo: <span data-bind="text: vehiculo().nombreModelo"></span></p>
+                                                <p>Año: <span data-bind="text: vehiculo().ano"></span></p>
+                                                <p>KM: <span data-bind="text: vehiculo().km "></span></p>
+                                                <p>Tarifa: <span data-bind="text: '(Dia) '+vehiculo().dia +' - (Hora) '+vehiculo().hora"></span></p>  
+                                            </div>
+                                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                                <p>Tipo Vehiculo: <span data-bind="text: vehiculo().nombreTipoVehiculo "></span></p>
+                                                <p>Placa: <span data-bind="text: vehiculo().placa "></span></p>
+                                                <p>Transmision: <span data-bind="text: vehiculo().nombreTransmision"></span></p>
+                                                <p>Combustible: <span data-bind="text: vehiculo().nombreCombustible"></span></p>  
+                                            </div>
+                                        </div>
                                     </div>                              
                                 </article>
                             </div><!-- main-content -->
@@ -193,42 +228,30 @@
                                     <div class="post-content no-border contact">
                                         <div class="form-panel">
                                             <div class=" form">
-                                                <form class="cmxform form-horizontal style-form" id="vehicleForm" method="get" action="">
+                                                <form class="cmxform form-horizontal style-form" id="vehicleForm" >                                                   
+
                                                     <div class="form-group ">
-                                                        <label for="sltTipoPublicacion" class="control-label col-lg-2">Tipo Publicacion</label>
-                                                        <div class="col-lg-10">
-                                                            <select name="sltTipoPublicacion" id="sltTipoPublicacion" class="form-control" required>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group ">
-                                                        <label for="sltVehiculo" class="control-label col-lg-2">Vehiculo</label>
-                                                        <div class="col-lg-10">
-                                                            <select name="sltVehiculo" id="sltVehiculo" class="form-control" required>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group ">
-                                                        <label for="txtFInicio" class="control-label col-lg-2">Fecha Inicio</label>
+                                                        <label for="txtFInicio" class="control-label col-lg-2 ">Fecha Inicio</label>
                                                         <div class="col-lg-4">
-                                                            <input class=" form-control" id="txtFInicio" name="txtFInicio" type="datetime-local"  required />
+                                                            <input class=" form-control" id="txtFInicio" name="txtFInicio" type="datetime-local" data-bind="value: moment(publicacion().fechaInicio).format('YYYY-MM-DDThh:mm:ss.SSS')" required />
+                                                            
                                                         </div>
                                                         <label for="txtFFin" class="control-label col-lg-2">Fecha Fin</label>
                                                         <div class="col-lg-4">
-                                                            <input class=" form-control" id="txtFFin" name="txtFFin" type="datetime-local"  required />
+                                                            <input class=" form-control" id="txtFFin" name="txtFFin" type="datetime-local" data-bind="value: moment(publicacion().fechaFin).format('YYYY-MM-DDThh:mm:ss.SSS')" required />
                                                         </div>
                                                     </div>
                                                     <div class="form-group ">
                                                         <label for="txtMensaje" class="control-label col-lg-2">Valor</label>
                                                         <div class="col-lg-10">
-                                                            <input class=" form-control" id="txtFFin" name="txtFFin" type="number" required />
+                                                            <input class=" form-control" id="txtValor" name="txtValor" type="number" data-bind="value: valor" required />
                                                         </div>
                                                     </div>
                                                     <label id="resultData" class="control-label col-lg-2"></label>
 
                                                     <div class="form-group">
                                                         <div class="col-lg-offset-2 col-lg-10">
-                                                            <button type="submit" class="btn btn-success"  >Confirmar</button>
+                                                            <button type="submit" class="btn btn-success" data-bind="click:createContrato" >Confirmar</button>
                                                             <button class="btn btn-danger" type="reset">Cancelar</button>
                                                         </div>
                                                     </div>
@@ -314,6 +337,7 @@
         <script src="../resources/js/bootstrap.min.js"></script>
         <script src ="../resources/js/custom.js"></script>    
         <script src="../resources/js/knockout.js" type="text/javascript"></script>
+        <script src="../resources/js/moments.js" type="text/javascript"></script>
         <script src="../resources/js/app/Contratoko.js" type="text/javascript"></script>
         <script src="../resources/js/AllyRenty.js" type="text/javascript"></script>
     </body>

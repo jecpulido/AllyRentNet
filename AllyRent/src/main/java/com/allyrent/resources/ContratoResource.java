@@ -7,6 +7,8 @@ package com.allyrent.resources;
 
 import com.allyrent.bean.ContratoFacade;
 import com.allyrent.entidades.Contrato;
+import com.allyrent.entidades.ContratoPK;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -35,7 +37,12 @@ public class ContratoResource {
             if (contrato == null){
                 return "Datos Incorrectos";
             }
+            if (contrato.getFechaContrato() == null){
+                contrato.setFechaContrato(new Date());
+            }
+            contrato.setContratoPK(new ContratoPK(contrato.getUsuario().getIdUsuario(), contrato.getUsuario1().getIdUsuario()));
             _contratoFacade.create(contrato);
+            
             return "OK";
         } catch (Exception e) {
             return "";

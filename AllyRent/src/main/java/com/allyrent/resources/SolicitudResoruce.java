@@ -116,8 +116,8 @@ public class SolicitudResoruce {
             SolicitudDTO sol = new SolicitudDTO(solicitud);           
             sol.getIdPublicacion().setVehiculo(new VehiculoDTO(
                     _vehiculoFacade.find(solicitud.getIdPublicacion().getIdVehiculo())));
-            if (sol.getIdPublicacion().getVehiculo() != null){
-                sol.getIdPublicacion().getVehiculo().setIdUsuario(null);
+            if (sol.getIdPublicacion().getVehiculo().getIdUsuario() != null){
+                //sol.getIdPublicacion().setUsuario(null);
             }
             return sol;
         } catch (Exception e) {

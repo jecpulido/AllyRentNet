@@ -132,3 +132,12 @@
 .btn-suggestion{
     margin-top: 5px;
 }
+.info-contract{
+    padding-bottom: 0px!important;
+}
+.title-info-contract{
+    font-size: 1.5em;
+    border-bottom: 1px solid #969595;
+    line-height: 25px;
+    padding-bottom: 10px;
+}

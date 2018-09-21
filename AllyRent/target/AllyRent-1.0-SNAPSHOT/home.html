@@ -146,7 +146,7 @@
                                     <div class="title-post">
                                         <span class="title-post-span" data-bind="text: nombreTipoPublicacion"></span>
                                         <div class="btn btn-default btn-post" data-bind="click: $parent.insertSolicitud.bind($data, idPublicacion), visible: $parent.idUsuario() != usuario.idUsuario " > Aplicar</div>
-                                        <div class="btn btn-default btn-post" data-bind="visible: $parent.idUsuario() == usuario.idUsuario " > Eliminar</div>
+                                            <div class="btn btn-default btn-post" data-bind="visible: $parent.idUsuario() == usuario.idUsuario " > Eliminar</div>
                                     </div>
                                     <div class="post-img">                                        
                                         <a href="details.html" target="_blank"><img class="img-responsive" data-bind="visible:(nombreTipoPublicacion == 'Solicitud')?false:true,attr: {src : (nombreTipoPublicacion == 'Solicitud')?'':vehiculo.primerFoto}  " alt="Post"/></a>
