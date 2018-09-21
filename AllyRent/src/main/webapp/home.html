@@ -110,21 +110,21 @@
                                                 </li>
                                                 <li>
                                                     <h3>Vehiculos</h3>
-                                                    <a href="Vehiculo/index.html">                                     
+                                                    <a href="Vehiculo/index.html">
                                                         <span id="sVehiculos"></span>
-                                                    </a>               
-                                                </li>                                                
-                                                <li>
-                                                    <span id="sCiudad"></span>    
+                                                    </a>
                                                 </li>
                                                 <li>
-                                                    <span id="sCorreo"></span>    
+                                                    <span id="sCiudad"></span>
+                                                </li>
+                                                <li>
+                                                    <span id="sCorreo"></span>
                                                 </li>
                                                 <li>
                                                     <span id="sTelefono"></span>
                                                 </li>
                                                 <li>
-                                                    <a href="profile.html" title="">Ver Perfil</a>
+                                                    <a href="Usuario/profile.html" title="">Ver Perfil</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -145,8 +145,8 @@
                                 <article>
                                     <div class="post-img">
                                         <a href="details.html" target="_blank"><img class="img-responsive" data-bind="attr: {src : vehiculo.primerFoto} " alt="Post"/></a>
-                                    </div>   
-                                    <div>   
+                                    </div>
+                                    <div>
                                         <div class="btn btn-default btn-post" data-bind="click: $parent.insertSolicitud.bind($data, idPublicacion), visible: $parent.idUsuario() != usuario.idUsuario " > Aplicar</div>
                                         <div class="btn btn-danger btn-post" data-bind="visible: $parent.idUsuario() == usuario.idUsuario " > Eliminar</div>
                                     </div>
@@ -156,7 +156,7 @@
                                         <p>Fecha disponible entre
                                             <span data-bind="text: moment(fechaInicio).format('lll') +' - ' +moment(fechaFin).format('lll')">
                                         </p>
-                                    </div> 
+                                    </div>
                                     <div>
                                         <p>Tarifa: <span data-bind="text: '(Dia) '+vehiculo.dia + ' - (Hora)' + vehiculo.hora"></p>
 
@@ -167,15 +167,15 @@
                                         Combustible:<label data-bind="text: vehiculo.nombreCombustible" />
                                         Transmision:<label data-bind="text: vehiculo.nombreTransmision" />
 
-                                        <p><span data-bind="text: publicacion"></p>    
+                                        <p><span data-bind="text: publicacion"></p>
                                     </div>
                                     <div class="post-content">
-                                        <div class="post-meta">                                        
+                                        <div class="post-meta">
                                             <span><a href="#"><i class="fa fa-share-alt post-meta-icon"></i> 0 Likes </a></span>
                                             <span><a href="#"><i class="fa fa-comments post-meta-icon"></i> 0 Comments </a></span>
                                             <span><i class="fa fa-calendar-check-o post-meta-icon"></i><span data-bind="text: moment(fechaPublicacion).format('lll')" /></span>
                                         </div>
-                                    </div>    
+                                    </div>
                                 </article>
                                 </script>
                                 <div class="pagination">
@@ -201,13 +201,13 @@
                                                 <a href="#"><img class="img-recomendaciones" data-bind="attr: {src: rutaFoto}" alt="slider"></a>
                                                 <div class="carousel-caption">
                                                     <a href="#"><h5 class="post-title" data-bind="text: nombre + ' ' + apellido"></h5></a>
-                                                    <div class="post-content no-border">      
+                                                    <div class="post-content no-border">
                                                         <div class="btn btn-success btn-post" data-bind="click: $parent.seguirUsuario.bind($data, idUsuario)" > Seguir</div>
                                                     </div>
                                                 </div>
                                                 </script>
 
-                                            </div>                                  
+                                            </div>
                                         </div><!-- Righ-sidebar-body -->
                                     </div><!-- Right-Sidebar -->
                                 </div>
