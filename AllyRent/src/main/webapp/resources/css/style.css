@@ -185,7 +185,7 @@ p.pull-left .navbar-toggle.active i.fa-long-arrow-left{
 
 /*================== Header-top ============================*/
 .header-top{
-	background: #1b1c24;
+	background: #66bb6a;
 	color:#fff;
 }
 .header-top img.logo{
@@ -587,7 +587,7 @@ input[type="file"]:focus,
 }
 /*================== Right-Sidebar ============================*/
 .right-sidebar{
-	border-top:8px solid  #1b1c24;
+	border-top:8px solid  #66bb6a;
 	background:#fff;
 	overflow:hidden;
 }

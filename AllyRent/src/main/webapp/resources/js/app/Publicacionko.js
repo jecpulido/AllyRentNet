@@ -111,10 +111,6 @@ var PublicacionViewModel = function () {
 };
 
 $(document).ready(function () {
-//    if ((sessionStorage.idUsuario === undefined) && (sessionStorage.idLogin === undefined)) {
-//        alert("Por favor inicie sesion");    
-//        window.location.href = "http://localhost:8080/AllyRent/index.html";
-//    }
     var publiacionvm = new PublicacionViewModel();
     ko.applyBindings(publiacionvm);
     publiacionvm.idUsuario(sessionStorage.idusuario);
