@@ -34,7 +34,7 @@ var ContratoViewModel = function () {
             if (dias > 0) {
                 self.valor(dias * self.vehiculo().dia);
             } else {
-                var horas = fecha2.diff(fecha1, 'days');
+                var horas = fecha2.diff(fecha1, 'Hours');
                 self.valor(horas * self.vehiculo().hora);
             }
 

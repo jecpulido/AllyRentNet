@@ -117,4 +117,21 @@ public class UsuarioResource {
         }
         return null;
     }
+    
+    @GET
+    @Path("/{idUsuario}")
+    public UsuarioDTO buscarUsuario(@PathParam("idUsuario") int idUsuario){
+        try {
+            Usuario user = _user.find(idUsuario);
+            if(user != null){
+                UsuarioDTO userDTO = new UsuarioDTO(user);
+                userDTO.setNumeroPublicaciones((int)_user.countPublicaciones(userDTO.getIdUsuario()));
+                userDTO.setNumeroVehiculos((int)_user.countVehiculos(userDTO.getIdUsuario()));
+                return userDTO;
+            }
+        } catch (Exception e) {
+            System.out.println(""+e.getMessage());
+        }
+        return null;
+    }
 }
