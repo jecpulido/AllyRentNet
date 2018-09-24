@@ -173,12 +173,12 @@
                                                     <div class="btn btn-default btn-post" data-bind="visible: $parent.idUsuario() == usuario.idUsuario " > Eliminar</div>
                                                 </div>
                                                 <div class="post-img">
-                                                    <a href="details.html" target="_blank"><img class="img-responsive" data-bind="visible:(nombreTipoPublicacion == 'Solicitud')?false:true,attr: {src : (nombreTipoPublicacion == 'Solicitud')?'':vehiculo.primerFoto}  " alt="Post"/></a>
+                                                    <img class="img-responsive" data-bind="visible:(nombreTipoPublicacion == 'Solicitud')?false:true,attr: {src : (nombreTipoPublicacion == 'Solicitud')?'':vehiculo.primerFoto}  " alt="Post"/>
                                                 </div>
                                                 <div>
 
                                                 </div>
-                                                <a href="details.html" target="_blank"><h2 class="post-title" data-bind="text: usuario.nombre +' ' + usuario.apellido"></h2></a>
+                                                <h2 class="post-title" data-bind="text: usuario.nombre +' ' + usuario.apellido"></h2>
                                                 <div  style="font-size: 1.3em">
                                                     <p><span data-bind="text: usuario.nombreCiudad"></p>
                                                     <p>Fecha disponible entre

@@ -109,8 +109,10 @@ public class PublicacionResource {
 
                 for (Publicacion pub : publicaciones) {
                     PublicacionDTO p = new PublicacionDTO(pub);
-                    p.setVehiculo(new VehiculoDTO(_vehiculoFacade.find(pub.getIdVehiculo())));
-                    p.getVehiculo().setIdUsuario(null);
+                    if (pub.getIdVehiculo() != null) {
+                        p.setVehiculo(new VehiculoDTO(_vehiculoFacade.find(pub.getIdVehiculo())));
+                        p.getVehiculo().setIdUsuario(null);
+                    }
                     publicacionesDTO.add(p);
                 }
             }
