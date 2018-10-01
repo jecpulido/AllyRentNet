@@ -8,6 +8,7 @@ var HomeViewModel = function () {
     self.fechaInicio = ko.observable();
     self.fechaFin = ko.observable();
     self.idVehiculo = ko.observable();
+    self.txtBuscar = ko.observable();
 
     //Listas
     self.publicacionesList = ko.observableArray();// array y tambien obserbable
@@ -152,6 +153,15 @@ var HomeViewModel = function () {
                         }
                     }
                 });
+            },
+            self.buscarAmigos = function () {
+                $.getJSON('/AllyRent/api/publicaciones/' + self.idUsuario(), function (data) {
+                    $.each(data, function (i, item) {
+                        alert(item.usuario.nombre);
+                    });                   
+                });
+
+
             };
 
 };
