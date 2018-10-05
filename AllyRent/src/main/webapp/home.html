@@ -143,7 +143,7 @@
                                 <article>
                                     <div class="row">                                        
                                         <input class="form-control col-md-12 col-sm-12 col-xs-12" id="txtBuscar" name="txtBuscar" type="text" data-bind="value: txtBuscar , event: {change :buscarAmigos.bind($data)}" />
-                                        <input type="button" class="btn btn-success col-md-12 col-sm-12 col-xs-12" value="BUSQUEDA AVANZADA =)" >
+                                        <a href="Publicacion/busquedaAvanzada.html" class="btn btn-success col-md-12 col-sm-12 col-xs-12">BUSQUEDA AVANZADA =)</a>
                                     </div>
                                 </article>
                             </div>
@@ -169,13 +169,13 @@
                                         </p>
                                     </div>
                                     <div>
-                                        <span data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Tarifa: (Dia) '+vehiculo.dia + ' - (Hora)' + vehiculo.hora">
-                                            <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Modelo:'+vehiculo.nombreModelo" />
-                                            <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Año:'+vehiculo.ano" />
-                                            <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'KM:'+vehiculo.km" />
-                                            <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Tipo Vehiculo:'+vehiculo.nombreTipoVehiculo" />
-                                            <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Combustible:'+vehiculo.nombreCombustible" />
-                                            <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Transmision:'+vehiculo.nombreTransmision" />
+                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Tarifa: (Dia) '+vehiculo.dia + ' - (Hora)' + vehiculo.hora"/>
+                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Modelo:'+vehiculo.nombreModelo" />
+                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Año:'+vehiculo.ano" />
+                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'KM:'+vehiculo.km" />
+                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Tipo Vehiculo:'+vehiculo.nombreTipoVehiculo" />
+                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Combustible:'+vehiculo.nombreCombustible" />
+                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Transmision:'+vehiculo.nombreTransmision" />
                                     </div>
                                     <p><span data-bind="text: publicacion"></p>
                                     <div class="post-content">

@@ -28,36 +28,6 @@ var VehiculoViewModel = function () {
             self.vehiculoList(data);
         });
     },
-            self.getPersonById = function () {
-                var url = '/api/person/' + self.id();
-                $.getJSON(url)
-                        .done(function (data) {
-                            self.name(data.Name);
-                            self.lastname(data.LastName);
-                            self.twitter(data.Twitter);
-                        })
-                        .fail(function (erro) {
-                            self.clearForm();
-                        });
-            },
-            self.deletePersonById = function () {
-                var url = '/api/person/' + self.id();
-                $.ajax({
-                    url: url,
-                    type: 'DELETE',
-                    contentType: "application/json;chartset=utf-8",
-                    statusCode: {
-                        200: function () {
-                            self.getAll();
-                            self.clearForm();
-                            alert('Person with id= ' + self.id() + ' was deleted');
-                        },
-                        404: function () {
-                            alert('Person with id= ' + self.id() + ' was not found');
-                        }
-                    }
-                });
-            },
             self.updatePerson = function () {
                 var url = '/api/person/' + self.id();
                 $.ajax({

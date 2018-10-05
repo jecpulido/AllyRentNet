@@ -6,11 +6,15 @@
 package com.allyrent.bean;
 
 import com.allyrent.entidades.Publicacion;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -55,5 +59,76 @@ public class PublicacionFacade extends AbstractFacade<Publicacion> {
             System.out.println("" + e.getMessage());
         }
         return null;
+    }
+
+    public List<Publicacion> busquedaAvanzada(String nombreUsuario, int idCiudad,
+            int idModelo, int idTPublicacion, Date fechaPublicacion, Date fechaInicio, Date fechaFin) {
+        try {                
+            String query = "SELECT p FROM Publicacion p WHERE 1 = 1";
+
+            if (nombreUsuario != null) {
+                query += " AND CONCAT(p.idUsuario.nombre,' ',p.idUsuario.apellido) LIKE :nombreUsuario";
+            }
+
+            if (idCiudad != 0) {
+                query += " OR p.idUsuario.idCiudad.idCiudad = :idCiudad";
+            }
+
+            if (idModelo != 0) {
+                query += " OR (p.idVehiculo IN (SELECT v.idVehiculo FROM Vehiculo v "
+                        + "WHERE v.idModelo.idModelo = :idModelo)) ";
+            }
+
+            if (idTPublicacion != 0) {
+                query += " AND p.idTipoPublicacion.idDataType = :idTPublicacion";
+            }
+
+            if (fechaPublicacion != null) {
+                query += " AND p.fechaPublicacion = :fechaPublicacion";
+            }
+
+            if (fechaInicio != null && fechaFin != null) {
+                query += " OR (p.fechaInicio <= :fechaInicio AND p.fechaFin >= :fechaFin)";
+            }
+
+            Query q = em.createQuery(query);
+            if (nombreUsuario != null) {
+                q.setParameter("nombreUsuario", "%" + nombreUsuario + "%");
+            }
+
+            if (idCiudad != 0) {
+                q.setParameter("idCiudad", idCiudad);
+            }
+
+            if (idModelo != 0) {
+                q.setParameter("idModelo", idModelo);
+            }
+
+            if (idTPublicacion != 0) {
+                q.setParameter("idTPublicacion", idTPublicacion);
+            }
+
+            if (fechaPublicacion != null) {
+                q.setParameter("fechaPublicacion",fechaPublicacion ,TemporalType.DATE);
+            }
+            
+            if (fechaInicio != null && fechaFin != null) {
+                q.setParameter("fechaInicio",fechaInicio ,TemporalType.DATE);
+                q.setParameter("fechaFin",fechaInicio,TemporalType.DATE);
+            }
+            
+
+            List<Publicacion> listado = q.getResultList();
+
+            if (!listado.isEmpty()) {
+                return listado;
+            } else {
+                return null;
+            }
+
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+            return null;
+        }
     }
 }

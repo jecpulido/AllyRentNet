@@ -5,11 +5,14 @@
  */
 package com.allyrent.resources;
 
+import com.allyrent.DTO.BusquedaDTO;
 import com.allyrent.DTO.PublicacionDTO;
 import com.allyrent.DTO.VehiculoDTO;
 import com.allyrent.bean.PublicacionFacade;
 import com.allyrent.bean.VehiculoFacade;
 import com.allyrent.entidades.Publicacion;
+import com.allyrent.entidades.Usuario;
+import com.allyrent.entidades.Vehiculo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -139,4 +142,33 @@ public class PublicacionResource {
         }
     }
 
+    @POST
+    @Path("/searchAdvance")
+    public BusquedaDTO SearchAdvance(BusquedaDTO busqueda) {
+        try {
+            List<Publicacion> publicaciones = null;
+            List<Vehiculo> vehiculos = null;
+            List<Usuario> usuarios = null;
+            BusquedaDTO response;
+
+            publicaciones = _publicacionFacade.busquedaAvanzada(busqueda.getNombreUsuario(),
+                    busqueda.getIdCiudad(), busqueda.getIdModelo(), busqueda.getIdTPublicacion(),
+                    busqueda.getFechaPublicacion(), busqueda.getFechaInicio(), busqueda.getFechaFin());
+
+            response = new BusquedaDTO(publicaciones, usuarios, vehiculos);
+
+            if (response.getPublicacion().size() > 0) {
+                for (PublicacionDTO publicacionDTO : response.getPublicacion()) {
+                    if (publicacionDTO.getVehiculo() != null) {
+                        int idVehiculo = publicacionDTO.getVehiculo().getIdVehiculo();
+                        publicacionDTO.setVehiculo(new VehiculoDTO(_vehiculoFacade.find(idVehiculo)));
+                    }
+                }
+            }
+
+            return response;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }
