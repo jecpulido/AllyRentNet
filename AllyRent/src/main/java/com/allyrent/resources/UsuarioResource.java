@@ -16,6 +16,7 @@ import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -64,7 +65,7 @@ public class UsuarioResource {
                         byte[] foto = ImageToArray.convertStringToImageByteArray(user.getRutaFoto());
                         usuario.setRutaFoto(foto);
                         _user.create(usuario);
-                        if (usuario.getIdUsuario() != null){
+                        if (usuario.getIdUsuario() != null) {
                             Relaciones relacion = new Relaciones(usuario.getIdUsuario(), usuario.getIdUsuario());
                             relacion.setRelacionesPK(new RelacionesPK(usuario.getIdUsuario(), usuario.getIdUsuario()));
                             relacion.setFechaRelacion(new Date());
@@ -76,7 +77,7 @@ public class UsuarioResource {
             }
 
         } catch (Exception e) {
-            if (usuario.getIdUsuario() == null){
+            if (usuario.getIdUsuario() == null) {
                 _login.remove(login);
             }
         }
@@ -92,8 +93,8 @@ public class UsuarioResource {
             Usuario user = _user.Login(correo, password);
             if (user != null) {
                 UsuarioDTO userDTO = new UsuarioDTO(user);
-                userDTO.setNumeroPublicaciones((int)_user.countPublicaciones(userDTO.getIdUsuario()));
-                userDTO.setNumeroVehiculos((int)_user.countVehiculos(userDTO.getIdUsuario()));
+                userDTO.setNumeroPublicaciones((int) _user.countPublicaciones(userDTO.getIdUsuario()));
+                userDTO.setNumeroVehiculos((int) _user.countVehiculos(userDTO.getIdUsuario()));
                 return userDTO;
             }
         } catch (Exception e) {
@@ -104,33 +105,82 @@ public class UsuarioResource {
 
     @GET
     @Path("/sugerencias/{id}")
-    public List<UsuarioDTO> buscarSugerencias(@PathParam("id")int idUsuario){
+    public List<UsuarioDTO> buscarSugerencias(@PathParam("id") int idUsuario) {
         try {
             List<Usuario> usuarios = _user.buscarSugerencias(idUsuario);
-            List<UsuarioDTO> usuariosDTO= new ArrayList<>();
+            List<UsuarioDTO> usuariosDTO = new ArrayList<>();
             for (Usuario usuario : usuarios) {
                 usuariosDTO.add(new UsuarioDTO(usuario));
             }
             return usuariosDTO;
         } catch (Exception e) {
-            System.out.println(""+e.getMessage());
+            System.out.println("" + e.getMessage());
         }
         return null;
     }
-    
+
     @GET
     @Path("/{idUsuario}")
-    public UsuarioDTO buscarUsuario(@PathParam("idUsuario") int idUsuario){
+    public UsuarioDTO buscarUsuario(@PathParam("idUsuario") int idUsuario) {
         try {
             Usuario user = _user.find(idUsuario);
-            if(user != null){
+            if (user != null) {
                 UsuarioDTO userDTO = new UsuarioDTO(user);
-                userDTO.setNumeroPublicaciones((int)_user.countPublicaciones(userDTO.getIdUsuario()));
-                userDTO.setNumeroVehiculos((int)_user.countVehiculos(userDTO.getIdUsuario()));
+                userDTO.setNumeroPublicaciones((int) _user.countPublicaciones(userDTO.getIdUsuario()));
+                userDTO.setNumeroVehiculos((int) _user.countVehiculos(userDTO.getIdUsuario()));
                 return userDTO;
             }
         } catch (Exception e) {
-            System.out.println(""+e.getMessage());
+            System.out.println("" + e.getMessage());
+        }
+        return null;
+    }
+
+    @PUT
+    @Path("/update/{idUsuario}")
+    public Usuario actualizarUsuario(UsuarioDTO user, @PathParam("idUsuario") int idUsuario) {
+        Usuario usuario = null;
+        Login login = null;
+        try {
+            usuario = _user.find(idUsuario);
+            login = new Login();
+            if (usuario == null)
+                return null;
+            
+            if (user != null) {
+                if (user.getIdLogin() != null) {
+                    login.setContrasena(user.getIdLogin().getContrasena());
+                    login.setCorreo(user.getIdLogin().getCorreo());
+                    _login.create(login);
+                    if (login.getIdLogin() != null) {
+                        usuario.setIdLogin(login);
+                        usuario.setNombre(user.getNombre());
+                        usuario.setApellido(user.getApellido());
+                        usuario.setTelefono(user.getTelefono());
+                        usuario.setDni(user.getDni());
+                        usuario.setFechaNacimiento(user.getFechaNacimiento());
+                        usuario.setIdCiudad(new Ciudad(user.getIdCiudad()));
+                        usuario.setIdRol(new Rol(user.getIdRol()));
+                        usuario.setIdSexo(new Datatype(user.getIdSexo()));
+                        usuario.setIdTipoDocumento(new Datatype(user.getIdTipoDocumento()));
+                        byte[] foto = ImageToArray.convertStringToImageByteArray(user.getRutaFoto());
+                        usuario.setRutaFoto(foto);
+                        _user.create(usuario);
+                        if (usuario.getIdUsuario() != null) {
+                            Relaciones relacion = new Relaciones(usuario.getIdUsuario(), usuario.getIdUsuario());
+                            relacion.setRelacionesPK(new RelacionesPK(usuario.getIdUsuario(), usuario.getIdUsuario()));
+                            relacion.setFechaRelacion(new Date());
+                            _relaciones.create(relacion);
+                        }
+                        return usuario;
+                    }
+                }
+            }
+
+        } catch (Exception e) {
+            if (usuario.getIdUsuario() == null) {
+                _login.remove(login);
+            }
         }
         return null;
     }
