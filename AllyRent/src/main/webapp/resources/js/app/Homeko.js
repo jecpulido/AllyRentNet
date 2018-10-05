@@ -155,10 +155,17 @@ var HomeViewModel = function () {
                 });
             },
             self.buscarAmigos = function () {
+                var coincidencias = [];
                 $.getJSON('/AllyRent/api/publicaciones/' + self.idUsuario(), function (data) {
                     $.each(data, function (i, item) {
-                        alert(item.usuario.nombre);
-                    });                   
+                        var nombre = item.usuario.nombre +" " + item.usuario.apellido;
+                        nombre = nombre.toLowerCase();
+                        var buscar = self.txtBuscar().toLowerCase();
+                        if (nombre.indexOf(buscar) != -1){
+                            coincidencias.push(item);
+                        }
+                    });      
+                    self.publicacionesList(coincidencias);
                 });
 
 

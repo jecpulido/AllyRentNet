@@ -139,8 +139,12 @@
                         <!--========================== main-content ================================-->
                         <div class="col-md-6 col-sm-8 col-xs-12">
                             <div class="main-content">
+                                <span class="title-post-span">BUSCAR</span>
                                 <article>
-                                    <input class="form-control" id="txtBuscar" name="txtBuscar" type="text" data-bind="value: txtBuscar , event: {keyup :buscarAmigos.bind($data)}" />
+                                    <div class="row">                                        
+                                        <input class="form-control col-md-12 col-sm-12 col-xs-12" id="txtBuscar" name="txtBuscar" type="text" data-bind="value: txtBuscar , event: {change :buscarAmigos.bind($data)}" />
+                                        <input type="button" class="btn btn-success col-md-12 col-sm-12 col-xs-12" value="BUSQUEDA AVANZADA =)" >
+                                    </div>
                                 </article>
                             </div>
                             <div class="main-content" data-bind="template: { name: 'posts-template', foreach: publicacionesList }"></div><!-- main-content -->
@@ -152,7 +156,7 @@
                                         <div class="btn btn-default btn-post" data-bind="visible: $parent.idUsuario() == usuario.idUsuario " > Eliminar</div>
                                     </div>
                                     <div class="post-img">
-                                        <a href="details.html" target="_blank"><img class="img-responsive" data-bind="visible:(nombreTipoPublicacion == 'Solicitud')?false:true,attr: {src : (nombreTipoPublicacion == 'Solicitud')?'':vehiculo.primerFoto}  " alt="Post"/></a>
+                                        <a href="#" target="_blank"><img class="img-responsive" data-bind="visible:(nombreTipoPublicacion == 'Solicitud')?false:true,attr: {src : (nombreTipoPublicacion == 'Solicitud')?'':vehiculo.primerFoto}  " alt="Post"/></a>
                                     </div>
                                     <div>
 
@@ -205,7 +209,7 @@
                                             <script type="text/html" id="suggestion">
                                                 <a href="#"><img class="img-recomendaciones" data-bind="attr: {src: rutaFoto}" alt="slider"></a>
                                                 <div class="carousel-caption">
-                                                    <a href="#"><h5 class="post-title" data-bind="text: nombre + ' ' + apellido"></h5></a>
+                                                    <a data-bind="attr: {href:'http://localhost:8080/AllyRent/Usuario/profile.html?id='+idUsuario }" ><h5 class="post-title" data-bind="text: nombre + ' ' + apellido"></h5></a>
                                                     <div class="post-content no-border">
                                                         <div class="btn btn-success btn-suggestion" data-bind="click: $parent.seguirUsuario.bind($data, idUsuario)" > Seguir</div>
                                                     </div>
