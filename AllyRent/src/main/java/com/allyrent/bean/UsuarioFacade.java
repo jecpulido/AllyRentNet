@@ -109,4 +109,48 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         }
         return null;
     }
+    
+    public List<Usuario> busquedaAvanzada(String nombreUsuario, String correoElectronico,int idCiudad) {
+        try {                
+            String query = "SELECT u FROM Usuario u WHERE 1=1 ";
+
+            if (nombreUsuario != null) {
+                query += " AND UPPER(CONCAT(u.nombre,' ',u.apellido)) LIKE UPPER(:nombreUsuario)";
+            }
+
+            if (correoElectronico != null) {
+                query += " AND u.idLogin.correo LIKE :correoElectronico";
+            }
+
+            if (idCiudad != 0) {
+                query += " AND u.idCiudad.idCiudad = :idCiudad ";
+            }
+            
+            Query q = em.createQuery(query);
+            
+            if (nombreUsuario != null) {
+                q.setParameter("nombreUsuario", "%" + nombreUsuario + "%");
+            }
+
+            if (correoElectronico != null) {
+                q.setParameter("correoElectronico", "%" + correoElectronico +"%");
+            }
+
+            if (idCiudad != 0) {
+                q.setParameter("idCiudad", idCiudad);
+            }      
+
+            List<Usuario> listado = q.getResultList();
+
+            if (!listado.isEmpty()) {
+                return listado;
+            } else {
+                return null;
+            }
+
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+            return null;
+        }
+    }
 }

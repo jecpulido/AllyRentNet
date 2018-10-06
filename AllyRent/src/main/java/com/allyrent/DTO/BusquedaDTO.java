@@ -37,6 +37,10 @@ public class BusquedaDTO {
     private Date fechaInicio;
 
     private Date fechaFin;
+    
+    private String placa;
+
+    private int ano;
 
     private List<PublicacionDTO> publicacion;
 
@@ -147,6 +151,24 @@ public class BusquedaDTO {
     public Date getFechaFin() {
         return fechaFin;
     }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public int getAño() {
+        return ano;
+    }
+
+    public void setAño(int ano) {
+        this.ano = ano;
+    }
+    
+    
 
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;

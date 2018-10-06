@@ -1,4 +1,4 @@
-var ContratoViewModel = function () {
+var UsuarioViewModel = function () {
     self = this;
     self.idUsuario = ko.observable();
     self.login = ko.observableArray();
@@ -50,7 +50,7 @@ var ContratoViewModel = function () {
 };
 
 $(document).ready(function () {
-    var uservm = new ContratoViewModel();
+    var uservm = new UsuarioViewModel();
     ko.applyBindings(uservm);
     self.idUsuario(sessionStorage.idusuario)
     uservm.loadUser(getParameterByName("id"));

@@ -9,6 +9,7 @@ import com.allyrent.DTO.BusquedaDTO;
 import com.allyrent.DTO.PublicacionDTO;
 import com.allyrent.DTO.VehiculoDTO;
 import com.allyrent.bean.PublicacionFacade;
+import com.allyrent.bean.UsuarioFacade;
 import com.allyrent.bean.VehiculoFacade;
 import com.allyrent.entidades.Publicacion;
 import com.allyrent.entidades.Usuario;
@@ -39,6 +40,9 @@ public class PublicacionResource {
 
     @EJB
     VehiculoFacade _vehiculoFacade;
+    
+    @EJB
+    UsuarioFacade _usuarioFacade;
 
     /**
      * crear una publicacion
@@ -149,12 +153,19 @@ public class PublicacionResource {
             List<Publicacion> publicaciones = null;
             List<Vehiculo> vehiculos = null;
             List<Usuario> usuarios = null;
-            BusquedaDTO response;
-
-            publicaciones = _publicacionFacade.busquedaAvanzada(busqueda.getNombreUsuario(),
+            BusquedaDTO response;          
+           
+            publicaciones = _publicacionFacade.busquedaAvanzada(busqueda.getNombreUsuario(),busqueda.getCorreoElectronico(),
                     busqueda.getIdCiudad(), busqueda.getIdModelo(), busqueda.getIdTPublicacion(),
                     busqueda.getFechaPublicacion(), busqueda.getFechaInicio(), busqueda.getFechaFin());
-
+            
+            vehiculos = _vehiculoFacade.busquedaAvanzada(busqueda.getNombreUsuario(), 
+                    busqueda.getCorreoElectronico(),busqueda.getPlaca(), busqueda.getAño(), 
+                    busqueda.getIdModelo());
+            
+            usuarios = _usuarioFacade.busquedaAvanzada(busqueda.getNombreUsuario(), 
+                    busqueda.getCorreoElectronico(), busqueda.getIdCiudad());
+            
             response = new BusquedaDTO(publicaciones, usuarios, vehiculos);
 
             if (response.getPublicacion().size() > 0) {

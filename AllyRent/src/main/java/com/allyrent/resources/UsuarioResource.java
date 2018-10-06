@@ -143,43 +143,65 @@ public class UsuarioResource {
         Login login = null;
         try {
             usuario = _user.find(idUsuario);
-            login = new Login();
-            if (usuario == null)
+
+            if (usuario == null) {
                 return null;
-            
-            if (user != null) {
-                if (user.getIdLogin() != null) {
-                    login.setContrasena(user.getIdLogin().getContrasena());
-                    login.setCorreo(user.getIdLogin().getCorreo());
-                    _login.create(login);
-                    if (login.getIdLogin() != null) {
-                        usuario.setIdLogin(login);
-                        usuario.setNombre(user.getNombre());
-                        usuario.setApellido(user.getApellido());
-                        usuario.setTelefono(user.getTelefono());
-                        usuario.setDni(user.getDni());
-                        usuario.setFechaNacimiento(user.getFechaNacimiento());
-                        usuario.setIdCiudad(new Ciudad(user.getIdCiudad()));
-                        usuario.setIdRol(new Rol(user.getIdRol()));
-                        usuario.setIdSexo(new Datatype(user.getIdSexo()));
-                        usuario.setIdTipoDocumento(new Datatype(user.getIdTipoDocumento()));
-                        byte[] foto = ImageToArray.convertStringToImageByteArray(user.getRutaFoto());
-                        usuario.setRutaFoto(foto);
-                        _user.create(usuario);
-                        if (usuario.getIdUsuario() != null) {
-                            Relaciones relacion = new Relaciones(usuario.getIdUsuario(), usuario.getIdUsuario());
-                            relacion.setRelacionesPK(new RelacionesPK(usuario.getIdUsuario(), usuario.getIdUsuario()));
-                            relacion.setFechaRelacion(new Date());
-                            _relaciones.create(relacion);
-                        }
-                        return usuario;
+            }
+
+            login = _login.find(usuario.getIdLogin().getIdLogin());
+
+            if (login != null) {
+                if (user != null) {
+
+                    if (!login.getCorreo().equals(user.getIdLogin().getCorreo())) {
+                        login.setCorreo(user.getIdLogin().getCorreo());
+                        _login.edit(login);
                     }
+                    usuario.setIdLogin(login);
+                    if (!usuario.getNombre().equals(user.getNombre())) {
+                        usuario.setNombre(user.getNombre());
+                    }
+                    if (!usuario.getApellido().equals(user.getApellido())) {
+                        usuario.setApellido(user.getApellido());
+                    }                    
+                    if (!usuario.getTelefono().equals(user.getTelefono())) {
+                        usuario.setTelefono(user.getTelefono());
+                    }                                        
+                    if (!usuario.getDni().equals(user.getDni())) {
+                        usuario.setDni(user.getDni());
+                    }                                      
+                    if (!usuario.getFechaNacimiento().equals(user.getFechaNacimiento())) {
+                        usuario.setFechaNacimiento(user.getFechaNacimiento());
+                    }                   
+                    if (!usuario.getIdCiudad().getIdCiudad().equals(user.getIdCiudad())) {
+                        usuario.setIdCiudad(new Ciudad(user.getIdCiudad()));
+                    }                                      
+                    if (!usuario.getIdRol().getIdRol().equals(user.getIdRol())) {
+                        usuario.setIdRol(new Rol(user.getIdRol()));
+                    }                   
+                    if (!usuario.getIdSexo().getIdDataType().equals(user.getIdSexo())) {
+                        usuario.setIdSexo(new Datatype(user.getIdSexo()));
+                    }                   
+                    if (!usuario.getIdTipoDocumento().getIdDataType().equals(user.getIdTipoDocumento())) {
+                        usuario.setIdTipoDocumento(new Datatype(user.getIdTipoDocumento()));
+                    }                    
+                    //byte[] foto = ImageToArray.convertStringToImageByteArray(user.getRutaFoto());
+                    //usuario.setRutaFoto(foto);
+                    _user.edit(usuario);
+//                    if (usuario.getIdUsuario() != null) {
+//                        Relaciones relacion = new Relaciones(usuario.getIdUsuario(), usuario.getIdUsuario());
+//                        relacion.setRelacionesPK(new RelacionesPK(usuario.getIdUsuario(), usuario.getIdUsuario()));
+//                        relacion.setFechaRelacion(new Date());
+//                        _relaciones.create(relacion);
+//                    }
+                    return usuario;
+
                 }
             }
 
         } catch (Exception e) {
             if (usuario.getIdUsuario() == null) {
-                _login.remove(login);
+                return null;
             }
         }
         return null;

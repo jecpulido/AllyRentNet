@@ -61,17 +61,21 @@ public class PublicacionFacade extends AbstractFacade<Publicacion> {
         return null;
     }
 
-    public List<Publicacion> busquedaAvanzada(String nombreUsuario, int idCiudad,
+    public List<Publicacion> busquedaAvanzada(String nombreUsuario, String correoElectronico, int idCiudad,
             int idModelo, int idTPublicacion, Date fechaPublicacion, Date fechaInicio, Date fechaFin) {
-        try {                
+        try {
             String query = "SELECT p FROM Publicacion p WHERE 1 = 1";
 
             if (nombreUsuario != null) {
-                query += " AND CONCAT(p.idUsuario.nombre,' ',p.idUsuario.apellido) LIKE :nombreUsuario";
+                query += " AND UPPER(CONCAT(p.idUsuario.nombre,' ',p.idUsuario.apellido)) LIKE UPPER(:nombreUsuario)";
+            }
+
+            if (correoElectronico != null) {
+                query += " AND UPPER(p.idUsuario.idLogin.correo) LIKE UPPER(:correoElectronico)";
             }
 
             if (idCiudad != 0) {
-                query += " OR p.idUsuario.idCiudad.idCiudad = :idCiudad";
+                query += " AND p.idUsuario.idCiudad.idCiudad = :idCiudad";
             }
 
             if (idModelo != 0) {
@@ -95,7 +99,10 @@ public class PublicacionFacade extends AbstractFacade<Publicacion> {
             if (nombreUsuario != null) {
                 q.setParameter("nombreUsuario", "%" + nombreUsuario + "%");
             }
-
+            
+            if (correoElectronico != null) {
+                q.setParameter("correoElectronico", "%" + correoElectronico + "%");
+            }
             if (idCiudad != 0) {
                 q.setParameter("idCiudad", idCiudad);
             }
@@ -109,14 +116,13 @@ public class PublicacionFacade extends AbstractFacade<Publicacion> {
             }
 
             if (fechaPublicacion != null) {
-                q.setParameter("fechaPublicacion",fechaPublicacion,TemporalType.DATE);
+                q.setParameter("fechaPublicacion", fechaPublicacion, TemporalType.DATE);
             }
-            
+
             if (fechaInicio != null && fechaFin != null) {
-                q.setParameter("fechaInicio",fechaInicio ,TemporalType.DATE);
-                q.setParameter("fechaFin",fechaFin,TemporalType.DATE);
+                q.setParameter("fechaInicio", fechaInicio, TemporalType.DATE);
+                q.setParameter("fechaFin", fechaFin, TemporalType.DATE);
             }
-            
 
             List<Publicacion> listado = q.getResultList();
 

@@ -7,6 +7,8 @@ var PublicacionHomeViewModel = function () {
     self.correoElectronico = ko.observable();
     self.idMarca = ko.observable();
     self.idModelo = ko.observable();
+    self.placa = ko.observable();
+    self.ano = ko.observable();
     self.idDpto = ko.observable();
     self.idCiudad = ko.observable();
     self.idTPublicacion = ko.observable();
@@ -43,12 +45,14 @@ var PublicacionHomeViewModel = function () {
                     "correoElectronico": self.correoElectronico(),
                     "idMarca": self.idMarca(),
                     "idModelo": self.idModelo(),
+                    "placa": self.placa(),
+                    "ano": self.ano(),
                     "idDpto": self.idDpto(),
                     "idCiudad": self.idCiudad(),
                     "idTPublicacion": self.idTPublicacion(),
                     "fechaPublicacion": self.fechaPublicacion() + "T00:00:00-05:00",
                     "fechaInicio": self.fechaInicio() + "T00:00:00-05:00",
-                    "fechaFin": self.fechaFin() +"T00:00:00-05:00"
+                    "fechaFin": self.fechaFin() + "T00:00:00-05:00"
                 };
                 return BusquedaDTO;
             },
@@ -98,6 +102,36 @@ var PublicacionHomeViewModel = function () {
                     }
                 });
             },
+            self.seguirUsuario = function (idUsuario2) {
+                var url = '/AllyRent/api/solicitudes/Seguir';
+                var relacion = {
+                    "usuario": {
+                        "idUsuario": self.idUsuario()
+                    },
+                    "usuario1": {
+                        "idUsuario": idUsuario2
+                    }
+                };
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: ko.toJSON(relacion),
+                    contentType: "application/json;chartset=utf-8",
+                    statusCode: {
+                        200: function (data) {
+                            if (data.responseText === "OK") {
+                                alert('OK');
+                                self.buscarSugerencias();
+                                self.getAllPost();
+                            }
+                        },
+                        204: function () {
+                            alert('Error');
+                        }
+                    }
+                });
+            },
             self.search = function () {
                 var url = '/AllyRent/api/publicaciones/searchAdvance';
                 $.ajax({
@@ -108,7 +142,14 @@ var PublicacionHomeViewModel = function () {
                     statusCode: {
                         200: function (data) {
                             console.log(data.publicacion);
+                            console.log(data.usuario);
+                            console.log(data.vehiculo);
+
                             self.publicacionesList(data.publicacion);
+                            self.usuariosList(data.usuario);
+                            self.vehiculosList(data.vehiculo);
+
+
                         },
                         204: function () {
                             alert('Error');

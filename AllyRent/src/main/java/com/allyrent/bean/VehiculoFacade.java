@@ -46,4 +46,64 @@ public class VehiculoFacade extends AbstractFacade<Vehiculo> {
         return null;
     }
     
+    public List<Vehiculo> busquedaAvanzada(String nombreUsuario, String correoElectronico,
+            String placa,int ano,int idModelo) {
+        try {                
+            String query = "SELECT v FROM Vehiculo v WHERE 1=1 ";
+                    
+            if (nombreUsuario != null) {
+                query += " AND UPPER(CONCAT(v.idUsuario.nombre,' ',v.idUsuario.apellido)) LIKE UPPER(:nombreUsuario)";
+            }
+
+            if (correoElectronico != null) {
+                query += " AND u.idLogin.correo LIKE :correoElectronico";
+            }
+
+            if (placa != null) {
+                query +=" AND UPPER(v.placa) LIKE UPPER(:placa)";
+            }
+            
+            if (ano != 0) {
+                query += " AND v.ano = :ano";
+            }
+            
+            if (idModelo != 0) {
+                query += " AND v.idModelo.idMarca = :idModelo";
+            }
+            
+            Query q = em.createQuery(query);
+            
+            if (nombreUsuario != null) {
+                q.setParameter("nombreUsuario", "%" + nombreUsuario + "%");
+            }
+
+            if (correoElectronico != null) {
+                q.setParameter("correoElectronico", "%" + correoElectronico +"%");
+            }
+            
+            if (placa != null) {
+                q.setParameter("placa", placa);
+            }
+            
+            if (ano != 0) {
+                q.setParameter("ano", ano);
+            }
+
+            if (idModelo != 0) {
+                q.setParameter("idModelo", idModelo);
+            }      
+
+            List<Vehiculo> listado = q.getResultList();
+
+            if (!listado.isEmpty()) {
+                return listado;
+            } else {
+                return null;
+            }
+
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+            return null;
+        }
+    }
 }

@@ -33,85 +33,10 @@
                         </div>
                         <div class="col-md-3 col-sm-5 xs-view-right">
                             <div class="search-section center-block">
-                                <form>
-                                    <input type="text" class="form-control" id="exampleInputName2" placeholder="Search">
-                                    <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-search"></i></button>
-                                </form>
                             </div>
                             <!-- Author -->
                             <div class="author-form">
-                                <li class="dropdown">
-                                    <form>
-                                        <a href="#" class="dropdown-toggle author-icon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fa fa-user author-icon"></i>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <!-- Nav tabs -->
-                                            <ul class="nav nav-tabs" role="tablist">
-                                                <li role="presentation" class="active">
-                                                    <a class="sign" href="#signin" aria-controls="signin" role="tab" data-toggle="tab">sign in</a>
-                                                </li>
-                                                <li role="presentation">
-                                                    <a class="sign" href="#signup" aria-controls="signup" role="tab" data-toggle="tab">sign up</a>
-                                                </li>
-                                            </ul>
-
-                                            <!-- Tab panes -->
-                                            <div class="tab-content">
-                                                <div role="tabpanel" class="tab-pane active" id="signin">
-                                                    <ul class="user-dropdown">
-                                                        <div class="login-area">
-                                                            <div class="form-group">
-                                                                <label for="exampleInputText1">Username</label>
-                                                                <input type="email" class="form-control" id="exampleInputEmail1">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="exampleInputPassword1">Password</label>
-                                                                <input type="password" class="form-control" id="exampleInputPassword1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <input id="option" type="checkbox" name="field" value="option">
-                                                            <label for="option"><span><span></span></span>Keep me singed in</label>
-                                                            <a href="#" class="pull-right">Forgot?</a>
-                                                        </div>
-                                                        <div class="form-submit">
-                                                            <button type="submit" class="btn btn-success btn-block">Sign in</button>
-                                                        </div>
-                                                    </ul><!-- /User-Dropdown-->
-                                                </div><!-- /#Sing in -->
-                                                <div role="tabpanel" class="tab-pane" id="signup">
-                                                    <ul class="user-dropdown">
-                                                        <div class="login-area">
-                                                            <div class="form-group">
-                                                                <label for="exampleInputText1">Username</label>
-                                                                <input type="email" class="form-control" id="exampleInputEmail1">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">Email Address</label>
-                                                                <input type="email" class="form-control" id="exampleInputEmail1">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="exampleInputPassword1">Password</label>
-                                                                <input type="password" class="form-control" id="exampleInputPassword1">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="exampleInputPassword1">Comfirm Password</label>
-                                                                <input type="password" class="form-control" id="exampleInputPassword1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="checkbox">
-                                                            <input id="option1" type="checkbox" name="field" value="option1">
-                                                            <label for="option1"><span><span></span></span>I accept Terms and Condition ?</label>
-                                                        </div>
-                                                        <div class="form-submit">
-                                                            <button type="submit" class="btn btn-success btn-block">Sign up</button>
-                                                        </div>
-                                                    </ul><!-- /User-Dropdown-->
-                                                </div><!-- /#Sing up -->
-                                            </div><!-- /Tab-Content -->
-                                        </ul><!-- /Dropdown-menu -->
-                                    </form>
+                                <li class="dropdown">                                    
                                 </li><!-- /Dropdown -->
                             </div><!-- /Author -->
                         </div>
@@ -250,25 +175,25 @@
                                                         <div class="form-group ">
                                                             <label for="txtNombre" class="control-label col-lg-2">Nombre</label>
                                                             <div class="col-lg-4">
-                                                                <input class="form-control" id="txtNombre" name="txtNombre" type="text" data-bind="value: placa" required />
+                                                                <input class="form-control" id="txtNombre" name="txtNombre" type="text" data-bind="value: nombre" required />
                                                             </div>
                                                             <label for="txtApellido" class="control-label col-lg-2">Apellido</label>
                                                             <div class="col-lg-4">
-                                                                <input class="form-control" id="txtApellido" name="txtApellido" type="text" data-bind="value: placa" required />
+                                                                <input class="form-control" id="txtApellido" name="txtApellido" type="text" data-bind="value: apellido" required />
                                                             </div>
                                                         </div>
                                                         <div class="form-group ">
                                                             <div>
                                                                 <label for="sltTipDoc" class="control-label col-lg-2">Tipo de Documento</label>
                                                                 <div class="col-lg-4">
-                                                                    <select name="sltTipDoc" id="sltTipDoc" class="form-control" data-bind="value:idMarca,options: marcaList,optionsText:'nombre',optionsValue: 'idMarca',optionsCaption: '--Seleccionar--', event: { change: getModelo }" required>
+                                                                    <select name="sltDpto" id="sltDpto" class="form-control" data-bind="value: idTipoDocumento, options: tipoDocumentoList,optionsText:'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--', event: {change : getCiudad}"required>
                                                                     </select>
                                                                 </div>
                                                             </div>
                                                             <div>                                                                
                                                                 <label for="txtNDoc" class="control-label col-lg-2">N° de Documento</label>
                                                                 <div class="col-lg-4">
-                                                                    <input class="form-control" id="txtNDoc" name="txtNDoc" type="text" data-bind="value: placa" required />
+                                                                    <input class="form-control" id="txtNDoc" name="txtNDoc" type="text" data-bind="value: dni" required />
                                                                 </div>
                                                             </div>                                                            
                                                         </div>
@@ -277,13 +202,13 @@
 
                                                                 <label for="txtEmail" class="control-label col-lg-2">Correo Electronico</label>
                                                                 <div class="col-lg-4">
-                                                                    <input class="form-control" id="txtEmail" name="txtEmail" type="text" data-bind="value: placa" required />
+                                                                    <input class="form-control" id="txtEmail" name="txtEmail" type="text" data-bind="value: correo" required />
                                                                 </div>
                                                             </div>
                                                             <div>
                                                                 <label for="txtTelefono" class="control-label col-lg-2">N° Telefono</label>
                                                                 <div class="col-lg-4">
-                                                                    <input class=" form-control" id="txtTelefono" name="txtTelefono" min="1990" max="2020" type="number" data-bind="value: ano" required />
+                                                                    <input class=" form-control" id="txtTelefono" name="txtTelefono" min="1990" max="2020" type="number" data-bind="value: telefono" required />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -291,13 +216,13 @@
                                                             <div>
                                                                 <label for="txtFechaNac" class="control-label col-lg-2">Fecha Nacimiento</label>
                                                                 <div class="col-lg-4">
-                                                                    <input class=" form-control" id="txtFechaNac" name="txtFechaNac" min="1990" max="2020" type="datetime-local" data-bind="value: ano" required />
+                                                                    <input class=" form-control" id="txtFechaNac" name="txtFechaNac" min="1990" max="2020" type="datetime-local" data-bind=" value: fechaNacimiento" required />
                                                                 </div>
                                                             </div>
                                                             <div>
                                                                 <label for="sltGenero" class="control-label col-lg-2">Genero</label>
                                                                 <div class="col-lg-4">
-                                                                    <select name="sltGenero" id="sltGenero" class="form-control" data-bind="value: idModelo,options: modeloList,optionsText:'nombre',optionsValue: 'idModelo',optionsCaption: '--Seleccionar--'" required>
+                                                                    <select name="sltGenero" id="sltGenero" class="form-control" data-bind="value: idSexo,options: tipoSexoList,optionsText:'nombreDataType',optionsValue: 'idDataType',optionsCaption: '--Seleccionar--'" required>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -305,12 +230,12 @@
                                                         <div class="form-group ">
                                                             <label for="sltDpto" class="control-label col-lg-2">Departamento</label>
                                                             <div class="col-lg-4">
-                                                                <select name="sltDpto" id="sltDpto" class="form-control" data-bind="value: idModelo,options: modeloList,optionsText:'nombre',optionsValue: 'idModelo',optionsCaption: '--Seleccionar--'" required>
+                                                                <select name="sltDpto" id="sltDpto" class="form-control" data-bind="value: idDpto,options: dptoList,optionsText: 'nombreDepartamento',optionsValue: 'idDepartamento',optionsCaption: '--Seleccionar--', event: {change : getCiudad}"required>
                                                                 </select>
                                                             </div>
                                                             <label for="sltCiudad" class="control-label col-lg-2">Ciudad</label>
                                                             <div class="col-lg-4">
-                                                                <select name="sltCiudad" id="sltCiudad" class="form-control" data-bind="value: idModelo,options: modeloList,optionsText:'nombre',optionsValue: 'idModelo',optionsCaption: '--Seleccionar--'" required>
+                                                                <select name="sltCiudad" id="sltCiudad" class="form-control" data-bind="value: idCiudad,options: ciudadList,optionsText: 'nombreCiudad',optionsValue: 'idCiudad',optionsCaption: '--Seleccionar--'"required>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -326,11 +251,9 @@
                                                                 <div id="imagenes" class="div-img"></div>
                                                             </div>                                                            
                                                         </div>
-                                                        <label id="resultData" class="control-label col-lg-2"></label>
-
                                                         <div class="form-group">
                                                             <div class="col-lg-offset-2 col-lg-10">
-                                                                <button type="submit" class="btn btn-success" data-bind="click: createVehiculo" >Editar</button>
+                                                                <button type="submit" class="btn btn-success" data-bind="click: UpdateUser" >Editar</button>
                                                                 <button class="btn btn-danger" type="reset">Cancelar</button>
                                                             </div>
                                                         </div>
@@ -411,5 +334,6 @@
         <script src="../resources/js/bootstrap.min.js"></script>
         <script src ="../resources/js/custom.js"></script>
         <script src="../resources/js/knockout.js" type="text/javascript"></script>
+        <script src="../resources/js/app/UsuarioEditKo.js" type="text/javascript"></script>
     </body>
 </html>

@@ -170,6 +170,16 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group ">
+                                                            <label for="txtPlaca" class="control-label col-lg-2">Placa</label>
+                                                            <div class="col-lg-4">
+                                                                <input class=" form-control" id="txtPlaca" name="txtPlaca" type="text" data-bind="value: placa" required />
+                                                            </div>
+                                                            <label for="txtAno" class="control-label col-lg-2">Año</label>
+                                                            <div class="col-lg-4">
+                                                                <input class=" form-control" id="txtAno" name="txtAno" type="text" data-bind="value: ano" required />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
                                                             <label for="sltDpto" class="control-label col-lg-2">Departamento</label>
                                                             <div class="col-lg-4">
                                                                 <select name="sltDpto" id="sltDpto" class="form-control" data-bind="value: idDpto, options: dptoList,optionsText: 'nombreDepartamento',optionsValue: 'idDepartamento',optionsCaption: '--Seleccionar--', event: {change : getCiudad}"required>
@@ -270,84 +280,147 @@
                                                         </article>
                                                         </script>
                                                     </div>
-                                                    <div role="tabpanel" class="tab-pane" id="user">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
-                                                    <div role="tabpanel" class="tab-pane" id="vehicles">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+                                                    <div role="tabpanel" class="tab-pane" id="user">
+                                                        <div class="main-content" data-bind="template: { name: 'users-template', foreach: usuariosList }"></div><!-- main-content -->
+                                                        <script type="text/html" id="users-template">
+                                                            <article>    
+                                                                <div class="row post-content">                                                                    
+                                                                    <div class="col-md-3 col-sm-12 col-xs-12" style="font-size: 1.3em">
+                                                                        <a href="#"><img class="img-recomendaciones" data-bind="attr: {src: rutaFoto}" alt="slider"></a>
+
+                                                                    </div>
+                                                                    <div class="col-md-9 col-sm-12 col-xs-12">
+                                                                        <a target="_blank" data-bind="attr: {href:'http://localhost:8080/AllyRent/Usuario/profile.html?id='+idUsuario}" >
+                                                                            <h2 class="post-title" data-bind="text: nombre +' ' + apellido"></h2>
+                                                                        </a>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                                                                <label data-bind="text: nombreCiudad"/></br>
+                                                                                <label data-bind="text: idLogin.correo"/></br>
+                                                                                <label data-bind="text: telefono"/></br>                                                                  
+                                                                                <label data-bind="text: nombreRol"/></br> 
+                                                                            </div>
+                                                                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                                                                <label data-bind="text: 'Seguidores: '+numeroPublicaciones"/></br>                                                                  
+                                                                                <label data-bind="text: nombreRol == 'Ocupante' ? '' : 'Vehiculos:'+numeroVehiculos"/></br>
+                                                                                <div class="post-content no-border">
+                                                                                    <div class="btn btn-success btn-suggestion" data-bind="click: $parent.seguirUsuario.bind($data, idUsuario)" > Seguir</div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>                                                                        
+                                                                    </div>                                                           
+                                                                </div>
+                                                            </article>
+                                                            </script>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane" id="vehicles">
+                                                            <div class="main-content" data-bind="template: { name: 'vehicles-template', foreach: vehiculosList }"></div><!-- main-content -->
+                                                            <script type="text/html" id="vehicles-template">
+                                                                <article>    
+                                                                    <div class="row post-content">                                                                    
+                                                                        <div class="col-md-3 col-sm-12 col-xs-12" style="font-size: 1.3em">
+                                                                            <a href="#"><img class="img-recomendaciones" data-bind="attr: {src: primerFoto}" alt="slider"></a>
+
+                                                                        </div>
+                                                                        <div class="col-md-9 col-sm-12 col-xs-12">
+                                                                            <h2 class="post-title" data-bind="text: nombreModelo"></h2>                                                                           
+                                                                            <div class="row">
+                                                                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                                                                    <a target="_blank" data-bind="attr: {href: 'http://localhost:8080/AllyRent/Usuario/profile.html?id=' + idUsuario.idUsuario}" >
+                                                                                        <label data-bind="text: idUsuario.nombre + ' ' + idUsuario.apellido"/></br>
+                                                                                    </a>
+                                                                                    <label data-bind="text:'Tarifa : (Dia) ' + dia + ' - (Hora)' + hora"/>
+                                                                                    <label data-bind="text: 'Año: ' + ano" />
+                                                                                    <label data-bind="text: 'KM: ' + km" />
+                                                                                </div>
+                                                                                <div class="col-md-6 col-sm-12 col-xs-12">
+                                                                                    <label data-bind="text: 'Tipo Vehiculo: ' + nombreTipoVehiculo" />
+                                                                                    <label data-bind="text: 'Combustible: ' + nombreCombustible" />
+                                                                                    <label data-bind="text: 'Transmision: ' + nombreTransmision" />
+                                                                                </div>
+                                                                            </div>                                                                        
+                                                                        </div>                                                           
+                                                                    </div>
+                                                                </article>
+                                                                </script>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
+                                        </div><!--sdfsdf-->
+                                    </div>
+                                </div><!--row-offcanvas-->
+                            </div><!-- Container -->
+                        </div><!-- Content-area -->
+                        <footer>
+                            <div class="footer-menu">
+                                <div class="container">
+                                    <div class="col-md-4 col-sm-4 center-block">
+                                        <h3 class="footer-head">this author blog from crea tivemine</h3>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        <div class="social">
+                                            <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
                                         </div>
                                     </div>
+                                    <div class="col-md-4 col-sm-4 mobile-footer center-block">
+                                        <h4 class="footer-head">recent posts</h3>
+                                            <ul class="ul-left">
+                                                <li><a href="#">Ut enim ad minim veniam</a></li>
+                                                <li><a href="#">Quis nostrud exercitation laboris</a></li>
+                                            </ul>
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 mobile-footer center-block">
+                                        <h4 class="footer-head">article categories</h3>
+                                            <ul class="ul-left">
+                                                <li><a href="#">E-Commerce</a></li>
+                                                <li><a href="#">Facebook</a></li>
+                                                <li><a href="#">Infographics</a></li>
+                                                <li><a href="#">Launch</a></li>
+                                            </ul>
+                                            <ul class="ul-right">
+                                                <li><a href="#">Social</a></li>
+                                                <li><a href="#">Media</a></li>
+                                                <li><a href="#">Testing</a></li>
+                                                <li><a href="#">Twitter</a></li>
+                                            </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        </div><!--row-offcanvas-->
-                    </div><!-- Container -->
-                </div><!-- Content-area -->
-                <footer>
-                    <div class="footer-menu">
-                        <div class="container">
-                            <div class="col-md-4 col-sm-4 center-block">
-                                <h3 class="footer-head">this author blog from crea tivemine</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                <div class="social">
-                                    <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
+                            </div><!-- Footer-menu -->
+                            <div class="footer-nav">
+                                <div class="container">
+                                    <div class="col-md-6 col-sm-5">
+                                        <p>&copy; 2015 Author bloging template</p>
+                                    </div>
+                                    <div class="col-md-6 col-sm-7">
+                                        <ul>
+                                            <li><a href="index.html">home</a></li>
+                                            <li><a href="#">support</a></li>
+                                            <li><a href="#">careers</a></li>
+                                            <li><a href="#">terms use</a></li>
+                                            <li><a href="#">privacy policy</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
+                                <!-- Go TO TOP -->
+                                <div id="toTop" class="btn btn-info" style="display: block;">
+                                    <span class="fa fa-angle-up"></span>
+                                </div><!-- /Go-to-top -->
                             </div>
-                            <div class="col-md-4 col-sm-4 mobile-footer center-block">
-                                <h4 class="footer-head">recent posts</h3>
-                                    <ul class="ul-left">
-                                        <li><a href="#">Ut enim ad minim veniam</a></li>
-                                        <li><a href="#">Quis nostrud exercitation laboris</a></li>
-                                    </ul>
-                            </div>
-                            <div class="col-md-4 col-sm-4 mobile-footer center-block">
-                                <h4 class="footer-head">article categories</h3>
-                                    <ul class="ul-left">
-                                        <li><a href="#">E-Commerce</a></li>
-                                        <li><a href="#">Facebook</a></li>
-                                        <li><a href="#">Infographics</a></li>
-                                        <li><a href="#">Launch</a></li>
-                                    </ul>
-                                    <ul class="ul-right">
-                                        <li><a href="#">Social</a></li>
-                                        <li><a href="#">Media</a></li>
-                                        <li><a href="#">Testing</a></li>
-                                        <li><a href="#">Twitter</a></li>
-                                    </ul>
-                            </div>
-                        </div>
-                    </div><!-- Footer-menu -->
-                    <div class="footer-nav">
-                        <div class="container">
-                            <div class="col-md-6 col-sm-5">
-                                <p>&copy; 2015 Author bloging template</p>
-                            </div>
-                            <div class="col-md-6 col-sm-7">
-                                <ul>
-                                    <li><a href="index.html">home</a></li>
-                                    <li><a href="#">support</a></li>
-                                    <li><a href="#">careers</a></li>
-                                    <li><a href="#">terms use</a></li>
-                                    <li><a href="#">privacy policy</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Go TO TOP -->
-                        <div id="toTop" class="btn btn-info" style="display: block;">
-                            <span class="fa fa-angle-up"></span>
-                        </div><!-- /Go-to-top -->
-                    </div>
-                </footer>
-            </div><!-- /Wrapper -->
-            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-            <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
-            <!-- Include all compiled plugins (below), or include individual files as needed -->
-            <script src="../resources/js/jquery.js" type="text/javascript"></script>
-            <script src="../resources/js/bootstrap.min.js"></script>
-            <script src="../resources/js/custom.js"></script>
-            <script src="../resources/js/knockout.js" type="text/javascript"></script>
-            <script src="../resources/js/app/PublicacionBusqueda.js" type="text/javascript"></script>
-            <script src="../resources/js/moments.js" type="text/javascript"></script>
-            <script src="../resources/js/AllyRenty.js" type="text/javascript"></script>
-        </body>
-    </html>
+                        </footer>
+                    </div><!-- /Wrapper -->
+                    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+                    <!-- Include all compiled plugins (below), or include individual files as needed -->
+                    <script src="../resources/js/jquery.js" type="text/javascript"></script>
+                    <script src="../resources/js/bootstrap.min.js"></script>
+                    <script src="../resources/js/custom.js"></script>
+                    <script src="../resources/js/knockout.js" type="text/javascript"></script>
+                    <script src="../resources/js/app/PublicacionBusqueda.js" type="text/javascript"></script>
+                    <script src="../resources/js/moments.js" type="text/javascript"></script>
+                    <script src="../resources/js/AllyRenty.js" type="text/javascript"></script>
+                </body>
+            </html>
