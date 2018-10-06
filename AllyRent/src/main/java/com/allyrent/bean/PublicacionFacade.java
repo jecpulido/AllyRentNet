@@ -75,7 +75,7 @@ public class PublicacionFacade extends AbstractFacade<Publicacion> {
             }
 
             if (idModelo != 0) {
-                query += " OR (p.idVehiculo IN (SELECT v.idVehiculo FROM Vehiculo v "
+                query += " AND (p.idVehiculo IN (SELECT v.idVehiculo FROM Vehiculo v "
                         + "WHERE v.idModelo.idModelo = :idModelo)) ";
             }
 
@@ -84,11 +84,11 @@ public class PublicacionFacade extends AbstractFacade<Publicacion> {
             }
 
             if (fechaPublicacion != null) {
-                query += " AND p.fechaPublicacion = :fechaPublicacion";
+                query += " AND p.fechaPublicacion >= :fechaPublicacion";
             }
 
             if (fechaInicio != null && fechaFin != null) {
-                query += " OR (p.fechaInicio <= :fechaInicio AND p.fechaFin >= :fechaFin)";
+                query += " AND (p.fechaInicio <= :fechaInicio AND p.fechaFin >= :fechaFin)";
             }
 
             Query q = em.createQuery(query);
@@ -109,12 +109,12 @@ public class PublicacionFacade extends AbstractFacade<Publicacion> {
             }
 
             if (fechaPublicacion != null) {
-                q.setParameter("fechaPublicacion",fechaPublicacion ,TemporalType.DATE);
+                q.setParameter("fechaPublicacion",fechaPublicacion,TemporalType.DATE);
             }
             
             if (fechaInicio != null && fechaFin != null) {
                 q.setParameter("fechaInicio",fechaInicio ,TemporalType.DATE);
-                q.setParameter("fechaFin",fechaInicio,TemporalType.DATE);
+                q.setParameter("fechaFin",fechaFin,TemporalType.DATE);
             }
             
 
