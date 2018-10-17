@@ -15,9 +15,10 @@ if ((sessionStorage.idusuario === undefined) && (sessionStorage.nombre === undef
     } else {
         $("#sVehiculos").text(sessionStorage.vehiculos);
     }
-
+    
 }
 $(document).ready(function () {
+    $("#mostrarmodal").modal("show");
     $("#aProfile").attr('href','http://localhost:8080/AllyRent/Usuario/profile.html?id='+sessionStorage.idusuario);
     $("#ahappy").attr('href','http://localhost:8080/AllyRent/Usuario/profile.html?id='+sessionStorage.idusuario);    
     $("#aInicio").attr("href","http://localhost:8080/AllyRent/home.html");
