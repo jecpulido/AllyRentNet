@@ -178,5 +178,6 @@ function onSignIn(googleUser) {
     sessionStorage.nombre = profile.getName();
     sessionStorage.correo = profile.getEmail();
     sessionStorage.foto = profile.getImageUrl();
+    sessionStorage.isFromRedSocial = true;
     window.location.href = "home.html";
 }
