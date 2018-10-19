@@ -31,17 +31,43 @@ $(document).ready(function () {
     $("#aContratos").attr("href", "http://localhost:8080/AllyRent/home.htmll");
 });
 
-function CompleteRegister(){
+function CompleteRegister() {
     $("#mostrarmodal").modal("show");
     CargarControles();
-    
+
 }
-function CargarControles(){
-        $.get("/AllyRent/api/general/findType/1",
+function CargarControles() {
+    
+    $("#sltTipoDocumento").append("<option>--Seleccione--</option>");
+    $("#sltGenero").append("<option>--Seleccione--</option>");
+    $("#sltRol").append("<option>--Seleccione--</option>");
+    $("#sltDepartamento").append("<option>--Seleccione--</option>");
+    $("#sltCiudad").append("<option>--Seleccione--</option>");
+                    
+                    
+    $.get("/AllyRent/api/general/findType/1",
             function (data) {
                 $.each(data, function (i, contact) {
                     $("#sltTipoDocumento").append(
                             "<option value='" + contact.idDataType + "'>" + contact.nombreDataType + "</option>");
+                });
+            });
+    $.get("/AllyRent/api/general/findType/2",
+            function (data) {
+                $.each(data, function (i, contact) {
+                    $("#sltGenero").append(
+                            "<option value='" + contact.idDataType + "'>" + contact.descripcionDataType + "</option>");
+                });
+            });
+
+    $.get("/AllyRent/api/general/roles",
+            function (data) {
+                $.each(data, function (i, contact) {
+                    if (contact.nombreRol !== "Admin") {
+                        $("#sltRol").append(
+                                "<option value='" + contact.idRol + "'>" + contact.nombreRol + "</option>");
+                    }
+
                 });
             });
 
@@ -58,10 +84,10 @@ function CargarControles(){
         $.get("/AllyRent/api/general/city/" + id,
                 function (data) {
                     $.each(data, function (i, contact) {
-                        $("#ciudad").append(
+                        $("#sltCiudad").append(
                                 "<option value='" + contact.idCiudad + "'>" + contact.nombreCiudad + "</option>");
                     });
                 });
     });
-    
+
 }

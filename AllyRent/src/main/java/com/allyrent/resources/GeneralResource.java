@@ -35,6 +35,9 @@ public class GeneralResource {
     @EJB
     CiudadFacade _Ciudad;
     
+    @EJB
+    RolFacade _Rol;
+    
     @GET
     @Path("/findType/{idParameter}")
     public List<Datatype> GetSearchList(@PathParam("idParameter") int idParameter) {
@@ -105,4 +108,17 @@ public class GeneralResource {
         return null;
     }
 
+    @GET
+    @Path("/roles")
+    public List<Rol> ListRoles() {
+        try {
+            List<Rol> lista = _Rol.findAll();
+            if (lista != null) {
+                return lista;
+            }
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+        }
+        return null;
+    }
 }
