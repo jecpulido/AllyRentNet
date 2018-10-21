@@ -79,6 +79,103 @@
                     </nav>
                 </div><!-- Header-Nav -->
             </header><!--Header-->
+
+            <div class="modal fade" id="mostrarmodal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h3>Completa tu Registro</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row mt">
+                                <div class="col-lg-12">
+                                    <div class="form-panel">
+                                        <div class=" form">
+                                            <form class="cmxform form-horizontal style-form" id="vehicleForm" method="get" action="">
+                                                <div class="form-group ">
+                                                    <label for="txtNombre" class="control-label col-lg-2">Nombre</label>
+                                                    <div class="col-lg-10">
+                                                        <input class="form-control" id="txtNombre" name="txtNombre" type="text" required />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="txtApellido" class="control-label col-lg-2">Apellido</label>
+                                                    <div class="col-lg-10">
+                                                        <input class="form-control" id="txtApellido" name="txtApellido" type="text" required />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="sltTipoDocumento" class="control-label col-lg-2">Tipo de Documento</label>
+                                                    <div class="col-lg-4">
+                                                        <select name="sltTipoDocumento" id="sltTipoDocumento" class="form-control" required>
+                                                        </select>
+                                                    </div>
+                                                    <label for="txtNDocumento" class="control-label col-lg-2">N° de Documento</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="txtNDocumento" name="txtNDocumento" type="text" required />
+                                                    </div>
+                                                </div>
+                                                 <div class="form-group ">
+                                                    <label for="txtTelefono" class="control-label col-lg-2">Telefono</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="txtTelefono" name="txtTelefono" type="text" required />
+                                                    </div>
+                                                    <label for="txtFechaNacimiento" class="control-label col-lg-2">Fecha Nacimiento</label>
+                                                    <div class="col-lg-4">
+                                                        <input class="form-control" id="txtFechaNacimiento" name="txtFechaNacimiento" type="text" required />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="sltDepartamento" class="control-label col-lg-2">Departamento</label>
+                                                    <div class="col-lg-4">
+                                                        <select name="sltDepartamento" id="sltDepartamento" class="form-control" required>
+                                                        </select>
+                                                    </div>
+                                                    <label for="sltCiudad" class="control-label col-lg-2">Ciudad</label>
+                                                    <div class="col-lg-4">
+                                                        <select name="sltCiudad" id="sltCiudad" class="form-control" required>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <label for="sltGenero" class="control-label col-lg-2">Genero</label>
+                                                    <div class="col-lg-4">
+                                                        <select name="sltGenero" id="sltGenero" class="form-control" required>
+                                                        </select>
+                                                    </div>
+                                                    <label for="sltRol" class="control-label col-lg-2">Rol</label>
+                                                    <div class="col-lg-4">
+                                                        <select name="sltRol" id="sltRol" class="form-control" required>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="file" class="control-label col-lg-2">Imagen</label>
+                                                    <div class="col-lg-10">
+                                                        <input id="subirImagen" name="subirImagen" type="file" class="form-control"/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label col-lg-2"></label>
+                                                    <div class="col-lg-10">
+                                                        <div id="imagenes" class="div-img"></div>
+                                                    </div>                                                            
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-lg-offset-2 col-lg-10">
+                                                        <button type="submit" class="btn btn-success right" >Actualizar registro</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div><!-- /form-panel -->
+                                </div>
+                            </div><!-- /col-lg-12 -->
+                        </div>                        
+                    </div>
+                </div>
+            </div>
             <!--========================== Contant-Area================================-->
             <div class="contant-area">
                 <div class="container">
