@@ -38,10 +38,41 @@ var UsuarioViewModel = function () {
                 });
             },
             self.UpdateUser = function () {
+                var url = '/AllyRent/api/usuarios/update/' + self.idUsuario();
 
+                var obj = {
+                    apellido: self.apellido(),
+                    dni: self.dni(),
+                    fechaNacimiento: self.fechaNacimiento(),
+                    idCiudad: self.idCiudad(),
+                    idRol: self.idRol(),
+                    idSexo: self.idSexo(),
+                    idTipoDocumento: self.idTipoDocumento(),
+                    nombre: self.nombre(),
+                    telefono: self.telefono(),
+                    idLogin: {
+                        correo: self.correo()
+                    }
+                };
+                $.ajax({
+                    url: url,
+                    type: 'PUT',
+                    data: ko.toJSON(obj),
+                    contentType: "application/json;chartset=utf-8",
+                    statusCode: {
+                        200: function (data) {
+                            alert('Datos Actualizados');
+                            self.loadUser(data.idUsuario);
+                        },
+                        204: function () {
+                            alert('Error');
+                        }
+                    }
+                });
             },
             self.loadUser = function (id) {
                 $.getJSON('/AllyRent/api/usuarios/' + id, function (data) {
+                    console.log(data);
                     self.nombre(data.nombre);
                     self.apellido(data.apellido);
                     self.idTipoDocumento(data.idTipoDocumento);
@@ -52,6 +83,7 @@ var UsuarioViewModel = function () {
                     self.idRol(data.idRol);
                     self.idDpto(data.idCiudad);
                     self.idCiudad(data.idCiudad);
+                    self.correo(data.idLogin.correo);
                 });
             };
 
@@ -61,12 +93,10 @@ var UsuarioViewModel = function () {
 $(document).ready(function () {
     var uservm = new UsuarioViewModel();
     ko.applyBindings(uservm);
-    console.log(sessionStorage.idusuario);
-    console.log(getParameterByName("id"));
+
     if (sessionStorage.idusuario.toString() != getParameterByName("id").toString()) {
         window.location.href = "http://localhost:8080/AllyRent/home.html";
     }
-    ;
     self.idUsuario(sessionStorage.idusuario);
     self.loadUser(getParameterByName("id"));
     self.getAll();

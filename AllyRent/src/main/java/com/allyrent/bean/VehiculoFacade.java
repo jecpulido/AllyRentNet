@@ -49,7 +49,7 @@ public class VehiculoFacade extends AbstractFacade<Vehiculo> {
     public List<Vehiculo> busquedaAvanzada(String nombreUsuario, String correoElectronico,
             String placa,int ano,int idModelo) {
         try {                
-            String query = "SELECT v FROM Vehiculo v WHERE 1=1 ";
+             String query = "SELECT v FROM Vehiculo v WHERE 1=1 ";
                     
             if (nombreUsuario != null) {
                 query += " AND UPPER(CONCAT(v.idUsuario.nombre,' ',v.idUsuario.apellido)) LIKE UPPER(:nombreUsuario)";

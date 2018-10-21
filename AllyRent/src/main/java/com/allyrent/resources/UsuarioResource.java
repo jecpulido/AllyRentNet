@@ -163,28 +163,28 @@ public class UsuarioResource {
                     }
                     if (!usuario.getApellido().equals(user.getApellido())) {
                         usuario.setApellido(user.getApellido());
-                    }                    
+                    }
                     if (!usuario.getTelefono().equals(user.getTelefono())) {
                         usuario.setTelefono(user.getTelefono());
-                    }                                        
+                    }
                     if (!usuario.getDni().equals(user.getDni())) {
                         usuario.setDni(user.getDni());
-                    }                                      
+                    }
                     if (!usuario.getFechaNacimiento().equals(user.getFechaNacimiento())) {
                         usuario.setFechaNacimiento(user.getFechaNacimiento());
-                    }                   
+                    }
                     if (!usuario.getIdCiudad().getIdCiudad().equals(user.getIdCiudad())) {
                         usuario.setIdCiudad(new Ciudad(user.getIdCiudad()));
-                    }                                      
+                    }
                     if (!usuario.getIdRol().getIdRol().equals(user.getIdRol())) {
                         usuario.setIdRol(new Rol(user.getIdRol()));
-                    }                   
+                    }
                     if (!usuario.getIdSexo().getIdDataType().equals(user.getIdSexo())) {
                         usuario.setIdSexo(new Datatype(user.getIdSexo()));
-                    }                   
+                    }
                     if (!usuario.getIdTipoDocumento().getIdDataType().equals(user.getIdTipoDocumento())) {
                         usuario.setIdTipoDocumento(new Datatype(user.getIdTipoDocumento()));
-                    }                    
+                    }
                     //byte[] foto = ImageToArray.convertStringToImageByteArray(user.getRutaFoto());
                     //usuario.setRutaFoto(foto);
                     _user.edit(usuario);
@@ -200,9 +200,7 @@ public class UsuarioResource {
             }
 
         } catch (Exception e) {
-            if (usuario.getIdUsuario() == null) {
-                return null;
-            }
+            return null;
         }
         return null;
     }
