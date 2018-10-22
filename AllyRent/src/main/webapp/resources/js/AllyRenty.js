@@ -37,14 +37,17 @@ function CompleteRegister() {
 
 }
 function CargarControles() {
-    
-    $("#sltTipoDocumento").append("<option>--Seleccione--</option>");
-    $("#sltGenero").append("<option>--Seleccione--</option>");
-    $("#sltRol").append("<option>--Seleccione--</option>");
-    $("#sltDepartamento").append("<option>--Seleccione--</option>");
-    $("#sltCiudad").append("<option>--Seleccione--</option>");
-                    
-                    
+
+    $("#sltTipoDocumento").append("<option value='-1'>--Seleccione--</option>");
+    $("#sltGenero").append("<option value='-1'>--Seleccione--</option>");
+    $("#sltRol").append("<option value='-1'>--Seleccione--</option>");
+    $("#sltDepartamento").append("<option value='-1'>--Seleccione--</option>");
+    $("#sltCiudad").append("<option value='-1'>--Seleccione--</option>");
+    $('#txtFechaNacimiento').datetimepicker({format: "dd.mm.yyyy"}); 
+
+    $("#btnRegister").click(GuardarUsuario());
+
+
     $.get("/AllyRent/api/general/findType/1",
             function (data) {
                 $.each(data, function (i, contact) {
@@ -79,7 +82,7 @@ function CargarControles() {
                 });
             });
 
-    $('#departamento').change(function () {
+    $('#sltDepartamento').change(function () {
         var id = $(this).val();
         $.get("/AllyRent/api/general/city/" + id,
                 function (data) {
@@ -89,5 +92,10 @@ function CargarControles() {
                     });
                 });
     });
+
+}
+
+function GuardarUsuario() {
+
 
 }

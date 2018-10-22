@@ -14,7 +14,9 @@
         <link rel="stylesheet" type="text/css" href="resources/css/offcanvas.css"/>
         <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
         <link rel="stylesheet" type="text/css" href="resources/css/network.css"/>
-
+        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/datepicker.css" rel="stylesheet" type="text/css"/>
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -92,11 +94,11 @@
                                 <div class="col-lg-12">
                                     <div class="form-panel">
                                         <div class=" form">
-                                            <form class="cmxform form-horizontal style-form" id="vehicleForm" method="get" action="">
+                                            <form class="cmxform form-horizontal style-form" id="RegisterForm" method="get" action="">
                                                 <div class="form-group ">
                                                     <label for="txtNombre" class="control-label col-lg-2">Nombre</label>
                                                     <div class="col-lg-10">
-                                                        <input class="form-control" id="txtNombre" name="txtNombre" type="text" required />
+                                                        <input class="form-control" id="txtNombre" name="txtNombre" type="text" required/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
@@ -116,14 +118,14 @@
                                                         <input class="form-control" id="txtNDocumento" name="txtNDocumento" type="text" required />
                                                     </div>
                                                 </div>
-                                                 <div class="form-group ">
+                                                <div class="form-group ">
                                                     <label for="txtTelefono" class="control-label col-lg-2">Telefono</label>
                                                     <div class="col-lg-4">
                                                         <input class="form-control" id="txtTelefono" name="txtTelefono" type="text" required />
                                                     </div>
                                                     <label for="txtFechaNacimiento" class="control-label col-lg-2">Fecha Nacimiento</label>
                                                     <div class="col-lg-4">
-                                                        <input class="form-control" id="txtFechaNacimiento" name="txtFechaNacimiento" type="text" required />
+                                                        <input type='text' class="form-control" id="txtFechaNacimiento" name="txtFechaNacimiento" required/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
@@ -164,7 +166,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-lg-offset-2 col-lg-10">
-                                                        <button type="submit" class="btn btn-success right" >Actualizar registro</button>
+                                                        <button type="submit" id="btnRegister" class="btn btn-success right" >Actualizar registro</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -386,6 +388,7 @@
                 <script src="resources/js/jquery.js" type="text/javascript"></script>
                 <script src="resources/js/bootstrap.min.js"></script>
                 <script src="resources/js/custom.js"></script>
+                <script src="resources/js/datepicker.js" type="text/javascript"></script>
                 <script src="resources/js/knockout.js" type="text/javascript"></script>
                 <script src="resources/js/app/Homeko.js" type="text/javascript"></script>
                 <script src="resources/js/moments.js" type="text/javascript"></script>
