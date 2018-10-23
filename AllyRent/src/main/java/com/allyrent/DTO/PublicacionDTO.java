@@ -6,7 +6,12 @@
 package com.allyrent.DTO;
 
 import com.allyrent.entidades.Publicacion;
+import com.allyrent.entidades.Reaccion;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -29,7 +34,14 @@ public class PublicacionDTO {
     private VehiculoDTO vehiculo;
 
     private int idTipoPublicacion;
+
     private String nombreTipoPublicacion;
+
+    private int like;
+
+    private int disLike;
+
+    private String reaccion;
 
     public PublicacionDTO() {
     }
@@ -47,9 +59,31 @@ public class PublicacionDTO {
             this.idTipoPublicacion = entity.getIdTipoPublicacion().getIdDataType();
             this.nombreTipoPublicacion = entity.getIdTipoPublicacion().getNombreDataType();
         }
-        if (entity.getIdVehiculo()!=null){
+        if (entity.getIdVehiculo() != null) {
             this.vehiculo = new VehiculoDTO();
             this.vehiculo.setIdVehiculo(entity.getIdVehiculo());
+        }
+        if (entity.getReaccionCollection().size() > 0) {
+            List<Reaccion> reacciones = new ArrayList<>();
+            reacciones.addAll(entity.getReaccionCollection());
+
+            List<Reaccion> likes = reacciones.stream().filter(r -> r.getBandera() == 1).collect(Collectors.toList());
+            if (likes != null) {
+                this.like = likes.size();
+            }
+
+            List<Reaccion> dislikes = reacciones.stream().filter(r -> r.getBandera() == 0).collect(Collectors.toList());
+            if (dislikes != null) {
+                this.disLike = dislikes.size();
+            }
+
+            List<Reaccion> me = reacciones.stream().filter(r
+                    -> Objects.equals(r.getIdUsuario().getIdUsuario(), this.usuario.getIdUsuario()))
+                    .collect(Collectors.toList());
+            if (me != null && me.size() > 0) {
+                this.reaccion = me.get(0).getBandera() == 1 ? "like" : "dislike";
+            }
+
         }
     }
 
@@ -124,7 +158,30 @@ public class PublicacionDTO {
     public void setNombreTipoPublicacion(String nombreTipoPublicacion) {
         this.nombreTipoPublicacion = nombreTipoPublicacion;
     }
-    
-    
 
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
+    }
+
+    public int getDisLike() {
+        return disLike;
+    }
+
+    public void setDisLike(int disLike) {
+        this.disLike = disLike;
+    }
+
+    public String getReaccion() {
+        return reaccion;
+    }
+
+    public void setReaccion(String reaccion) {
+        this.reaccion = reaccion;
+    }
+
+    
 }

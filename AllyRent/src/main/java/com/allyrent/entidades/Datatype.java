@@ -195,5 +195,5 @@ public class Datatype implements Serializable {
     public String toString() {
         return "com.allyrent.entidades.Datatype[ idDataType=" + idDataType + " ]";
     }
-    
+ 
 }

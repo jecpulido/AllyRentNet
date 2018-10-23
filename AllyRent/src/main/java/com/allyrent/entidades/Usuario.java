@@ -54,6 +54,8 @@ public class Usuario implements Serializable {
     @Lob
     @Column(name = "rutaFoto")
     private byte[] rutaFoto;
+    @OneToMany(mappedBy = "idUsuario")
+    private Collection<Reaccion> reaccionCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -363,6 +365,16 @@ public class Usuario implements Serializable {
     @Override
     public String toString() {
         return "com.allyrent.entidades.Usuario[ idUsuario=" + idUsuario + " ]";
+    }
+
+
+    @XmlTransient
+    public Collection<Reaccion> getReaccionCollection() {
+        return reaccionCollection;
+    }
+
+    public void setReaccionCollection(Collection<Reaccion> reaccionCollection) {
+        this.reaccionCollection = reaccionCollection;
     }
 
     public byte[] getRutaFoto() {

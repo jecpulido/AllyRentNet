@@ -51,7 +51,7 @@ var HomeViewModel = function () {
                         }
                     }
                 });
-            },          
+            },
             self.createPublicacion = function () {
                 var url = '/AllyRent/api/publicaciones/create';
                 $.ajax({
@@ -140,16 +140,47 @@ var HomeViewModel = function () {
                 var coincidencias = [];
                 $.getJSON('/AllyRent/api/publicaciones/' + self.idUsuario(), function (data) {
                     $.each(data, function (i, item) {
-                        var nombre = item.usuario.nombre +" " + item.usuario.apellido;
+                        var nombre = item.usuario.nombre + " " + item.usuario.apellido;
                         nombre = nombre.toLowerCase();
                         var buscar = self.txtBuscar().toLowerCase();
-                        if (nombre.indexOf(buscar) != -1){
+                        if (nombre.indexOf(buscar) != -1) {
                             coincidencias.push(item);
                         }
-                    });      
+                    });
                     self.publicacionesList(coincidencias);
                 });
 
+
+            },
+            self.likeDislike = function (idPublicacion,bandera) {
+                var url = '/AllyRent/api/publicaciones/LikeDislike';
+                var reaccion = {
+                    "idPublicacion": {
+                        "idPublicacion": idPublicacion
+                    },
+                    "idUsuario": {
+                        "idUsuario": self.idUsuario()
+                    },
+                    "bandera": bandera
+                };
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: ko.toJSON(reaccion),
+                    contentType: "application/json;chartset=utf-8",
+                    statusCode: {
+                        200: function (data) {
+                            if (data.responseText === "OK") {
+                                alert('OK');
+                                self.getAllPost();
+                            }
+                        },
+                        204: function () {
+                            alert('Error');
+                        }
+                    }
+                });
 
             };
 

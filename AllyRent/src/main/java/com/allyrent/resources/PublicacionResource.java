@@ -9,14 +9,18 @@ import com.allyrent.DTO.BusquedaDTO;
 import com.allyrent.DTO.PublicacionDTO;
 import com.allyrent.DTO.VehiculoDTO;
 import com.allyrent.bean.PublicacionFacade;
+import com.allyrent.bean.ReaccionFacade;
 import com.allyrent.bean.UsuarioFacade;
 import com.allyrent.bean.VehiculoFacade;
 import com.allyrent.entidades.Publicacion;
+import com.allyrent.entidades.Reaccion;
 import com.allyrent.entidades.Usuario;
 import com.allyrent.entidades.Vehiculo;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -40,9 +44,12 @@ public class PublicacionResource {
 
     @EJB
     VehiculoFacade _vehiculoFacade;
-    
+
     @EJB
     UsuarioFacade _usuarioFacade;
+
+    @EJB
+    ReaccionFacade _reaccionFacade;
 
     /**
      * crear una publicacion
@@ -120,6 +127,26 @@ public class PublicacionResource {
                         p.setVehiculo(new VehiculoDTO(_vehiculoFacade.find(pub.getIdVehiculo())));
                         p.getVehiculo().setIdUsuario(null);
                     }
+                    List<Reaccion> reacciones = _reaccionFacade.FindReaccionByPublicacion(p.getIdPublicacion());
+                    if (reacciones != null) {
+                        List<Reaccion> likes = reacciones.stream().filter(r -> r.getBandera() == 1).collect(Collectors.toList());
+                        if (likes != null) {
+                            p.setLike(likes.size());
+                        }
+
+                        List<Reaccion> dislikes = reacciones.stream().filter(r -> r.getBandera() == 0).collect(Collectors.toList());
+                        if (dislikes != null) {
+                            p.setLike(dislikes.size());                            
+                        }
+
+                        List<Reaccion> me = reacciones.stream().filter(r
+                                -> Objects.equals(r.getIdUsuario().getIdUsuario(), id))
+                                .collect(Collectors.toList());
+                        if (me != null && me.size() > 0) {
+                            String re = me.get(0).getBandera() == 1 ? "like" : "dislike";
+                            p.setReaccion(re);
+                        }
+                    }
                     publicacionesDTO.add(p);
                 }
             }
@@ -153,19 +180,19 @@ public class PublicacionResource {
             List<Publicacion> publicaciones = null;
             List<Vehiculo> vehiculos = null;
             List<Usuario> usuarios = null;
-            BusquedaDTO response;          
-           
-            publicaciones = _publicacionFacade.busquedaAvanzada(busqueda.getNombreUsuario(),busqueda.getCorreoElectronico(),
+            BusquedaDTO response;
+
+            publicaciones = _publicacionFacade.busquedaAvanzada(busqueda.getNombreUsuario(), busqueda.getCorreoElectronico(),
                     busqueda.getIdCiudad(), busqueda.getIdModelo(), busqueda.getIdTPublicacion(),
                     busqueda.getFechaPublicacion(), busqueda.getFechaInicio(), busqueda.getFechaFin());
-            
-            vehiculos = _vehiculoFacade.busquedaAvanzada(busqueda.getNombreUsuario(), 
-                    busqueda.getCorreoElectronico(),busqueda.getPlaca(), busqueda.getAño(), 
+
+            vehiculos = _vehiculoFacade.busquedaAvanzada(busqueda.getNombreUsuario(),
+                    busqueda.getCorreoElectronico(), busqueda.getPlaca(), busqueda.getAño(),
                     busqueda.getIdModelo());
-            
-            usuarios = _usuarioFacade.busquedaAvanzada(busqueda.getNombreUsuario(), 
+
+            usuarios = _usuarioFacade.busquedaAvanzada(busqueda.getNombreUsuario(),
                     busqueda.getCorreoElectronico(), busqueda.getIdCiudad());
-            
+
             response = new BusquedaDTO(publicaciones, usuarios, vehiculos);
 
             if (response.getPublicacion().size() > 0) {
@@ -180,6 +207,34 @@ public class PublicacionResource {
             return response;
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    @POST
+    @Path("/LikeDislike")
+    public String LikeDislike(Reaccion reaccion) {
+        String respuesta;
+        try {
+            if (reaccion != null) {
+                Reaccion rea = _reaccionFacade.ValidateReaccion(reaccion.getIdPublicacion()
+                        .getIdPublicacion(), reaccion.getIdUsuario().getIdUsuario());
+
+                if (rea != null) {
+                    if (Objects.equals(rea.getBandera(), reaccion.getBandera())) {
+                        _reaccionFacade.remove(rea);//Eliminar
+                    } else {
+                        rea.setBandera(reaccion.getBandera());
+                        rea.setFechaReaccion(new Date());
+                        _reaccionFacade.edit(rea);//Actualizar
+                    }
+                } else {
+                    reaccion.setFechaReaccion(new Date());
+                    _reaccionFacade.create(reaccion);//Crear
+                }
+            }
+            return "OK";
+        } catch (Exception e) {
+            return e.getMessage();
         }
     }
 }
