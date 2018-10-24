@@ -14,7 +14,6 @@ var PublicacionViewModel = function () {
     self.tipoPublicacionList = ko.observableArray();// array y tambien obserbable
     self.solicitudesList = ko.observableArray();
 
-
     self.getAll = function () {
         $.getJSON('/AllyRent/api/vehiculos/' + self.idUsuario(), function (data) {
             self.vehiculoList(data);
@@ -76,7 +75,7 @@ var PublicacionViewModel = function () {
                 };
                 return publicacion;
             },
-            self.updateState = function (dataU,fechaSolicitud,idSolicitud) {
+            self.updateState = function (dataU, fechaSolicitud, idSolicitud) {
                 var url = '/AllyRent/api/solicitudes/updateState';
                 var solicitud = {
                     "estado": 0,
@@ -116,8 +115,40 @@ $(document).ready(function () {
     publiacionvm.idUsuario(sessionStorage.idusuario);
     publiacionvm.getAll();
     publiacionvm.getSolicitudesList();
+    ValidateRol();
+    ObtenerUbicacion();
 });
 
+function ValidateRol() {
 
+    if (sessionStorage.rol == "Ocupante") {
+        $("#divVehiculo").hide();
+    } else {
+        $("#divVehiculo").show();
+    }
+}
 
+function ObtenerUbicacion() {
+    if (navigator.geolocation) {
+        $("#msgError").hide();
+        navigator.geolocation.getCurrentPosition(localizacion, error);
+    } else {
+        $("#divUbicacion").hide();
+        $("#msgError").show();
+        $("#msgError").text("Navegador NO soporta Geolocalizacion")
+    }
+
+    function localizacion(posicion) {
+        var latitud = posicion.coords.latitude;
+        var longitud = posicion.coords.longitude;
+        $("#msgError").hide();
+        $("#divUbicacion").show();
+        $("#lblUbicacion").text(latitud + "," + longitud);
+    }
+    function error() {
+        $("#msgError").show();
+        $("#divUbicacion").hide();
+        $("#msgError").text("No se pudo obtener ubicacion");
+    }
+}
 

@@ -119,6 +119,7 @@ $(document).ready(function () {
         sessionStorage.ciudad = data.nombreCiudad;
         sessionStorage.publicaciones = data.numeroPublicaciones;
         sessionStorage.vehiculos = data.numeroVehiculos;
+        sessionStorage.idRol = data.idRol;
 
     }
 

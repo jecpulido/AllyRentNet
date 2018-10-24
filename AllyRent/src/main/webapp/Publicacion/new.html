@@ -25,6 +25,7 @@
         <div class="wrapper">
             <header>
                 <!--========================== Header-Top ================================-->
+                              <!--========================== Header-Top ================================-->
                 <div class="header-top">
                     <div class="container">
                         <div class="col-md-9 col-sm-7 xs-view">
@@ -162,6 +163,8 @@
                             <div class="main-content">
                                 <article>
                                     <h4 class="page-title">NUEVA PUBLICACION <a href="javascript:history.back()" class="btn btn-default right">Volver</a></h4>
+                                    <div id="msgError" class="alert alert-danger">
+                                    </div>
                                     <div class="post-content no-border contact">
                                         <p>Realiza la publicacion aqui.</p>
                                     </div>
@@ -170,6 +173,12 @@
                                             <div class="form-panel">
                                                 <div class=" form">
                                                     <form class="cmxform form-horizontal style-form" id="vehicleForm" method="get" action="">
+                                                        <div id="divUbicacion" class="form-group">
+                                                            <label for="lblUbicacion" class="control-label col-lg-2">Ubicacion</label>
+                                                            <div class="col-lg-10">
+                                                                <label id="lblUbicacion" class="form-control"></label>
+                                                            </div>
+                                                        </div>
                                                         <div class="form-group ">
                                                             <label for="sltTipoPublicacion" class="control-label col-lg-2">Tipo Publicacion</label>
                                                             <div class="col-lg-10">
@@ -177,7 +186,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="form-group ">
+                                                        <div class="form-group " id="divVehiculo">
                                                             <label for="sltVehiculo" class="control-label col-lg-2">Vehiculo</label>
                                                             <div class="col-lg-10">
                                                                 <select name="sltVehiculo" id="sltVehiculo" class="form-control" data-bind="value: idVehiculo,options: vehiculoList,optionsText: 'placa',optionsValue: 'idVehiculo',optionsCaption: '--Seleccionar--'" required>
