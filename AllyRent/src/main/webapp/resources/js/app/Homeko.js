@@ -16,8 +16,18 @@ var HomeViewModel = function () {
 
 
     self.getAllPost = function () {
+        var dat = [];
         $.getJSON('/AllyRent/api/publicaciones/' + self.idUsuario(), function (data) {
-            self.publicacionesList(data);
+            $.each(data,function (index, element) {
+                if (typeof(element.reaccion) != 'undefined'){
+                    dat.push(element);
+                }else{
+                    element.reaccion = '';
+                    dat.push(element);
+                }               
+            });
+            console.log(dat);
+            self.publicacionesList(dat);
         });
 
     },
@@ -152,7 +162,7 @@ var HomeViewModel = function () {
 
 
             },
-            self.likeDislike = function (idPublicacion,bandera) {
+            self.likeDislike = function (idPublicacion, bandera) {
                 var url = '/AllyRent/api/publicaciones/LikeDislike';
                 var reaccion = {
                     "idPublicacion": {
@@ -172,7 +182,6 @@ var HomeViewModel = function () {
                     statusCode: {
                         200: function (data) {
                             if (data.responseText === "OK") {
-                                alert('OK');
                                 self.getAllPost();
                             }
                         },

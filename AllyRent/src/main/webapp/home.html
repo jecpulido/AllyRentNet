@@ -276,8 +276,8 @@
                                     <p><span data-bind="text: publicacion"></p>
                                     <div class="post-content">
                                         <div class="post-meta">
-                                            <span><a href="#" data-bind=" click: $parent.likeDislike.bind($data, idPublicacion,1)" ><i class="fa fa-thumbs-up post-meta-icon"></i> <label data-bind="text: like" /> </a></span>
-                                            <span><a href="#" data-bind=" click: $parent.likeDislike.bind($data, idPublicacion,0)"><i class="fa fa-thumbs-down post-meta-icon"></i> <label data-bind="text: disLike" /></a></span>
+                                            <span><a href="#" data-bind=" click: $parent.likeDislike.bind($data, idPublicacion,1)" ><i class="fa fa-thumbs-up post-meta-icon" data-bind="css: reaccion == 'like' ? 'post-press' :'' " ></i> <label data-bind="text: like" /> </a></span>
+                                            <span><a href="#" data-bind=" click: $parent.likeDislike.bind($data, idPublicacion,0)"><i class="fa fa-thumbs-down post-meta-icon" data-bind="css: reaccion == 'dislike' ? 'post-press' : '' " ></i> <label data-bind="text: disLike" /></a></span>
                                             <span><a href="#"><i class="fa fa-comments post-meta-icon"></i> 0 </a></span>
                                             <span><i class="fa fa-calendar-check-o post-meta-icon"></i><span data-bind="text: moment(fechaPublicacion).format('lll')" /></span>
                                         </div>

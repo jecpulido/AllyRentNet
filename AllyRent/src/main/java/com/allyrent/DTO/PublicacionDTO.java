@@ -63,28 +63,6 @@ public class PublicacionDTO {
             this.vehiculo = new VehiculoDTO();
             this.vehiculo.setIdVehiculo(entity.getIdVehiculo());
         }
-        if (entity.getReaccionCollection().size() > 0) {
-            List<Reaccion> reacciones = new ArrayList<>();
-            reacciones.addAll(entity.getReaccionCollection());
-
-            List<Reaccion> likes = reacciones.stream().filter(r -> r.getBandera() == 1).collect(Collectors.toList());
-            if (likes != null) {
-                this.like = likes.size();
-            }
-
-            List<Reaccion> dislikes = reacciones.stream().filter(r -> r.getBandera() == 0).collect(Collectors.toList());
-            if (dislikes != null) {
-                this.disLike = dislikes.size();
-            }
-
-            List<Reaccion> me = reacciones.stream().filter(r
-                    -> Objects.equals(r.getIdUsuario().getIdUsuario(), this.usuario.getIdUsuario()))
-                    .collect(Collectors.toList());
-            if (me != null && me.size() > 0) {
-                this.reaccion = me.get(0).getBandera() == 1 ? "like" : "dislike";
-            }
-
-        }
     }
 
     public Integer getIdPublicacion() {

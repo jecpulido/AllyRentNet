@@ -96,6 +96,26 @@ public class PublicacionResource {
                         p.setVehiculo(new VehiculoDTO(_vehiculoFacade.find(pub.getIdVehiculo())));
                         p.getVehiculo().setIdUsuario(null);
                     }
+                    List<Reaccion> reacciones = _reaccionFacade.FindReaccionByPublicacion(p.getIdPublicacion());
+                    if (reacciones != null) {
+                        List<Reaccion> likes = reacciones.stream().filter(r -> r.getBandera() == 1).collect(Collectors.toList());
+                        if (likes != null) {
+                            p.setLike(likes.size());
+                        }
+
+                        List<Reaccion> dislikes = reacciones.stream().filter(r -> r.getBandera() == 0).collect(Collectors.toList());
+                        if (dislikes != null) {
+                            p.setDisLike(dislikes.size());                            
+                        }
+
+                        List<Reaccion> me = reacciones.stream().filter(r
+                                -> Objects.equals(r.getIdUsuario().getIdUsuario(), id))
+                                .collect(Collectors.toList());
+                        if (me != null && me.size() > 0) {
+                            String re = me.get(0).getBandera() == 1 ? "like" : "dislike";
+                            p.setReaccion(re);
+                        }
+                    }
                     publicacionesDTO.add(p);
                 }
             }
