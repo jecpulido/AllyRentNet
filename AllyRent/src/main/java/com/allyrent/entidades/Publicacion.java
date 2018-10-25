@@ -78,7 +78,10 @@ public class Publicacion implements Serializable {
     @NotNull
     @Column(name = "fechaPublicacion")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaPublicacion;
+    private Date fechaPublicacion;    
+    @Size(max = 100)
+    @Column(name = "ubicacion")
+    private String ubicacion;
     @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
     @ManyToOne(optional = false)
     private Usuario idUsuario;
@@ -208,6 +211,14 @@ public class Publicacion implements Serializable {
 
     public void setReaccionCollection(Collection<Reaccion> reaccionCollection) {
         this.reaccionCollection = reaccionCollection;
+    }
+
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
     
 }

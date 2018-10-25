@@ -42,6 +42,8 @@ public class PublicacionDTO {
     private int disLike;
 
     private String reaccion;
+    
+    private String ubicacion;
 
     public PublicacionDTO() {
     }
@@ -52,6 +54,7 @@ public class PublicacionDTO {
         this.fechaInicio = entity.getFechaInicio();
         this.fechaFin = entity.getFechaFin();
         this.fechaPublicacion = entity.getFechaPublicacion();
+        this.ubicacion = entity.getUbicacion();
         if (entity.getIdUsuario() != null) {
             this.usuario = new UsuarioDTO(entity.getIdUsuario());
         }
@@ -161,5 +164,14 @@ public class PublicacionDTO {
         this.reaccion = reaccion;
     }
 
+    public String getUbicacion() {
+        return ubicacion;
+    }
+
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+    
+    
     
 }

@@ -8,6 +8,7 @@ var PublicacionViewModel = function () {
     self.fechaInicio = ko.observable();
     self.fechaFin = ko.observable();
     self.idVehiculo = ko.observable();
+    self.ubicacion = ko.observable();
 
     //Listas
     self.vehiculoList = ko.observableArray();// array y tambien obserbable
@@ -29,7 +30,7 @@ var PublicacionViewModel = function () {
                     url: url,
                     type: 'POST',
                     data: ko.toJSON(self.getObjectPublicacion()),
-                    contentType: "application/json;chartset=utf-8",
+                    contentType: "application/json;chartset=utf-8", 
                     statusCode: {
                         200: function (data) {
                             if (data.responseText === "OK") {
@@ -71,7 +72,8 @@ var PublicacionViewModel = function () {
                         "idUsuario": self.idUsuario()
                     },
                     "idVehiculo": self.idVehiculo(),
-                    "publicacion": self.publicacion()
+                    "publicacion": self.publicacion(),
+                    "ubicacion": self.ubicacion()
                 };
                 return publicacion;
             },
@@ -143,7 +145,7 @@ function ObtenerUbicacion() {
         var longitud = posicion.coords.longitude;
         $("#msgError").hide();
         $("#divUbicacion").show();
-        $("#lblUbicacion").text(latitud + "," + longitud);
+        $("#lblUbicacion").val(latitud + "," + longitud).change();
     }
     function error() {
         $("#msgError").show();
