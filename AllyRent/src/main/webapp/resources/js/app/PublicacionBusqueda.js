@@ -141,20 +141,32 @@ var PublicacionHomeViewModel = function () {
                     contentType: "application/json;chartset=utf-8",
                     statusCode: {
                         200: function (data) {
-                            console.log(data.publicacion);
-                            console.log(data.usuario);
-                            console.log(data.vehiculo);
+//                            console.log(data.publicacion);
+//                            console.log(data.usuario);
+//                            console.log(data.vehiculo);
 
                             self.publicacionesList(data.publicacion);
                             self.usuariosList(data.usuario);
                             self.vehiculosList(data.vehiculo);
-                            inicializar();
+                            if (sessionStorage.rol = 'Ocupante') {
+                                self.getPostWithLocation(data.publicacion);
+                            }
                         },
                         204: function () {
                             alert('Error');
                         }
                     }
                 });
+            },
+            self.getPostWithLocation = function (post) {
+                var posts = [];
+                $.each(post, function (index, element) {
+                    if (typeof (element.ubicacion) != 'undefined') {
+                        posts.push(element);
+                    }
+                });
+
+                inicializar(posts);
             };
 
 };
@@ -165,35 +177,75 @@ $(document).ready(function () {
     postvm.getAll();
 });
 
-function inicializar() {
+function inicializar(posts) {
     const ubicacion = new Localizacion(() => {
-        const texto = "<h1>Lugar</h1>" + "<p>Descripcion</p>" + "<a href='#'>link</a>";
-
+        const style = "margin: auto;"
+                +"width: 150px !important;"
+                + "height: 150px!important;"
+                + "border-radius: 50%!important;"
+                + "border: 2px solid #1b1c24;";
+        //Descripcion
+        const texto = "<h1>Mi ubicacion</h1>" + "<p>Yo estoy en esta ubicacion</p>";
+        //Mi ubicacion
         const mylatlng = {
             lat: ubicacion.latitude,
             lng: ubicacion.longitude
-        }
+        };
+        //Opciones del mapa
         const options = {
             center: mylatlng,
-            zoom: 10
+            zoom: 13
         };
-
+        //Mapa
         var map = document.getElementById("map");
-
+        //Crear mapa
         const maps = new google.maps.Map(map, options);
-
+        //Marcador
         const marcador = new google.maps.Marker({
             position: mylatlng,
             map: maps,
             title: "Mi primer marcador"
         });
-
+        //Informacion del marcador
         const informacion = new google.maps.InfoWindow({
             content: texto
         });
+        //Escucha el marcador
         marcador.addListener('click', function () {
             informacion.open(maps, marcador);
         });
+
+        $.each(posts, function (index, element) {
+            console.log(element.vehiculo);
+            var posicionV = {
+                lat: Number(element.ubicacion.split(",")[0]),
+                lng: Number(element.ubicacion.split(",")[1])
+            };
+            var mark = new google.maps.Marker({
+                position: posicionV,
+                map: maps,
+                title: "Mi primer vehiculo",
+                icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+            });
+            var text = "<div style='text-align: center'>"
+                    + "<h1>" + element.vehiculo.nombreModelo + "</h1>"
+                    + "<img class='img-responsive' style='" + style + "' src='" + element.vehiculo.primerFoto + "'/>"
+                    + "<strong></br><p>Placa: " + element.vehiculo.placa
+                    + "</br>Hora: $" + element.vehiculo.hora
+                    + "</br>Dia: $" + element.vehiculo.dia + "</p></strong>"
+                    + "<a href=''>Ver mas</a>"
+                    + "</div>";
+            var info = new google.maps.InfoWindow({
+                content: text
+            });
+            //Escucha el marcador
+            mark.addListener('click', function () {
+                info.open(maps, mark);
+            });
+            text="";
+        });
+
+
     });
 }
 ;
