@@ -10,21 +10,18 @@ firebase.initializeApp(config);
 var TablaDeBaseDatos= firebase.database().ref('chat');
 
 $('#btnEnviar').click(function(){
-  var formatDate = new Date();
-  var d = formatDate.getUTCDate();
-  var m = formatDate.getMonth() + 1;
-  var y = formatDate.getFullYear();
-  var h = formatDate.getHours();
-  var min = formatDate.getMinutes();
-  var fecha = d + "/" + m + "/" + y + " " + h + ":" + min;
 
-  Fecha= d+"/"+m+"/"+y+" "+h+":"+min;
+  Fecha= dateAct();
+  Hora = hourAct();
 
   TablaDeBaseDatos.push({
       Nombre: sessionStorage.nombre,
       Mensaje:$("#message").val(),
-      Fecha:Fecha
+      Fecha:Fecha,
+      Hora: Hora
    });
+
+   $("#message").val("");
 })
 
 $(document).ready(function(){
@@ -38,13 +35,18 @@ $(document).ready(function(){
 
          // Validar datos nulos y agregar contenido en forma de lista etiqueta <li>
          if((objeto.Mensaje!=null)&&(objeto.Nombre!=null)){
-            // $(".msg_history").html(objeto.Nombre + " / " + objeto.Mensaje + " / " + objeto.Fecha)
-            // Copia el contenido al template y luego lo inserta en el chat
-            $( ".outgoing_msg" ).clone().appendTo ( ".msg_history" );
-            // $('.msg_history .outgoing_msg').show(10);
-            // $('.msg_history #incoming_msg #name-data').html("HOLAAAAAAAAAA");
-            // $('.msg_history #incoming_msg #message-data').html("HOLAAAAAAAAAA");
-            // $('.msg_history #incoming_msg #date-data').html("HOLAAAAAAAAAA");
+            let div = "HOLAAAA";
+            let nombre = objeto.Nombre.split(" ");
+            let fecha = (objeto.Fecha == dateAct()) ? "Hoy " : objeto.Fecha + " | ";
+
+            if(objeto.Nombre == sessionStorage.nombre){
+               div = '<div class="outgoing_msg"><div class="sent_msg"><span><small>'+ ucWords(nombre[0]) +' dice: </small></span><p>' + objeto.Mensaje + '</p><span class="time_date">' + fecha + objeto.Hora + '</span></div></div>';
+            }else{
+               div = '<div class="incoming_msg" id="plantilla"><div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div><div class="received_msg"><div class="received_withd_msg"><span><small id="name-data">'+ ucWords(nombre[0]) +' dice:</small></span><p id="message-data">' + objeto.Mensaje + '</p><span class="time_date" id="date-data" style="text-align: right;">'+fecha + objeto.Hora +'</span></div></div></div><br>';
+            }
+
+            $(div).appendTo ( ".msg_history" );
+
          }else{
             console.log("Paila")
          }
@@ -52,3 +54,42 @@ $(document).ready(function(){
       });
    });
 })
+
+
+function dateAct(){
+   var formatDate = new Date();
+   var d = formatDate.getUTCDate();
+   var m = formatDate.getMonth() + 1;
+   var y = formatDate.getFullYear();
+
+   return d+"/"+m+"/"+y;
+}
+
+function hourAct(){
+   var formatDate = new Date();
+   var h = formatDate.getHours();
+   var min = formatDate.getMinutes();
+
+   return  h+":"+min;
+}
+
+function ucWords(string){
+ var arrayWords;
+ var returnString = "";
+ var len;
+ arrayWords = string.split(" ");
+ len = arrayWords.length;
+ for(i=0;i < len ;i++){
+  if(i != (len-1)){
+   returnString = returnString+ucFirst(arrayWords[i])+" ";
+  }
+  else{
+   returnString = returnString+ucFirst(arrayWords[i]);
+  }
+ }
+ return returnString;
+}
+
+function ucFirst(string){
+ return string.substr(0,1).toUpperCase()+string.substr(1,string.length).toLowerCase();
+}
