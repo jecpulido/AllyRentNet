@@ -26,7 +26,7 @@ $(document).ready(function () {
     $("#aProfile").attr('href', 'http://localhost:8080/AllyRent/Usuario/profile.html?id=' + sessionStorage.idusuario);
     $("#ahappy").attr('href', 'http://localhost:8080/AllyRent/Usuario/profile.html?id=' + sessionStorage.idusuario);
     $("#aInicio").attr("href", "http://localhost:8080/AllyRent/home.html");
-    $("#aMensajes").attr("href", "http://localhost:8080/AllyRent/home.html");
+    $("#aMensajes").attr("href", "http://localhost:8080/AllyRent/Chat/chat.html");
     $("#aSolicitudes").attr("href", "http://localhost:8080/AllyRent/Publicacion/solicitudes.html");
     $("#aContratos").attr("href", "http://localhost:8080/AllyRent/home.htmll");
 });
@@ -43,7 +43,7 @@ function CargarControles() {
     $("#sltRol").append("<option value='-1'>--Seleccione--</option>");
     $("#sltDepartamento").append("<option value='-1'>--Seleccione--</option>");
     $("#sltCiudad").append("<option value='-1'>--Seleccione--</option>");
-    $('#txtFechaNacimiento').datetimepicker({format: "dd.mm.yyyy"}); 
+    $('#txtFechaNacimiento').datetimepicker({format: "dd.mm.yyyy"});
 
     $("#btnRegister").click(GuardarUsuario());
 

@@ -1,316 +1,298 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>:: AllyRent ::</title>
 
-        <!-- Bootstrap -->
-        <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800' rel='stylesheet' type='text/css'>
-        <link href="resources/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="resources/css/font-awesome.css"/>
-        <link rel="stylesheet" type="text/css" href="resources/css/offcanvas.css"/>
-        <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
-        <link rel="stylesheet" type="text/css" href="resources/css/network.css"/>
-        <link rel="stylesheet" type="text/css" href="/css/chat.css">
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+   <title>:: AllyRent ::</title>
+
+   <!-- Bootstrap -->
+   <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800' rel='stylesheet' type='text/css'>
+   <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="../resources/css/font-awesome.css" />
+   <link rel="stylesheet" type="text/css" href="../resources/css/offcanvas.css" />
+   <link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+   <link rel="stylesheet" type="text/css" href="../resources/css/network.css" />
+   <link rel="stylesheet" type="text/css" href="css/chat.css">
+   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+   <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!------ Include the above in your HEAD tag ---------->
+   <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+</head>
 
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <!------ Include the above in your HEAD tag ---------->
-        <script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script><script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" /><link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" /><link rel="canonical" href="https://codepen.io/emilcarlsson/pen/ZOQZaV?limit=all&page=74&q=contact+" />
-        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css'>
+<body>
+   <div class="wrapper">
+      <header>
+         <!--========================== Header-Top ================================-->
+         <!--========================== Header-Top ================================-->
+         <div class="header-top">
+            <div class="container">
+               <div class="col-md-9 col-sm-7 xs-view">
+                  <a href="index.html"><img class="logo" src="../resources/images/logo.png" alt="Logo" /></a>
+               </div>
+               <div class="col-md-3 col-sm-5 xs-view-right">
+                  <div class="search-section center-block">
+                     <form>
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Search">
+                        <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-search"></i></button>
+                     </form>
+                  </div>
+                  <!-- Author -->
+                  <div class="author-form">
+                     <li class="dropdown">
+                        <form>
+                           <a href="#" class="dropdown-toggle author-icon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                              <i class="fa fa-user author-icon"></i>
+                           </a>
+                           <ul class="dropdown-menu">
+                              <div class="tab-content">
+                                 <div role="tabpanel" class="tab-pane active" id="signin">
+                                    <ul class="user-dropdown">
+                                    </ul><!-- /User-Dropdown-->
+                                 </div><!-- /#Sing in -->
+                                 <div role="tabpanel" class="tab-pane" id="signup">
+                                    <ul class="user-dropdown">
+                                    </ul><!-- /User-Dropdown-->
+                                 </div><!-- /#Sing up -->
+                              </div><!-- /Tab-Content -->
+                           </ul><!-- /Dropdown-menu -->
+                        </form>
+                     </li><!-- /Dropdown -->
+                  </div><!-- /Author -->
+               </div>
+            </div>
+         </div><!-- header-top -->
 
-        <script src="https://use.typekit.net/hoy3lrg.js"></script>
-        <script>try{Typekit.load({ async: true });}catch(e){}</script>
-        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'><link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css'>
+         <!--========================== Header-Nav ================================-->
+         <div class="header-nav">
+            <nav class="navbar navbar-default">
+               <div class="container">
+                  <p class="pull-left visible-xs">
+                     <button type="button" class="navbar-toggle" data-toggle="offcanvas">
+                        <i class="fa fa-long-arrow-right"></i>
+                        <i class="fa fa-long-arrow-left"></i>
+                     </button>
+                  </p>
+                  <div class="social-nav center-block visible-xs">
+                     <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
+                     <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
+                     <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
+                  </div>
+                  <!--toggle get grouped for better mobile display -->
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                     </button>
+                  </div>
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                     <ul class="nav navbar-nav navbar-left">
+                        <li><a id="aInicio">Inicio</a></li>
+                        <li><a id="aMensajes">Mensajes</a></li>
+                        <li><a id="aSolicitudes">Solicitudes</a></li>
+                        <li><a id="aContratos">Mis Contratos</a></li>
+                     </ul>
+                     <ul class="nav navbar-nav navbar-right hidden-xs">
+                        <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
+                     </ul>
+                  </div><!-- /.navbar-collapse -->
+               </div><!-- /.container-->
+            </nav>
+         </div><!-- Header-Nav -->
+      </header>
+      <!--Header-->
+      <!--========================== Contant-Area================================-->
+      <div class="contant-area">
+         <div class="container">
+            <div class="row row-offcanvas row-offcanvas-left">
 
-    </head>
-    <body>
-        <div class="wrapper">
-            <header>
-                <!--========================== Header-Top ================================-->
-                <div class="header-top">
-                    <div class="container">
-                        <div class="col-md-9 col-sm-7 xs-view">
-                            <a href="index.html"><img class="logo" src="resources/images/logo.png" alt="Logo"/></a>
+               <!--========================== main-content ================================-->
+               <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: -20px">
+                  <div class="main-content">
+                     <article>
+                        <h2>Chat Mensajes</h2>
+                        <hr>
+                        <div class="messaging">
+                           <div class="inbox_msg">
+                              <div class="inbox_people">
+                                 <div class="headind_srch">
+                                    <div class="srch_barChat">
+                                       <div class="stylish-input-group">
+                                          <!-- <input type="text" placeholder="Search"> -->
+                                          <span class="" style="color: green">
+                                             <b>Usuarios Conectados</b>
+                                          </span> </div>
+                                    </div>
+                                 </div>
+                                 <div class="inbox_chat">
+                                    <div class="chat_list active_chat">
+                                       <div class="chat_people">
+                                          <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                          <div class="chat_ib">
+                                             <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                             <p>Test, which is a new approach to have all solutions
+                                                astrology under one roof.</p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="chat_list">
+                                       <div class="chat_people">
+                                          <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                          <div class="chat_ib">
+                                             <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
+                                             <p>Test, which is a new approach to have all solutions
+                                                astrology under one roof.</p>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="mesgs">
+                                 <div class="msg_history">
+                                    <!-- <div class="incoming_msg">
+                                       <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                       <div class="received_msg">
+                                          <div class="received_withd_msg">
+                                             <p>Test which is a new approach to have all
+                                                solutions</p>
+                                             <span class="time_date"> 11:01 AM | June 9</span>
+                                          </div>
+                                       </div>
+                                    </div> -->
+                                    <div class="outgoing_msg">
+                                       <div class="sent_msg">
+                                          <p>Test which is a new approach to have all
+                                             solutions</p>
+                                          <span class="time_date"> 11:01 AM | June 9</span>
+                                       </div>
+                                    </div>
+                                    <!-- <div class="incoming_msg">
+                                       <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                       <div class="received_msg">
+                                          <div class="received_withd_msg">
+                                             <p>Test, which is a new approach to have</p>
+                                             <span class="time_date"> 11:01 AM | Yesterday</span>
+                                          </div>
+                                       </div>
+                                    </div> -->
+                                    <!-- <div class="outgoing_msg">
+                                       <div class="sent_msg">
+                                          <p>Apollo University, Delhi, India Test</p>
+                                          <span class="time_date"> 11:01 AM | Today</span>
+                                       </div>
+                                    </div> -->
+                                    <div class="incoming_msg" style="display:none" id="plantilla">
+                                       <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
+                                       </div>
+                                       <div class="received_msg">
+                                          <div class="received_withd_msg">
+                                             <span><small id="name-data">sERGIOS</small></span>
+                                             <p id="message-data"> jajajajjaja</p>
+                                             <span class="time_date" id="date-data"> 11:01 AM | Today</span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="type_msg">
+                                    <div class="input_msg_write">
+                                       <input type="text" class="write_msg" id="message" placeholder="Escribe tu mensaje" />
+                                       <button class="msg_send_btn" type="button" id="btnEnviar"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Enviar</button>
+                                    </div>
+                                    <br>
+                                 </div>
+                              </div>
+                           </div>
+
                         </div>
-                        <div class="col-md-3 col-sm-5 xs-view-right">
-
-                        </div>
-                    </div>
-                </div><!-- header-top -->
-
-                <!--========================== Header-Nav ================================-->
-                <div class="header-nav">
-                    <nav class="navbar navbar-default">
-                        <div class="container">
-                            <p class="pull-left visible-xs">
-                                <button type="button" class="navbar-toggle" data-toggle="offcanvas">
-                                    <i class="fa fa-long-arrow-right"></i>
-                                    <i class="fa fa-long-arrow-left"></i>
-                                </button>
-                            </p>
-                            <div class="social-nav center-block visible-xs">
-                                <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
-                            </div>
-                            <!--toggle get grouped for better mobile display -->
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                    <span class="sr-only">Toggle navigation</span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                    <span class="icon-bar"></span>
-                                </button>
-                            </div>
-                            <!-- Collect the nav links, forms, and other content for toggling -->
-                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                <ul class="nav navbar-nav navbar-left">
-                                    <li><a id="aInicio">Inicio</a></li>
-                                    <li><a id="aMensajes">Mensajes</a></li>
-                                    <li><a id="aSolicitudes">Solicitudes</a></li>
-                                    <li><a id="aContratos">Mis Contratos</a></li>
-                                </ul>
-                                <ul class="nav navbar-nav navbar-right hidden-xs">
-                                    <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
-                                </ul>
-                            </div><!-- /.navbar-collapse -->
-                        </div><!-- /.container-->
-                    </nav>
-                </div><!-- Header-Nav -->
-            </header><!--Header-->
-
-            <!--========================== Contant-Area================================-->
-            <div class="contant-area">
-                <div class="container">
-                    <div class="row row-offcanvas row-offcanvas-left">
-                        <div class="col-md-3 col-sm-4 col-xs-6 sidebar-offcanvas" id="sidebar">
-                            <!--========================== left-sidebar ================================-->
-                            <div class="left-sidebar">
-
-                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                    <div class="panel panel-default">
-                                        <div class="user-data full-width">
-                                            <div class="user-profile">
-                                                <div class="username-dt">
-                                                    <div class="usr-pic">
-                                                        <img alt="" id="iImagen">
-                                                    </div>
-                                                </div><!--username-dt end-->
-                                                <div class="user-specs">
-                                                    <a id="aProfile">
-                                                        <h3><label id="hNombre"></label></h3>
-                                                    </a>
-
-                                                    <span id="sPropietario"></span>
-                                                </div>
-                                            </div><!--user-profile end-->
-                                            <ul class="user-fw-status">
-                                                <li>
-                                                    <h3>Publicaciones</h3>
-                                                    <a href="Publicacion/new.html">
-                                                        <span id="sPublicaciones"></span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <h3>Vehiculos</h3>
-                                                    <a href="Vehiculo/index.html">
-                                                        <span id="sVehiculos"></span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <span id="sCiudad"></span>
-                                                </li>
-                                                <li>
-                                                    <span id="sCorreo"></span>
-                                                </li>
-                                                <li>
-                                                    <span id="sTelefono"></span>
-                                                </li>
-                                                <li>
-                                                    <a id="ahappy" title="">Ver Perfil</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- left-sidebar -->
-                        </div>
-
-                        <!--========================== main-content ================================-->
-                        <div class="col-md-6 col-sm-8 col-xs-12">
-                            <div class="main-content">
-                                <span class="title-post-span">BUSCAR</span>
-                                <article>
-                                    <div class="row">
-                                        <input class="form-control col-md-12 col-sm-12 col-xs-12" id="txtBuscar" name="txtBuscar" type="text" data-bind="value: txtBuscar , event: {change :buscarAmigos.bind($data)}" />
-                                        <a href="Publicacion/busquedaAvanzada.html" class="btn btn-success col-md-12 col-sm-12 col-xs-12">BUSQUEDA AVANZADA =)</a>
-                                    </div>
-                                </article>
-                            </div>
-                            <div class="main-content" data-bind="template: { name: 'posts-template', foreach: publicacionesList }"></div><!-- main-content -->
-                            <script type="text/html" id="posts-template">
-                                <article>
-                                    <div class="title-post">
-                                        <span class="title-post-span" data-bind="text: nombreTipoPublicacion"></span>
-                                        <div class="btn btn-default btn-post" data-bind="click: $parent.insertSolicitud.bind($data, idPublicacion), visible: $parent.idUsuario() != usuario.idUsuario " > Aplicar</div>
-                                        <div class="btn btn-default btn-post" data-bind="visible: $parent.idUsuario() == usuario.idUsuario " > Eliminar</div>
-                                    </div>
-                                    <div class="post-img">
-                                        <a href="#" target="_blank"><img class="img-responsive" data-bind="visible:(nombreTipoPublicacion == 'Solicitud')?false:true,attr: {src : (nombreTipoPublicacion == 'Solicitud')?'':vehiculo.primerFoto}  " alt="Post"/></a>
-                                    </div>
-                                    <div>
-
-                                    </div>
-                                    <a target="_blank" data-bind="attr: {href:'http://localhost:8080/AllyRent/Usuario/profile.html?id='+usuario.idUsuario}" ><h2 class="post-title" data-bind="text: usuario.nombre +' ' + usuario.apellido"></h2></a>
-                                    <div  style="font-size: 1.3em">
-                                        <p><span data-bind="text: usuario.nombreCiudad"></p>
-                                        <p>Fecha disponible entre
-                                            <span data-bind="text: moment(fechaInicio).format('lll') +' - ' +moment(fechaFin).format('lll')">
-                                        </p>
-                                    </div>
-                                    <div>
-                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Tarifa: (Dia) '+vehiculo.dia + ' - (Hora)' + vehiculo.hora"/>
-                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Modelo:'+vehiculo.nombreModelo" />
-                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Año:'+vehiculo.ano" />
-                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'KM:'+vehiculo.km" />
-                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Tipo Vehiculo:'+vehiculo.nombreTipoVehiculo" />
-                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Combustible:'+vehiculo.nombreCombustible" />
-                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Transmision:'+vehiculo.nombreTransmision" />
-                                    </div>
-                                    <p><span data-bind="text: publicacion"></p>
-                                    <div class="post-content">
-                                        <div class="post-meta">
-                                            <span><a href="#" data-bind=" click: $parent.likeDislike.bind($data, idPublicacion,1)" ><i class="fa fa-thumbs-up post-meta-icon" data-bind="css: reaccion == 'like' ? 'post-press' :'' " ></i> <label data-bind="text: like" /> </a></span>
-                                            <span><a href="#" data-bind=" click: $parent.likeDislike.bind($data, idPublicacion,0)"><i class="fa fa-thumbs-down post-meta-icon" data-bind="css: reaccion == 'dislike' ? 'post-press' : '' " ></i> <label data-bind="text: disLike" /></a></span>
-                                            <span><a href="#"><i class="fa fa-comments post-meta-icon"></i> 0 </a></span>
-                                            <span><i class="fa fa-calendar-check-o post-meta-icon"></i><span data-bind="text: moment(fechaPublicacion).format('lll')" /></span>
-                                        </div>
-                                    </div>
-                                </article>
-                                </script>
-                                <div class="pagination">
-                                    <nav>
-                                        <ul class="pagination">
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">Next</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <!--========================== Right-Sidebar ================================-->
-                            <div class="col-md-3 col-sm-12 col-xs-12">
-                                <div class="right-sidebar">
-                                    <div class="righ-sidebar-body">
-                                        <div class="item content-img">
-                                            <a href="#"><h4 class="post-title slide-title">Quizás conozcas</h4></a>
-                                            <div class="col-md-12 col-sm-6 content-img" data-bind="template: { name: 'suggestion', foreach: sugerenciasList }"> </div>
-                                            <script type="text/html" id="suggestion">
-                                                <a href="#"><img class="img-recomendaciones" data-bind="attr: {src: rutaFoto}" alt="slider"></a>
-                                                <div class="carousel-caption">
-                                                    <a data-bind="attr: {href:'http://localhost:8080/AllyRent/Usuario/profile.html?id='+idUsuario }" ><h5 class="post-title" data-bind="text: nombre + ' ' + apellido"></h5></a>
-                                                    <div class="post-content no-border">
-                                                        <div class="btn btn-success btn-suggestion" data-bind="click: $parent.seguirUsuario.bind($data, idUsuario)" > Seguir</div>
-                                                    </div>
-                                                </div>
-                                                </script>
-
-                                            </div>
-                                        </div><!-- Righ-sidebar-body -->
-                                    </div><!-- Right-Sidebar -->
-                                </div>
-                            </div><!--row-offcanvas-->
-                        </div><!-- Container -->
-                    </div><!-- Content-area -->
-                    <footer>
-                        <div class="footer-menu">
-                            <div class="container">
-                                <div class="col-md-4 col-sm-4 center-block">
-                                    <h3 class="footer-head">this author blog from crea tivemine</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    <div class="social">
-                                        <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-4 mobile-footer center-block">
-                                    <h4 class="footer-head">recent posts</h3>
-                                        <ul class="ul-left">
-                                            <li><a href="#">Ut enim ad minim veniam</a></li>
-                                            <li><a href="#">Quis nostrud exercitation laboris</a></li>
-                                        </ul>
-                                </div>
-                                <div class="col-md-4 col-sm-4 mobile-footer center-block">
-                                    <h4 class="footer-head">article categories</h3>
-                                        <ul class="ul-left">
-                                            <li><a href="#">E-Commerce</a></li>
-                                            <li><a href="#">Facebook</a></li>
-                                            <li><a href="#">Infographics</a></li>
-                                            <li><a href="#">Launch</a></li>
-                                        </ul>
-                                        <ul class="ul-right">
-                                            <li><a href="#">Social</a></li>
-                                            <li><a href="#">Media</a></li>
-                                            <li><a href="#">Testing</a></li>
-                                            <li><a href="#">Twitter</a></li>
-                                        </ul>
-                                </div>
-                            </div>
-                        </div><!-- Footer-menu -->
-                        <div class="footer-nav">
-                            <div class="container">
-                                <div class="col-md-6 col-sm-5">
-                                    <p>&copy; 2015 Author bloging template</p>
-                                </div>
-                                <div class="col-md-6 col-sm-7">
-                                    <ul>
-                                        <li><a href="index.html">home</a></li>
-                                        <li><a href="#">support</a></li>
-                                        <li><a href="#">careers</a></li>
-                                        <li><a href="#">terms use</a></li>
-                                        <li><a href="#">privacy policy</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- Go TO TOP -->
-                            <div id="toTop" class="btn btn-info" style="display: block;">
-                                <span class="fa fa-angle-up"></span>
-                            </div><!-- /Go-to-top -->
-                        </div>
-                    </footer>
-                </div><!-- /Wrapper -->
+                     </article>
+                  </div><!-- main-content -->
+               </div>
+            </div>
+            <!--row-offcanvas-->
+         </div><!-- Container -->
+      </div><!-- Content-area -->
+      <footer>
+         <div class="footer-menu">
+            <div class="container">
+               <div class="col-md-4 col-sm-4 center-block">
+                  <h3 class="footer-head">this author blog from crea tivemine</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  <div class="social">
+                     <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
+                     <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
+                     <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
+                  </div>
+               </div>
+               <div class="col-md-4 col-sm-4 mobile-footer center-block">
+                  <h4 class="footer-head">recent posts</h3>
+                     <ul class="ul-left">
+                        <li><a href="#">Ut enim ad minim veniam</a></li>
+                        <li><a href="#">Quis nostrud exercitation laboris</a></li>
+                     </ul>
+               </div>
+               <div class="col-md-4 col-sm-4 mobile-footer center-block">
+                  <h4 class="footer-head">article categories</h3>
+                     <ul class="ul-left">
+                        <li><a href="#">E-Commerce</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Infographics</a></li>
+                        <li><a href="#">Launch</a></li>
+                     </ul>
+                     <ul class="ul-right">
+                        <li><a href="#">Social</a></li>
+                        <li><a href="#">Media</a></li>
+                        <li><a href="#">Testing</a></li>
+                        <li><a href="#">Twitter</a></li>
+                     </ul>
+               </div>
+            </div>
+         </div><!-- Footer-menu -->
+         <div class="footer-nav">
+            <div class="container">
+               <div class="col-md-6 col-sm-5">
+                  <p>&copy; 2015 Author bloging template</p>
+               </div>
+               <div class="col-md-6 col-sm-7">
+                  <ul>
+                     <li><a href="index.html">home</a></li>
+                     <li><a href="#">support</a></li>
+                     <li><a href="#">careers</a></li>
+                     <li><a href="#">terms use</a></li>
+                     <li><a href="#">privacy policy</a></li>
+                  </ul>
+               </div>
+            </div>
+            <!-- Go TO TOP -->
+            <div id="toTop" class="btn btn-info" style="display: block;">
+               <span class="fa fa-angle-up"></span>
+            </div><!-- /Go-to-top -->
+         </div>
+      </footer>
+   </div><!-- /Wrapper -->
 
 
-                <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-                <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
-                <!-- Include all compiled plugins (below), or include individual files as needed -->
-                <script src="resources/js/jquery.js" type="text/javascript"></script>
-                <script src="resources/js/bootstrap.min.js"></script>
-                <script src="resources/js/custom.js"></script>
-                <script src="resources/js/knockout.js" type="text/javascript"></script>
-                <script src="resources/js/app/Homeko.js" type="text/javascript"></script>
-                <script src="resources/js/moments.js" type="text/javascript"></script>
-                <script src="resources/js/AllyRenty.js" type="text/javascript"></script>
-            </body>
-        </html>
+   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+   <!-- Include all compiled plugins (below), or include individual files as needed -->
+   <script src="../resources/js/jquery.js" type="text/javascript"></script>
+   <script src="../resources/js/bootstrap.min.js"></script>
+   <script src="../resources/js/moments.js" type="text/javascript"></script>
+   <script src="../resources/js/custom.js"></script>
+   <script src="../resources/js/knockout.js" type="text/javascript"></script>
+   <script src="../resources/js/app/Publicacionko.js" type="text/javascript"></script>
+   <script src="../resources/js/AllyRenty.js" type="text/javascript"></script>
+   <script src="js/chat.js" type="text/javascript"></script>
+
+</body>
+
+</html>
