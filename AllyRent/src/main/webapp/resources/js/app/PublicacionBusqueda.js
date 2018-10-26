@@ -148,8 +148,7 @@ var PublicacionHomeViewModel = function () {
                             self.publicacionesList(data.publicacion);
                             self.usuariosList(data.usuario);
                             self.vehiculosList(data.vehiculo);
-
-
+                            inicializar();
                         },
                         204: function () {
                             alert('Error');
@@ -165,3 +164,36 @@ $(document).ready(function () {
     postvm.idUsuario(sessionStorage.idusuario);
     postvm.getAll();
 });
+
+function inicializar() {
+    const ubicacion = new Localizacion(() => {
+        const texto = "<h1>Lugar</h1>" + "<p>Descripcion</p>" + "<a href='#'>link</a>";
+
+        const mylatlng = {
+            lat: ubicacion.latitude,
+            lng: ubicacion.longitude
+        }
+        const options = {
+            center: mylatlng,
+            zoom: 10
+        };
+
+        var map = document.getElementById("map");
+
+        const maps = new google.maps.Map(map, options);
+
+        const marcador = new google.maps.Marker({
+            position: mylatlng,
+            map: maps,
+            title: "Mi primer marcador"
+        });
+
+        const informacion = new google.maps.InfoWindow({
+            content: texto
+        });
+        marcador.addListener('click', function () {
+            informacion.open(maps, marcador);
+        });
+    });
+}
+;

@@ -235,6 +235,7 @@
                                                 <li role="presentation" class="active"><a href="#post" aria-controls="post" role="tab" data-toggle="tab">Publicaciones</a></li>
                                                 <li role="presentation"><a href="#user" aria-controls="user" role="tab" data-toggle="tab">Personas</a></li>
                                                 <li role="presentation"><a href="#vehicles" aria-controls="vehicles" role="tab" data-toggle="tab">Vehiculos</a></li>
+                                                <li role="presentation"><a href="#maps" aria-controls="maps" role="tab" data-toggle="tab">Mapa</a></li>
                                             </ul>
                                             <!-- Tab panes -->
                                             <div class="tab-content">
@@ -345,6 +346,9 @@
                                                                 </article>
                                                                 </script>
                                                             </div>
+                                                            <div role="tabpanel" class="tab-pane" id="maps">
+                                                                <div id="map" class="map"></div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -422,5 +426,9 @@
                     <script src="../resources/js/app/PublicacionBusqueda.js" type="text/javascript"></script>
                     <script src="../resources/js/moments.js" type="text/javascript"></script>
                     <script src="../resources/js/AllyRenty.js" type="text/javascript"></script>
+                    <script async defer
+                            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDSJ072ldRTZf7D73pB5WeM0fTv8jAzRLc&callback=initMap">
+                    </script>
+                    <script src="../resources/js/localizacion.js" type="text/javascript"></script>
                 </body>
             </html>

@@ -144,3 +144,7 @@
 .post-press{
     color: #ff9309;
 }
+.map{
+    width: 500px;
+    height: 500px;
+}
