@@ -1,4 +1,3 @@
-///*
 // * To change this license header, choose License Headers in Project Properties.
 // * To change this template file, choose Tools | Templates
 // * and open the template in the editor.
@@ -10,10 +9,15 @@
 //
 ///**
 // *
-// * @author Jorge
+// * @author Sergio
 // */
-//public class Correo {
-//    
+public class Correo {
+
+    public Correo() {
+    }
+    
+    
+    
 //Properties props = new Properties();
 //
 //// Nombre del host de correo, es smtp.gmail.com
@@ -55,4 +59,4 @@
 //t.connect("chuidiang@gmail.com","la password");
 //t.sendMessage(message,message.getAllRecipients());
 //t.close();
-//}
+}

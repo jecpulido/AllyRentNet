@@ -1,3 +1,9 @@
+$(document).ready(function(){
+   $('#username').text(sessionStorage.nombre);
+   $('#rol').text(sessionStorage.rol);
+})
+
+
 var config = {
    apiKey: "AIzaSyCjTgj3Pk5Us7Qu4JvlsvX4gwvgK8IiV_k",
    authDomain: "allrent-1c552.firebaseapp.com",
@@ -7,7 +13,17 @@ var config = {
    messagingSenderId: "1062389559821"
 };
 firebase.initializeApp(config);
-var TablaDeBaseDatos= firebase.database().ref('chat');
+var user = 'chat';
+firebase.database()
+ .ref('chat')
+ .orderByChild('chat')
+ .equalTo(user)
+ .on('value', function(snapshot) {
+    console.log(snapshot.exists() ? 'user exist' : 'user non existent');
+   }, function(error) {
+     console.log(error);
+   });
+var TablaDeBaseDatos= firebase.database().ref(user);
 
 $('#btnEnviar').click(function(){
 
@@ -32,7 +48,7 @@ $(document).ready(function(){
       // Leer todos los mensajes en firebase
       snapshot.forEach(function(e){
          var objeto=e.val(); // Asignar todos los valores a un objeto
-
+            
          // Validar datos nulos y agregar contenido en forma de lista etiqueta <li>
          if((objeto.Mensaje!=null)&&(objeto.Nombre!=null)){
             let div = "HOLAAAA";
@@ -48,7 +64,7 @@ $(document).ready(function(){
             $(div).appendTo ( ".msg_history" );
 
          }else{
-            console.log("Paila")
+            console.log("Ocurrio un error al conectar con firebase.")
          }
 
       });
