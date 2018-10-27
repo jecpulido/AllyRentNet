@@ -91,6 +91,7 @@ public class VehiculoDTO {
                         fot.getIdFoto()));
             }
             if (fotos.size()>0) {
+                this.fotosCollection = fotos;
                 this.primerFoto=fotos.get(0).getFoto();
             }
         }

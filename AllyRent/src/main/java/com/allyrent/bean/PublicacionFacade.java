@@ -61,6 +61,19 @@ public class PublicacionFacade extends AbstractFacade<Publicacion> {
         return null;
     }
 
+    public List<Publicacion> findIdVehiculo(int idVehiculo) {
+        try {
+            Query q = em.createNamedQuery("Publicacion.finByIdVehiculo").
+                    setParameter("idVehiculo", idVehiculo);
+            List<Publicacion> publicaciones = q.getResultList();
+
+            return publicaciones;
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+        }
+        return null;
+    }
+
     public List<Publicacion> busquedaAvanzada(String nombreUsuario, String correoElectronico, int idCiudad,
             int idModelo, int idTPublicacion, Date fechaPublicacion, Date fechaInicio, Date fechaFin) {
         try {
@@ -99,7 +112,7 @@ public class PublicacionFacade extends AbstractFacade<Publicacion> {
             if (nombreUsuario != null) {
                 q.setParameter("nombreUsuario", "%" + nombreUsuario + "%");
             }
-            
+
             if (correoElectronico != null) {
                 q.setParameter("correoElectronico", "%" + correoElectronico + "%");
             }

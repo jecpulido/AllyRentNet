@@ -10,7 +10,6 @@
         <!-- Bootstrap -->
         <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800' rel='stylesheet' type='text/css'>
         <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../resources/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../resources/css/font-awesome.css"/>
         <link rel="stylesheet" type="text/css" href="../resources/css/offcanvas.css"/>
         <link rel="stylesheet" type="text/css" href="../resources/css/style.css"/>
@@ -33,7 +32,34 @@
                             <a href="index.html"><img class="logo" src="../resources/images/logo.png" alt="Logo"/></a>
                         </div>
                         <div class="col-md-3 col-sm-5 xs-view-right">
-
+                            <div class="search-section center-block">
+                                <form>
+                                    <input type="text" class="form-control" id="exampleInputName2" placeholder="Search">
+                                    <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                            <!-- Author -->
+                            <div class="author-form">
+                                <li class="dropdown">
+                                    <form>
+                                        <a href="#" class="dropdown-toggle author-icon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-user author-icon"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane active" id="signin">
+                                                    <ul class="user-dropdown">
+                                                    </ul><!-- /User-Dropdown-->
+                                                </div><!-- /#Sing in -->
+                                                <div role="tabpanel" class="tab-pane" id="signup">
+                                                    <ul class="user-dropdown">
+                                                    </ul><!-- /User-Dropdown-->
+                                                </div><!-- /#Sing up -->
+                                            </div><!-- /Tab-Content -->
+                                        </ul><!-- /Dropdown-menu -->
+                                    </form>
+                                </li><!-- /Dropdown -->
+                            </div><!-- /Author -->
                         </div>
                     </div>
                 </div><!-- header-top -->
@@ -83,130 +109,97 @@
             <!--========================== Contant-Area================================-->
             <div class="contant-area">
                 <div class="container">
-                    <div class="row row-offcanvas row-offcanvas-left">     
-                        <!--========================== main-content ================================-->
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="row main-content">
-                                <div class="profile">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-12 col-xs-12 text-center">                                            
-                                            <figure>
-                                                <img id="imgProfile" alt="" class="img-responsive" data-bind="attr: {src: usuario().rutaFoto}">
-                                            </figure>
-                                            <figcaption class="ratings">
-                                                <br>
-                                                <p> Valoración
-                                                    <a href="#">
-                                                        <span class="fa fa-star"></span>
+                    <div class="row row-offcanvas row-offcanvas-left">
+                        <div class="col-md-3 col-sm-4 col-xs-6 sidebar-offcanvas" id="sidebar">
+                            <!--========================== left-sidebar ================================-->
+                            <div class="left-sidebar">
+
+                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                    <div class="panel panel-default">
+                                        <div class="user-data full-width">
+                                            <div class="user-profile">
+                                                <div class="username-dt">
+                                                    <div class="usr-pic">
+                                                        <img alt="" id="iImagen">
+                                                    </div>
+                                                </div><!--username-dt end-->
+                                                <div class="user-specs">
+                                                    <h3><label id="hNombre"></label></h3>
+                                                    <span id="sPropietario"></span>
+                                                </div>
+                                            </div><!--user-profile end-->
+                                            <ul class="user-fw-status">
+                                                <li>
+                                                    <h3>Publicaciones</h3>
+                                                    <a href="Publicacion/new.html">
+                                                        <span id="sPublicaciones"></span>
                                                     </a>
-                                                    <a href="#">
-                                                        <span class="fa fa-star"></span>
-                                                    </a>
-                                                    <a href="#">
-                                                        <span class="fa fa-star"></span>
-                                                    </a>
-                                                    <a href="#">
-                                                        <span class="fa fa-star"></span>
-                                                    </a>
-                                                    <a href="#">
-                                                        <span class="fa fa-star-o"></span>
-                                                    </a>
-                                                </p>
-                                            </figcaption>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12 col-xs-12">     
-                                            <h2 style="text-align: text-center" data-bind="text: usuario().nombre +' ' +usuario().nombre "></h2>
-                                            <p>Rol; <span data-bind="text: usuario().nombreRol"></span></p>
-                                            <p>Ciudad; <span data-bind="text: usuario().nombreCiudad"></span></p>
-                                            <p>Fecha nacimiento: <span data-bind="text: moment(usuario().fechaNacimiento).format('ll');"></span></p>
-                                            <p>Cedula: <span data-bind="text: usuario().dni "></span></p>
-                                            <p>Genero: <span data-bind="text: usuario().nombreSexo"></span></p>  
-                                            <p>Telefono: <span data-bind="text: usuario().telefono"></span></p>  
-                                            <p>Correo: <span data-bind="text: login().correo"></span></p>  
-                                            <hr>
-                                            <a href="../Vehiculo/index.html"  class=""><i class="fa fa-car fa-lg"></i> Mostrar Vehiculos</a>
-                                            <p><span data-bind="text: usuario().nombre +' posee '+usuario().numeroVehiculos+' vehiculos'"></span></p>  
-                                            <hr>
+                                                </li>
+                                                <li>
+                                                    <h3>Vehiculos</h3>
+                                                    <a href="Vehiculo/index.html">                                     
+                                                        <span id="sVehiculos"></span>
+                                                    </a>               
+                                                </li>                                                
+                                                <li>
+                                                    <span id="sCiudad"></span>    
+                                                </li>
+                                                <li>
+                                                    <span id="sCorreo"></span>    
+                                                </li>
+                                                <li>
+                                                    <span id="sTelefono"></span>
+                                                </li>
+                                                <li>
+                                                    <a href="profile.html" title="">Ver Perfil</a>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div><!-- left-sidebar -->
+                        </div>
+
+                        <!--========================== main-content ================================-->
+                        <div class="col-md-9 col-sm-12 col-xs-12">
                             <div class="main-content">
-                                <div class="row">
-                                    <div class="col-md-4 col-sm-12 col-xs-12">
-                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                            <div class="panel panel-default">
-                                                <div class="user-data full-width">
-                                                    <div class="col-xs-12 divider text-center">
-                                                        <div class="col-xs-12 col-sm-12 emphasis">
-                                                            <h2><strong> 0 </strong></h2>
-                                                            <p><small>Seguidores</small></p>
-
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-12 emphasis">
-                                                            <h2 data-bind="text: usuario().numeroPublicaciones"><strong id="pubProfile">0</strong></h2>
-                                                            <p><small>Publicaciones</small></p>
-
-                                                        </div>
-                                                        <div class="col-xs-12 col-sm-12 emphasis">
-                                                            <h2><strong>0</strong></h2>
-                                                            <p><small>Alquileres</small></p>
-                                                            <button class="btn btn-success btn-block"><span class="fa fa-plus-circle"></span> Seguir </button>
-                                                            <button class="btn btn-info btn-block"><span class="fa fa-user"></span> + Info </button>
-                                                            <button type="button" class="btn btn-primary btn-block"><span class="fa fa-car"></span> Solicitar Alquiler </button>
-                                                            <br><br>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>                                    
+                                <article>
+                                    <h4 class="page-title">Vehiculos <a href="new.html" class="btn btn-default right">Agregar vehiculo</a></h4>
+                                    <div class="post-content no-border contact">
+                                        <p>Mira todos tus vehiculos registrados aca</p>
                                     </div>
-                                    <div class="col-md-8 col-sm-12 col-xs-12">
-                                        <h2 style="text-align: text-center">Publicaciones Recientes</h2>
-                                        <div class="main-content" data-bind="template: { name: 'posts-template', foreach: publicaciones }"></div><!-- main-content -->
-                                        <script type="text/html" id="posts-template">
-                                            <article>
-                                                <div class="title-post">
-                                                    <span class="title-post-span" data-bind="text: nombreTipoPublicacion"></span>
-                                                    <div class="btn btn-default btn-post" data-bind="click: $parent.insertSolicitud.bind($data, idPublicacion), visible: $parent.idUsuario() != usuario.idUsuario " > Aplicar</div>
-                                                    <div class="btn btn-default btn-post" data-bind="visible: $parent.idUsuario() == usuario.idUsuario " > Eliminar</div>
-                                                </div>
-                                                <div class="post-img">
-                                                    <img class="img-responsive" data-bind="visible:(nombreTipoPublicacion == 'Solicitud')?false:true,attr: {src : (nombreTipoPublicacion == 'Solicitud')?'':vehiculo.primerFoto}  " alt="Post"/>
-                                                </div>
-                                                <div>
-
-                                                </div>
-                                                <h2 class="post-title" data-bind="text: usuario.nombre +' ' + usuario.apellido"></h2>
-                                                <div  style="font-size: 1.3em">
-                                                    <p><span data-bind="text: usuario.nombreCiudad"></p>
-                                                    <p>Fecha disponible entre
-                                                        <span data-bind="text: moment(fechaInicio).format('lll') +' - ' +moment(fechaFin).format('lll')">
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <span data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Tarifa: (Dia) '+vehiculo.dia + ' - (Hora)' + vehiculo.hora">
-                                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Modelo:'+vehiculo.nombreModelo" />
-                                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Año:'+vehiculo.ano" />
-                                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'KM:'+vehiculo.km" />
-                                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Tipo Vehiculo:'+vehiculo.nombreTipoVehiculo" />
-                                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Combustible:'+vehiculo.nombreCombustible" />
-                                                        <label data-bind="text: (nombreTipoPublicacion == 'Solicitud')?'':'Transmision:'+vehiculo.nombreTransmision" />
-                                                </div>
-                                                <p><span data-bind="text: publicacion"></p>
-                                                <div class="post-content">
-                                                    <div class="post-meta">
-                                                        <span><a href="#"><i class="fa fa-share-alt post-meta-icon"></i> 0 Likes </a></span>
-                                                        <span><a href="#"><i class="fa fa-comments post-meta-icon"></i> 0 Comments </a></span>
-                                                        <span><i class="fa fa-calendar-check-o post-meta-icon"></i><span data-bind="text: moment(fechaPublicacion).format('lll')" /></span>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                            </script>
-                                        </div>
+                                    <div class="form-body">
+                                        <table id="tblList" class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Modelo</th>
+                                                    <th>Tarifa (Dia-Hora)</th>
+                                                    <th>Tipo</th>
+                                                    <th>Placa</th>
+                                                    <th>KM</th>
+                                                    <th>Combustible</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody data-bind="foreach: vehiculoList">
+                                                <tr>
+                                                    <td data-bind="text: idModelo.nombre"></td>
+                                                    <td data-bind="text: idTarifa.porDia +'-'+ idTarifa.porHora"></td>
+                                                    <td data-bind="text: idTipoVehiculo.nombreDataType"></td>
+                                                    <td data-bind="text: placa"></td>
+                                                    <td data-bind="text: km"></td>
+                                                    <td data-bind="text: idCombustible.nombreDataType"></td>
+                                                    <td>
+                                                        <a href="#">Editar</a>|
+                                                        <a href="#">Eliminar</a>|
+                                                        <a href="#">Detalles</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>                        
-                            </div>
+                                </article>
+                            </div><!-- main-content -->
                         </div>
                     </div><!--row-offcanvas-->
                 </div><!-- Container -->
@@ -267,15 +260,17 @@
                         <span class="fa fa-angle-up"></span>
                     </div><!-- /Go-to-top -->
                 </div>
-            </footer>  
-            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-            <!-- Include all compiled plugins (below), or include individual files as needed -->
-            <script src="../resources/js/jquery.js" type="text/javascript"></script>
-            <script src="../resources/js/bootstrap.min.js"></script>
-            <script src="../resources/js/custom.js"></script>
-            <script src="../resources/js/knockout.js" type="text/javascript"></script>
-            <script src="../resources/js/moments.js" type="text/javascript"></script>
-            <script src="../resources/js/app/Usuarioko.js" type="text/javascript"></script>
-            <script src="../resources/js/AllyRenty.js" type="text/javascript"></script>
-        </body>
-    </html>
+            </footer>
+        </div><!-- /Wrapper -->
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="../resources/js/jquery.js" type="text/javascript"></script>
+        <script src="../resources/js/knockout.js" type="text/javascript"></script>
+        <script src="../resources/js/app/Vehiculoko.js" type="text/javascript"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../resources/js/bootstrap.min.js"></script>
+        <script src ="../resources/js/custom.js"></script>
+        <script src="../resources/js/AllyRenty.js" type="text/javascript"></script>
+    </body>
+</html>

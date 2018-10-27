@@ -156,11 +156,56 @@ public class PublicacionResource {
 
                         List<Reaccion> dislikes = reacciones.stream().filter(r -> r.getBandera() == 0).collect(Collectors.toList());
                         if (dislikes != null) {
-                            p.setLike(dislikes.size());                            
+                            p.setDisLike(dislikes.size());                            
                         }
 
                         List<Reaccion> me = reacciones.stream().filter(r
                                 -> Objects.equals(r.getIdUsuario().getIdUsuario(), id))
+                                .collect(Collectors.toList());
+                        if (me != null && me.size() > 0) {
+                            String re = me.get(0).getBandera() == 1 ? "like" : "dislike";
+                            p.setReaccion(re);
+                        }
+                    }
+                    publicacionesDTO.add(p);
+                }
+            }
+            return publicacionesDTO;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    
+    @GET
+    @Path("/listByVehiculo/{idVehiculo}/{idUsuario}")
+    public List<PublicacionDTO> ListPublicacionByIdVehiculo(@PathParam("idVehiculo") int id,@PathParam("idUsuario") int idUsuario) {
+        try {
+            List<Publicacion> publicaciones = _publicacionFacade.findIdVehiculo(id);
+            List<PublicacionDTO> publicacionesDTO = null;
+
+            if (publicaciones.size() > 0) {
+                publicacionesDTO = new ArrayList<>();
+
+                for (Publicacion pub : publicaciones) {
+                    PublicacionDTO p = new PublicacionDTO(pub);
+                    if (pub.getIdVehiculo() != null) {
+                        p.setVehiculo(new VehiculoDTO(_vehiculoFacade.find(pub.getIdVehiculo())));
+                        p.getVehiculo().setIdUsuario(null);
+                    }
+                    List<Reaccion> reacciones = _reaccionFacade.FindReaccionByPublicacion(p.getIdPublicacion());
+                    if (reacciones != null) {
+                        List<Reaccion> likes = reacciones.stream().filter(r -> r.getBandera() == 1).collect(Collectors.toList());
+                        if (likes != null) {
+                            p.setLike(likes.size());
+                        }
+
+                        List<Reaccion> dislikes = reacciones.stream().filter(r -> r.getBandera() == 0).collect(Collectors.toList());
+                        if (dislikes != null) {
+                            p.setDisLike(dislikes.size());                            
+                        }
+
+                        List<Reaccion> me = reacciones.stream().filter(r
+                                -> Objects.equals(r.getIdUsuario().getIdUsuario(), idUsuario))
                                 .collect(Collectors.toList());
                         if (me != null && me.size() > 0) {
                             String re = me.get(0).getBandera() == 1 ? "like" : "dislike";

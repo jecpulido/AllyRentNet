@@ -148,9 +148,8 @@ var PublicacionHomeViewModel = function () {
                             self.publicacionesList(data.publicacion);
                             self.usuariosList(data.usuario);
                             self.vehiculosList(data.vehiculo);
-                            if (sessionStorage.rol = 'Ocupante') {
-                                self.getPostWithLocation(data.publicacion);
-                            }
+                            self.getPostWithLocation(data.publicacion);
+
                         },
                         204: function () {
                             alert('Error');
@@ -180,7 +179,7 @@ $(document).ready(function () {
 function inicializar(posts) {
     const ubicacion = new Localizacion(() => {
         const style = "margin: auto;"
-                +"width: 150px !important;"
+                + "width: 150px !important;"
                 + "height: 150px!important;"
                 + "border-radius: 50%!important;"
                 + "border: 2px solid #1b1c24;";
@@ -233,7 +232,7 @@ function inicializar(posts) {
                     + "<strong></br><p>Placa: " + element.vehiculo.placa
                     + "</br>Hora: $" + element.vehiculo.hora
                     + "</br>Dia: $" + element.vehiculo.dia + "</p></strong>"
-                    + "<a href=''>Ver mas</a>"
+                    + "<a href='http://localhost:8080/AllyRent/Vehiculo/profile.html?id=" + element.vehiculo.idVehiculo + "'>Ver mas</a>"
                     + "</div>";
             var info = new google.maps.InfoWindow({
                 content: text
@@ -242,7 +241,7 @@ function inicializar(posts) {
             mark.addListener('click', function () {
                 info.open(maps, mark);
             });
-            text="";
+            text = "";
         });
 
 

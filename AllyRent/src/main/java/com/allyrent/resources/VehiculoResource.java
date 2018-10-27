@@ -6,6 +6,7 @@
 package com.allyrent.resources;
 
 import com.allyrent.DTO.FotoDTO;
+import com.allyrent.DTO.VehiculoDTO;
 import com.allyrent.bean.*;
 import com.allyrent.entidades.*;
 import com.allyrent.utility.ImageToArray;
@@ -84,9 +85,9 @@ public class VehiculoResource {
 
     @GET
     @Path("/findVehicle/{idVehiculo}")
-    public Vehiculo FindVehicle(@PathParam("idVehiculo") int idVehiculo) {
+    public VehiculoDTO FindVehicle(@PathParam("idVehiculo") int idVehiculo) {
         Vehiculo veh = _vehicleFacade.find(idVehiculo);
-        return veh;
+        return new VehiculoDTO(veh);
     }
 
     @GET

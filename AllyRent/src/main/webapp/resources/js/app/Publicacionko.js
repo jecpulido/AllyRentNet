@@ -30,7 +30,7 @@ var PublicacionViewModel = function () {
                     url: url,
                     type: 'POST',
                     data: ko.toJSON(self.getObjectPublicacion()),
-                    contentType: "application/json;chartset=utf-8", 
+                    contentType: "application/json;chartset=utf-8",
                     statusCode: {
                         200: function (data) {
                             if (data.responseText === "OK") {
@@ -122,7 +122,6 @@ $(document).ready(function () {
 });
 
 function ValidateRol() {
-
     if (sessionStorage.rol == "Ocupante") {
         $("#divVehiculo").hide();
     } else {
@@ -146,6 +145,12 @@ function ObtenerUbicacion() {
         $("#msgError").hide();
         $("#divUbicacion").show();
         $("#lblUbicacion").val(latitud + "," + longitud).change();
+
+        if (sessionStorage.rol == "Ocupante") {
+            $("#sltTipoPublicacion").val(16).attr("disabled",true).change();
+        } else {
+            $("#sltTipoPublicacion").val(17).attr("disabled",true).change();
+        }
     }
     function error() {
         $("#msgError").show();
