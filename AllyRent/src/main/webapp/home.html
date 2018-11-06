@@ -9,7 +9,7 @@
 
         <!-- Bootstrap -->
         <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800' rel='stylesheet' type='text/css'>
-        <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+        <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="resources/css/font-awesome.css"/>
         <link rel="stylesheet" type="text/css" href="resources/css/offcanvas.css"/>
         <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
@@ -65,7 +65,7 @@
                                 <ul class="nav navbar-nav navbar-left">
                                     <li><a id="aInicio">Inicio</a></li>
                                     <li><a id="aMensajes">Mensajes</a></li>
-                                   <li><a id="aSolicitudes">Solicitudes</a></li>
+                                    <li><a id="aSolicitudes">Solicitudes</a></li>
                                     <li><a id="aContratos">Mis Contratos</a></li>
                                 </ul>
                                 <ul class="nav navbar-nav navbar-right hidden-xs">
@@ -112,17 +112,17 @@
                                                     </div>
                                                     <label for="txtNDocumento" class="control-label col-lg-2">N° de Documento</label>
                                                     <div class="col-lg-4">
-                                                        <input class="form-control" id="txtNDocumento" name="txtNDocumento" type="text" required />
+                                                        <input class="form-control" id="txtNDocumento" name="txtNDocumento" type="number" required />
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
                                                     <label for="txtTelefono" class="control-label col-lg-2">Telefono</label>
                                                     <div class="col-lg-4">
-                                                        <input class="form-control" id="txtTelefono" name="txtTelefono" type="text" required />
+                                                        <input class="form-control" id="txtTelefono" name="txtTelefono" type="number" required />
                                                     </div>
                                                     <label for="txtFechaNacimiento" class="control-label col-lg-2">Fecha Nacimiento</label>
                                                     <div class="col-lg-4">
-                                                        <input type='text' class="form-control" id="txtFechaNacimiento" name="txtFechaNacimiento" required/>
+                                                        <input type='date' class="form-control" id="txtFechaNacimiento" name="txtFechaNacimiento" placeholder="dd/mm/aaaa" required/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
@@ -158,12 +158,12 @@
                                                 <div class="form-group">
                                                     <label class="control-label col-lg-2"></label>
                                                     <div class="col-lg-10">
-                                                        <div id="imagenes" class="div-img"></div>
+                                                        <img id="imagen" style="display:none;width: 150px; height: 150px;border-radius: 15%"/>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-lg-offset-2 col-lg-10">
-                                                        <button type="submit" id="btnRegister" class="btn btn-success right" >Actualizar registro</button>
+                                                        <button type="submit" id="btnUpdate" class="btn btn-success right" >Actualizar registro</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -384,11 +384,12 @@
                 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
                 <!-- Include all compiled plugins (below), or include individual files as needed -->
                 <script src="resources/js/jquery.js" type="text/javascript"></script>
-                <script src="resources/js/bootstrap.min.js"></script>
+                <script src="resources/js/bootstrap.min.js"></script>                
                 <script src="resources/js/custom.js"></script>
                 <script src="resources/js/knockout.js" type="text/javascript"></script>
                 <script src="resources/js/app/Homeko.js" type="text/javascript"></script>
                 <script src="resources/js/moments.js" type="text/javascript"></script>
                 <script src="resources/js/AllyRenty.js" type="text/javascript"></script>
+                <script type="text/javascript" src="http://pajhome.org.uk/crypt/md5/2.2/md5-min.js"></script>
             </body>
         </html>

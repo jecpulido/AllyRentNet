@@ -50,6 +50,7 @@ public class UsuarioResource {
                 if (user.getIdLogin() != null) {
                     login.setContrasena(user.getIdLogin().getContrasena());
                     login.setCorreo(user.getIdLogin().getCorreo());
+                    login.setUltimaConexion(new Date());
                     _login.create(login);
                     if (login.getIdLogin() != null) {
                         usuario.setIdLogin(login);

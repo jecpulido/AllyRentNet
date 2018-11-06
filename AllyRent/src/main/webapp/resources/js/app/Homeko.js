@@ -200,5 +200,5 @@ $(document).ready(function () {
     homevm.idUsuario(sessionStorage.idusuario);
     homevm.getAllPost();
     homevm.buscarSugerencias();
-
+    
 });
