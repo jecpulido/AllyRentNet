@@ -1,265 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-   <title>:: AllyRent ::</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>:: AllyRent ::</title>
 
-   <!-- Bootstrap -->
-   <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800' rel='stylesheet' type='text/css'>
-   <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="../resources/css/font-awesome.css" />
-   <link rel="stylesheet" type="text/css" href="../resources/css/offcanvas.css" />
-   <link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
-   <link rel="stylesheet" type="text/css" href="../resources/css/network.css" />
-   <link rel="stylesheet" type="text/css" href="css/chat.css">
-   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-   <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <!-- Bootstrap -->
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../resources/css/font-awesome.css" />
+        <link rel="stylesheet" type="text/css" href="../resources/css/offcanvas.css" />
+        <link rel="stylesheet" type="text/css" href="../resources/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../resources/css/network.css" />
+        <link rel="stylesheet" type="text/css" href="css/chat.css">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+               <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+               <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+             <![endif]-->
 
-   <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
-</head>
+        <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+    </head>
 
-<body>
-   <div class="wrapper">
-      <header>
-         <!--========================== Header-Top ================================-->
-         <!--========================== Header-Top ================================-->
-         <div class="header-top">
-            <div class="container">
-               <div class="col-md-9 col-sm-7 xs-view">
-                  <a href="index.html" class="logo"><img class="logo" src="resources/images/logo.png" alt="Logo"/> AllyRent</a>
-               </div>
-               <div class="col-md-3 col-sm-5 xs-view-right">
-                  <div class="search-section center-block">
-                     <form>
-                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Search">
-                        <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-search"></i></button>
-                     </form>
-                  </div>
-                  <!-- Author -->
-                  <div class="author-form">
-                     <li class="dropdown">
-                        <form>
-                           <a href="#" class="dropdown-toggle author-icon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                              <i class="fa fa-user author-icon"></i>
-                           </a>
-                           <ul class="dropdown-menu">
-                              <div class="tab-content">
-                                 <div role="tabpanel" class="tab-pane active" id="signin">
-                                    <ul class="user-dropdown">
-                                    </ul><!-- /User-Dropdown-->
-                                 </div><!-- /#Sing in -->
-                                 <div role="tabpanel" class="tab-pane" id="signup">
-                                    <ul class="user-dropdown">
-                                    </ul><!-- /User-Dropdown-->
-                                 </div><!-- /#Sing up -->
-                              </div><!-- /Tab-Content -->
-                           </ul><!-- /Dropdown-menu -->
-                        </form>
-                     </li><!-- /Dropdown -->
-                  </div><!-- /Author -->
-               </div>
-            </div>
-         </div><!-- header-top -->
-
-         <!--========================== Header-Nav ================================-->
-         <div class="header-nav">
-            <nav class="navbar navbar-default">
-               <div class="container">
-                  <p class="pull-left visible-xs">
-                     <button type="button" class="navbar-toggle" data-toggle="offcanvas">
-                        <i class="fa fa-long-arrow-right"></i>
-                        <i class="fa fa-long-arrow-left"></i>
-                     </button>
-                  </p>
-                  <div class="social-nav center-block visible-xs">
-                     <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
-                     <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
-                     <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
-                  </div>
-                  <!--toggle get grouped for better mobile display -->
-                  <div class="navbar-header">
-                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                     </button>
-                  </div>
-                  <!-- Collect the nav links, forms, and other content for toggling -->
-                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                     <ul class="nav navbar-nav navbar-left">
-                        <li><a id="aInicio">Inicio</a></li>
-                        <li><a id="aMensajes">Mensajes</a></li>
-                        <li><a id="aSolicitudes">Solicitudes</a></li>
-                        <li><a id="aContratos">Mis Contratos</a></li>
-                     </ul>
-                     <ul class="nav navbar-nav navbar-right hidden-xs">
-                        <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
-                     </ul>
-                  </div><!-- /.navbar-collapse -->
-               </div><!-- /.container-->
-            </nav>
-         </div><!-- Header-Nav -->
-      </header>
-      <!--Header-->
-      <!--========================== Contant-Area================================-->
-      <div class="contant-area">
-         <div class="container">
-            <div class="row row-offcanvas row-offcanvas-left">
-
-               <!--========================== main-content ================================-->
-               <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: -20px">
-                  <div class="main-content">
-                     <article>
-                        <h2>Chat Mensajes</h2>
-                        <hr>
-                        <div class="messaging">
-                           <div class="inbox_msg">
-                              <div class="inbox_people">
-                                 <div class="headind_srch">
-                                    <div class="srch_barChat">
-                                       <div class="stylish-input-group">
-                                          <!-- <input type="text" placeholder="Search"> -->
-                                          <span class="" style="color: green">
-                                             <b>Usuarios Conectados</b>
-                                          </span> </div>
-                                    </div>
-                                 </div>
-                                 <div class="inbox_chat">
-                                    <div class="chat_list active_chat">
-                                       <div class="chat_people">
-                                          <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                          <div class="chat_ib">
-                                             <h5 id="username">Sunil Rajput <span class="chat_date">
-                                                Dec 25</span></h5>
-                                                <i class="fa fa-circle" style="background: transparent;float: right;color: #08d608;"></i>
-                                             <p id="rol"></p>
-                                          </div>
-                                       </div>
-                                    </div>
-
-                                 </div>
-                              </div>
-                              <div class="mesgs">
-                                 <div class="msg_history">
-                                    <!-- <div class="incoming_msg">
-                                       <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-                                       <div class="received_msg">
-                                          <div class="received_withd_msg">
-                                             <p>Test which is a new approach to have all
-                                                solutions</p>
-                                             <span class="time_date"> 11:01 AM | June 9</span>
-                                          </div>
-                                       </div>
-                                    </div> -->
-                                    <div class="outgoing_msg">
-                                       <div class="sent_msg">
-                                          <span><small>Error</small></span>
-                                          <p style="background: red; ">Ocurrio un error al obtener lo mensajes.</p>
-                                          <span class="time_date"> Comuniquese con el administrador.</span>
-                                       </div>
-                                    </div>
-
-                                 </div>
-                                 <div class="type_msg">
-                                    <div class="input_msg_write">
-                                       <input type="text" class="write_msg" id="message" placeholder="Escribe tu mensaje" />
-                                       <button class="msg_send_btn" type="button" id="btnEnviar"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Enviar</button>
-                                    </div>
-                                    <br>
-                                 </div>
-                              </div>
-                           </div>
-
+    <body>
+        <div class="wrapper">
+            <header>
+                <!--========================== Header-Top ================================-->
+                <!--========================== Header-Top ================================-->
+                <div class="header-top">
+                    <div class="container">
+                        <a href="index.html">
+                            <img src="../Login/images/log.png" alt="" style="width: 200px; margin: 10px 0px -20px 0px"/>
+                        </a>
+                        <div class="col-md-3 col-sm-5 xs-view-right">
+                            <div class="search-section center-block">
+                                <form>
+                                    <input type="text" class="form-control" id="exampleInputName2" placeholder="Search">
+                                    <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-search"></i></button>
+                                </form>
+                            </div>
+                            <!-- Author -->
+                            <div class="author-form">
+                                <li class="dropdown">
+                                    <form>
+                                        <a href="#" class="dropdown-toggle author-icon" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-user author-icon"></i>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane active" id="signin">
+                                                    <ul class="user-dropdown">
+                                                    </ul><!-- /User-Dropdown-->
+                                                </div><!-- /#Sing in -->
+                                                <div role="tabpanel" class="tab-pane" id="signup">
+                                                    <ul class="user-dropdown">
+                                                    </ul><!-- /User-Dropdown-->
+                                                </div><!-- /#Sing up -->
+                                            </div><!-- /Tab-Content -->
+                                        </ul><!-- /Dropdown-menu -->
+                                    </form>
+                                </li><!-- /Dropdown -->
+                            </div><!-- /Author -->
                         </div>
-                     </article>
-                  </div><!-- main-content -->
-               </div>
-            </div>
-            <!--row-offcanvas-->
-         </div><!-- Container -->
-      </div><!-- Content-area -->
-      <footer>
-         <div class="footer-menu">
-            <div class="container">
-               <div class="col-md-4 col-sm-4 center-block">
-                  <h3 class="footer-head">this author blog from crea tivemine</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <div class="social">
-                     <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
-                     <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
-                     <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
-                  </div>
-               </div>
-               <div class="col-md-4 col-sm-4 mobile-footer center-block">
-                  <h4 class="footer-head">recent posts</h3>
-                     <ul class="ul-left">
-                        <li><a href="#">Ut enim ad minim veniam</a></li>
-                        <li><a href="#">Quis nostrud exercitation laboris</a></li>
-                     </ul>
-               </div>
-               <div class="col-md-4 col-sm-4 mobile-footer center-block">
-                  <h4 class="footer-head">article categories</h3>
-                     <ul class="ul-left">
-                        <li><a href="#">E-Commerce</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Infographics</a></li>
-                        <li><a href="#">Launch</a></li>
-                     </ul>
-                     <ul class="ul-right">
-                        <li><a href="#">Social</a></li>
-                        <li><a href="#">Media</a></li>
-                        <li><a href="#">Testing</a></li>
-                        <li><a href="#">Twitter</a></li>
-                     </ul>
-               </div>
-            </div>
-         </div><!-- Footer-menu -->
-         <div class="footer-nav">
-            <div class="container">
-               <div class="col-md-6 col-sm-5">
-                  <p>&copy; 2015 Author bloging template</p>
-               </div>
-               <div class="col-md-6 col-sm-7">
-                  <ul>
-                     <li><a href="index.html">home</a></li>
-                     <li><a href="#">support</a></li>
-                     <li><a href="#">careers</a></li>
-                     <li><a href="#">terms use</a></li>
-                     <li><a href="#">privacy policy</a></li>
-                  </ul>
-               </div>
-            </div>
-            <!-- Go TO TOP -->
-            <div id="toTop" class="btn btn-info" style="display: block;">
-               <span class="fa fa-angle-up"></span>
-            </div><!-- /Go-to-top -->
-         </div>
-      </footer>
-   </div><!-- /Wrapper -->
+                    </div>
+                </div><!-- header-top -->
+
+                <!--========================== Header-Nav ================================-->
+                <div class="header-nav">
+                    <nav class="navbar navbar-default">
+                        <div class="container">
+                            <p class="pull-left visible-xs">
+                                <button type="button" class="navbar-toggle" data-toggle="offcanvas">
+                                    <i class="fa fa-long-arrow-right"></i>
+                                    <i class="fa fa-long-arrow-left"></i>
+                                </button>
+                            </p>
+                            <div class="social-nav center-block visible-xs">
+                                <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
+                            </div>
+                            <!--toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-left">
+                                    <li><a id="aInicio">Inicio</a></li>
+                                    <li><a id="aMensajes">Mensajes</a></li>
+                                    <li><a id="aSolicitudes">Solicitudes</a></li>
+                                    <li><a id="aContratos">Mis Contratos</a></li>
+                                </ul>
+                                <ul class="nav navbar-nav navbar-right hidden-xs">
+                                    <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
+                                </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container-->
+                    </nav>
+                </div><!-- Header-Nav -->
+            </header>
+            <!--Header-->
+            <!--========================== Contant-Area================================-->
+            <div class="contant-area">
+                <div class="container">
+                    <div class="row row-offcanvas row-offcanvas-left">
+
+                        <!--========================== main-content ================================-->
+                        <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: -20px">
+                            <div class="main-content">
+                                <article>
+                                    <h2>Chat Mensajes</h2>
+                                    <hr>
+                                    <div class="messaging">
+                                        <div class="inbox_msg">
+                                            <div class="inbox_people">
+                                                <div class="headind_srch">
+                                                    <div class="srch_barChat">
+                                                        <div class="stylish-input-group">
+                                                            <!-- <input type="text" placeholder="Search"> -->
+                                                            <span class="" style="color: green">
+                                                                <b>Usuarios Conectados</b>
+                                                            </span> </div>
+                                                    </div>
+                                                </div>
+                                                <div class="inbox_chat">
+                                                    <!-- <div class="chat_list active_chat">
+                                                       <div class="chat_people">
+                                                          <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                                          <div class="chat_ib">
+                                                             <h5 id="username">Sunil Rajput <span class="chat_date">
+                                                                Dec 25</span></h5>
+                                                                <i class="fa fa-circle" style="background: transparent;float: right;color: #08d608;"></i>
+                                                             <p id="rol"></p>
+                                                          </div>
+                                                       </div>
+                                                    </div> -->
+
+                                                </div>
+                                            </div>
+                                            <div class="mesgs">
+                                                <div class="msg_history">
+                                                    <!-- <div class="incoming_msg">
+                                                       <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
+                                                       <div class="received_msg">
+                                                          <div class="received_withd_msg">
+                                                             <p>Test which is a new approach to have all
+                                                                solutions</p>
+                                                             <span class="time_date"> 11:01 AM | June 9</span>
+                                                          </div>
+                                                       </div>
+                                                    </div> -->
+                                                    <div class="outgoing_msg">
+                                                        <div class="sent_msg">
+                                                            <span><small>Error</small></span>
+                                                            <p style="background: red; ">Ocurrio un error al obtener lo mensajes.</p>
+                                                            <span class="time_date"> Comuniquese con el administrador.</span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="type_msg">
+                                                    <div class="input_msg_write">
+                                                        <input type="text" class="write_msg" id="message" placeholder="Escribe tu mensaje" />
+                                                        <button class="msg_send_btn" type="button" id="btnEnviar"><i class="fa fa-paper-plane-o" aria-hidden="true"></i> Enviar</button>
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </article>
+                            </div><!-- main-content -->
+                        </div>
+                    </div>
+                    <!--row-offcanvas-->
+                </div><!-- Container -->
+            </div><!-- Content-area -->
+            <footer>
+                <div class="footer-menu">
+                    <div class="container">
+                        <div class="col-md-4 col-sm-4 center-block">
+                            <h3 class="footer-head">this author blog from crea tivemine</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <div class="social">
+                                <li><a href="#"><i class="fa fa-facebook facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus google-plus"></i></a></li>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 mobile-footer center-block">
+                            <h4 class="footer-head">recent posts</h3>
+                                <ul class="ul-left">
+                                    <li><a href="#">Ut enim ad minim veniam</a></li>
+                                    <li><a href="#">Quis nostrud exercitation laboris</a></li>
+                                </ul>
+                        </div>
+                        <div class="col-md-4 col-sm-4 mobile-footer center-block">
+                            <h4 class="footer-head">article categories</h3>
+                                <ul class="ul-left">
+                                    <li><a href="#">E-Commerce</a></li>
+                                    <li><a href="#">Facebook</a></li>
+                                    <li><a href="#">Infographics</a></li>
+                                    <li><a href="#">Launch</a></li>
+                                </ul>
+                                <ul class="ul-right">
+                                    <li><a href="#">Social</a></li>
+                                    <li><a href="#">Media</a></li>
+                                    <li><a href="#">Testing</a></li>
+                                    <li><a href="#">Twitter</a></li>
+                                </ul>
+                        </div>
+                    </div>
+                </div><!-- Footer-menu -->
+                <div class="footer-nav">
+                    <div class="container">
+                        <div class="col-md-6 col-sm-5">
+                            <p>&copy; 2015 Author bloging template</p>
+                        </div>
+                        <div class="col-md-6 col-sm-7">
+                            <ul>
+                                <li><a href="index.html">home</a></li>
+                                <li><a href="#">support</a></li>
+                                <li><a href="#">careers</a></li>
+                                <li><a href="#">terms use</a></li>
+                                <li><a href="#">privacy policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Go TO TOP -->
+                    <div id="toTop" class="btn btn-info" style="display: block;">
+                        <span class="fa fa-angle-up"></span>
+                    </div><!-- /Go-to-top -->
+                </div>
+            </footer>
+        </div><!-- /Wrapper -->
 
 
-   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-   <!-- Include all compiled plugins (below), or include individual files as needed -->
-   <script src="../resources/js/jquery.js" type="text/javascript"></script>
-   <script src="../resources/js/bootstrap.min.js"></script>
-   <script src="../resources/js/moments.js" type="text/javascript"></script>
-   <script src="../resources/js/custom.js"></script>
-   <script src="../resources/js/knockout.js" type="text/javascript"></script>
-   <script src="../resources/js/app/Publicacionko.js" type="text/javascript"></script>
-   <script src="../resources/js/AllyRenty.js" type="text/javascript"></script>
-   <script src="js/chat.js" type="text/javascript"></script>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../resources/js/jquery.js" type="text/javascript"></script>
+        <script src="../resources/js/bootstrap.min.js"></script>
+        <script src="../resources/js/moments.js" type="text/javascript"></script>
+        <script src="../resources/js/custom.js"></script>
+        <script src="../resources/js/knockout.js" type="text/javascript"></script>
+        <script src="../resources/js/app/Publicacionko.js" type="text/javascript"></script>
+        <script src="../resources/js/AllyRenty.js" type="text/javascript"></script>
+        <script src="js/chat.js" type="text/javascript"></script>
 
-</body>
+    </body>
 
 </html>
