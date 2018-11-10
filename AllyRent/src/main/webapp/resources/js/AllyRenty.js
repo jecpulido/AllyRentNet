@@ -20,7 +20,9 @@ if ((sessionStorage.idusuario === undefined) && (sessionStorage.nombre === undef
 $(document).ready(function () {
     if (sessionStorage.isFromRedSocial !== undefined) {
         if (sessionStorage.isFromRedSocial === "true") {
-            CompleteRegister();
+            if (sessionStorage.rol === undefined) {
+                CompleteRegister();
+            }
         }
     }
     $("#aProfile").attr('href', 'http://localhost:8080/AllyRent/Usuario/profile.html?id=' + sessionStorage.idusuario);
@@ -28,12 +30,14 @@ $(document).ready(function () {
     $("#aInicio").attr("href", "http://localhost:8080/AllyRent/home.html");
     $("#aMensajes").attr("href", "http://localhost:8080/AllyRent/Chat/chat.html");
     $("#aSolicitudes").attr("href", "http://localhost:8080/AllyRent/Publicacion/solicitudes.html");
-    $("#aContratos").attr("href", "http://localhost:8080/AllyRent/home.htmll");
+    $("#aContratos").attr("href", "http://localhost:8080/AllyRent/home.html");
+    $("#aPublicaciones").attr("href", "http://localhost:8080/AllyRent/Publicacion/new.html");
+    $("#aVehiculos").attr("href", "http://localhost:8080/AllyRent/Vehiculo/index.html");
 });
 
 function CompleteRegister() {
     var obj = {
-        contrasena: hex_md5(sessionStorage.idusuario),
+        contrasena: md5(sessionStorage.idusuario),
         correo: sessionStorage.correo
     };
     $.ajax({
@@ -131,7 +135,7 @@ $("#btnUpdate").click(function () {
         rutaFoto: fotoString,
         telefono: $('#txtTelefono').val(),
         idLogin: {
-            contrasena: hex_md5(sessionStorage.idusuario),
+            contrasena: md5(sessionStorage.idusuario),
             correo: sessionStorage.correo
         }
     };
@@ -173,3 +177,7 @@ function cargarSession(data) {
     sessionStorage.idRol = data.idRol;
 
 }
+$("#logout").click(function(){
+   sessionStorage.clear();
+   window.location.href = "http://localhost:8080/AllyRent/index.html";
+});

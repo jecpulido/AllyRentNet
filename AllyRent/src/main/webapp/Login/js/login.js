@@ -10,7 +10,7 @@ $(document).ready(function () {
     function ingresar() {
 
         var correo = $('#emailUser').val();
-        var clave = hex_md5($('#pwdUser').val());
+        var clave = md5($('#pwdUser').val());
         var obj = {
             correo: correo,
             contrasena: clave
@@ -72,7 +72,7 @@ $(document).ready(function () {
             rutaFoto: fotoString,
             telefono: $('#telefono').val(),
             idLogin: {
-                contrasena: hex_md5($('#clave').val()),
+                contrasena: md5($('#clave').val()),
                 correo: $('#email').val()
             }
         };

@@ -34,12 +34,6 @@
                             </a>
                         </div>
                         <div class="col-md-3 col-sm-5 xs-view-right">
-                            <div class="search-section center-block">
-                                <form>
-                                    <input type="text" class="form-control" id="exampleInputName2" placeholder="Search">
-                                    <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-search"></i></button>
-                                </form>
-                            </div>
                             <!-- Author -->
                             <div class="author-form">
                                 <li class="dropdown">
@@ -48,16 +42,9 @@
                                             <i class="fa fa-user author-icon"></i>
                                         </a>
                                         <ul class="dropdown-menu">
-                                            <div class="tab-content">
-                                                <div role="tabpanel" class="tab-pane active" id="signin">
-                                                    <ul class="user-dropdown">
-                                                    </ul><!-- /User-Dropdown-->
-                                                </div><!-- /#Sing in -->
-                                                <div role="tabpanel" class="tab-pane" id="signup">
-                                                    <ul class="user-dropdown">
-                                                    </ul><!-- /User-Dropdown-->
-                                                </div><!-- /#Sing up -->
-                                            </div><!-- /Tab-Content -->
+                                            <li>
+                                                <a class="sign" href="#logout" id="logout">Cerrar Sesion</a>
+                                            </li>
                                         </ul><!-- /Dropdown-menu -->
                                     </form>
                                 </li><!-- /Dropdown -->
@@ -133,16 +120,16 @@
                                             <ul class="user-fw-status">
                                                 <li>
                                                     <h3>Publicaciones</h3>
-                                                    <a href="Publicacion/new.html">
+                                                    <a id="aPublicaciones" href="#">
                                                         <span id="sPublicaciones"></span>
                                                     </a>
                                                 </li>
                                                 <li>
                                                     <h3>Vehiculos</h3>
-                                                    <a href="Vehiculo/index.html">                                     
+                                                    <a id="aVehiculos" href="">
                                                         <span id="sVehiculos"></span>
-                                                    </a>               
-                                                </li>                                                
+                                                    </a>
+                                                </li>
                                                 <li>
                                                     <span id="sCiudad"></span>    
                                                 </li>

@@ -254,8 +254,8 @@ a.author-icon{
 }
 .author-form ul.dropdown-menu{
 	width:320px;
-	padding:30px;
-	background:#37474f;
+	padding:5px;
+	background:#398439;
 	position:absolute;
 	top:73px;
 	border:none;
@@ -302,15 +302,14 @@ a.author-icon{
 }
 .dropdown-menu a.sign{
 	text-transform:uppercase;
-	padding:0px 0px 9px;
-	color:#9ba1a4;
+	color:#fff;
 	font-size:16px;
 	display:inline-block;
 }
-.dropdown-menu a.sign:hover{
-	color: #398439;
-	border-bottom:1px solid  #398439;
+.dropdown-menu a.sign:hover,.dropdown-menu a.sign:focus{
+	color: #fff!important;
 	display:inline-block;
+        background: #398439;
 }
 .login-area{
 	padding-top:26px;
